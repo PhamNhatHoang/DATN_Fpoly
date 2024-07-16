@@ -19,9 +19,7 @@
  
 <h2 id="technologies">💻 Công nghệ sử dụng</h2>
 
-- Java
-- Spring 4
-- Javascript
+AngularJS, Thymeleaf, Spring Boot, API Payment
  
 <h2 id="started">🚀 Bắt đầu!</h2>
 
@@ -106,9 +104,9 @@ Here you can list the main routes of your API, and what are their expected reque
 
 <td align="center">
 <a href="https://github.com/PhamNhatHoang">
-<img src="https://thanhcongfarm.com/wp-content/uploads/2022/05/anh-cho-hai-20.jpg" width="100px;" alt="Trần Hùng Khôi Profile Picture"/><br>
+<img src="https://thanhcongfarm.com/wp-content/uploads/2022/05/anh-cho-hai-20.jpg" width="100px;" alt="Phạm Nhật Hoàng Profile Picture"/><br>
 <sub>
-<b>Trần Hùng Khôi</b>
+<b>Phạm Nhật Hoàng</b>
 </sub>
 </a>
 </td>
@@ -136,6 +134,15 @@ Here you can list the main routes of your API, and what are their expected reque
 <img src="https://thanhcongfarm.com/wp-content/uploads/2022/05/anh-cho-hai-20.jpg" width="100px;" alt="Ngô Việt Anh Profile Picture"/><br>
 <sub>
 <b>Ngô Việt Anh</b>
+</sub>
+</a>
+</td>
+
+<td align="center">
+<a href="https://github.com/PhamNhatHoang">
+<img src="https://thanhcongfarm.com/wp-content/uploads/2022/05/anh-cho-hai-20.jpg" width="100px;" alt="Nguyễn Trọng Phúc Profile Picture"/><br>
+<sub>
+<b>Nguyễn Trọng Phúc</b>
 </sub>
 </a>
 </td>
