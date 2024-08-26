@@ -1,5 +1,5 @@
-     [![Version](https://img.shields.io/badge/version-1.0-blue)](https://youtu.be/uY5FwOFg3y0)
 <h1 align="center" style="font-weight: bold;">JavaNinjas💻</h1>
+[![Version](https://img.shields.io/badge/version-1.0-blue)](https://youtu.be/uY5FwOFg3y0)
 
 <p align="center">
 <a href="#tech">Technologies</a>
