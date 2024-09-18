@@ -21,4 +21,10 @@ public class HomeController {
         model.addAttribute("userList", userList);
         return "home";
     }
+
+    @RequestMapping("/login")
+    public String login(Model model) {
+        model.addAttribute("message", "Đăng nhập");
+        return "security/login";
+    }
 }
