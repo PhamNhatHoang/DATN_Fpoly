@@ -6,13 +6,18 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
+import org.springframework.security.core.GrantedAuthority;
 
 import java.util.List;
 
 @Data
 @Entity
 @Table(name = "Authorities")
-public class Authority {
+public class Authority implements GrantedAuthority {
+    @Override
+    public String getAuthority() {
+        return roleName;
+    }
 
     @Id
     @Column(name = "AuthID")
@@ -22,6 +27,6 @@ public class Authority {
     private String roleName;
 
     @OneToMany(mappedBy = "authority")
-    private List<User> users; 
+    private List<User> users;
 
 }
