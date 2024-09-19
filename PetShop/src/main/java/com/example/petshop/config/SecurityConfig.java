@@ -23,12 +23,12 @@ public class SecurityConfig {
         http.cors(cors -> cors.disable());
 
         http.authorizeHttpRequests(auth -> {
-            auth.requestMatchers("/", "/trang-chu", "/home").permitAll();
+            auth.requestMatchers("/").permitAll();
             auth.anyRequest().permitAll();
         });
         http.formLogin(form -> {
             form.loginPage("/login").permitAll()
-                    .defaultSuccessUrl("/", true)
+                    .defaultSuccessUrl("/login?success=true", true)
                     .failureUrl("/login?error=true");
         });
         http.logout(logout -> {

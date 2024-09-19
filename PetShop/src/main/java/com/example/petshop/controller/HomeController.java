@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.w3c.dom.stylesheets.LinkStyle;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -23,8 +23,17 @@ public class HomeController {
     }
 
     @RequestMapping("/login")
-    public String login(Model model) {
-        model.addAttribute("message", "Đăng nhập");
+    public String login(Model model,
+                        @RequestParam(value = "error", required = false) boolean error,
+                        @RequestParam(value = "success", required = false) boolean success) {
+        if (error) {
+            model.addAttribute("message", "Đăng nhập thất bại!");
+            model.addAttribute("loginStatus", false);
+        }
+        if (success) {
+            model.addAttribute("message", "Đăng nhập thành công!");
+            model.addAttribute("loginStatus", true);
+        }
         return "security/login";
     }
 }

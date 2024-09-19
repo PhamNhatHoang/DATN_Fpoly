@@ -24,6 +24,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDetails findById(String username) {
         User user = userRepo.findByUsername(username);
+        if (user == null) {
+            return null;
+        }
         return new CustomUserDetails(user);
     }
 }
