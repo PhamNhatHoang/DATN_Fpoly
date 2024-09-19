@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="en" th:replace="~{home.html :: home(~{::body})}" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
@@ -56,7 +56,7 @@
                             <button class="btn font-resp" type="submit">Đăng nhập</button>
                             <a class="btn font-resp" href="/dang-ki" style="background: #AACCFF">Đăng kí</a>
                         </div>
-                        <div class="d-flex justify-content-center gap-3 my-4">
+                        <!--<div class="d-flex justify-content-center gap-3 my-4">
                             <a class="text-decoration-none text-dark p-2 rounded-3 gsi-material-button w-50 border d-flex justify-content-center"
                                href="/oauth2/authorization/google">
                                 <div class="gsi-material-button-content-wrapper d-flex justify-content-center align-items-center gap-2">
@@ -117,7 +117,7 @@
                                href="/oauth2/authorization/facebook">
                                 <div class="gsi-material-button-content-wrapper d-flex justify-content-center align-items-center gap-2">
                                     <?xml version="1.0" encoding="iso-8859-1"?>
-                                    <!-- Generator: Adobe Illustrator 23.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                                    &lt;!&ndash; Generator: Adobe Illustrator 23.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  &ndash;&gt;
                                     <svg height="50px"
                                          viewBox="0 0 64 64" width="50px" xmlns="http://www.w3.org/2000/svg">
                                         <circle cx="32" cy="32" r="28" style="fill:#9FDDFF;"/>
@@ -156,7 +156,7 @@
                                     <span class="d-none d-lg-block gsi-material-button-contents">Continue with Facebook</span>
                                 </div>
                             </a>
-                        </div>
+                        </div>-->
                     </form>
                 </div>
             </div>
