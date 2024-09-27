@@ -19,7 +19,7 @@ public class HomeController {
     public String home(Model model) {
         List<User> userList = userService.findAll();
         model.addAttribute("userList", userList);
-        return "home";
+        return "index";
     }
 
     @RequestMapping("/login")
