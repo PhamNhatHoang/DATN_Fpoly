@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" th:fragment="home(view)" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
-
 <head>
     <meta charset="UTF-8">
     <title>Anh Ngô</title>
@@ -144,30 +143,28 @@
         </button>
         <!--        offcanvas-->
         <div aria-labelledby="offcanvasNavbarLabel" class="offcanvas offcanvas-end w-100" data-bs-backdrop="true"
-             data-bs-scroll="true" id="offcanvasNavbar" tabindex="-1" style="background: #f04336">
+             data-bs-scroll="true" id="offcanvasNavbar" tabindex="-1" style="background: white">
             <!--            sidebar-header-->
             <div class="offcanvas-header border-top font-color">
                 <button aria-label="Close" class=" btn-close btn-close-white shadow-0" data-bs-dismiss="offcanvas"
                         type="button">
                 </button>
             </div>
-            <div class="offcanvas-body d-flex justify-content-center align-items-center">
-                <ul class="navbar-nav justify-content-start flex-grow-1 gap-3">
-                    <li class="nav-item">
+            <div class="offcanvas-body justify-content-center flex-grow-1 pe-3">
+                <ul class="navbar-nav mb-2 mb-lg-0 justify-content-center">
+                    <li class="nav-item text-center">
                         <a class="nav-link active background-color text-white fw-bold" aria-current="page" href="#">Trang
                             chủ</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item text-center">
                         <a class="nav-link menu-item" href="#">Cửa hàng</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item text-center">
                         <a class="nav-link menu-item" href="#">Thú cưng</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item text-center">
                         <a class="nav-link menu-item" href="#">Dịch vụ</a>
                     </li>
-                </ul>
-                <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
                     <li class="nav-item">
                         <form class="d-flex" role="search">
                             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -175,12 +172,18 @@
                         </form>
                     </li>
                 </ul>
-                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                    <li class="nav-item">
-                        <a class="nav-link menu-item" href="#">Cart</a>
+                <ul class="navbar-nav mb-2 mb-lg-0 justify-content-end">
+                    <li class="nav-item text-center">
+                        <a class="nav-link menu-item" href="/login">Login</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link menu-item" href="#">User</a>
+                    <li class="nav-item text-center">
+                        <a class="nav-link menu-item" href="/register">Register</a>
+                    </li>
+                    <li class="nav-item text-center">
+                        <a class="nav-link menu-item" href="/admin">Admin</a>
+                    </li>
+                    <li class="nav-item text-center">
+                        <a class="nav-link menu-item" href="/user">User</a>
                     </li>
                 </ul>
             </div>
@@ -254,7 +257,7 @@
     <!--SLIDE END-->
     <!--BANNER-->
     <div class="d-flex justify-content-center">
-        <img loading="lazy" class="w-100" src="/images/banner/banner.png" alt="banner" style="object-fit: cover;">
+        <img loading="lazy" class="w-100" src="/images/banner/advertise.png" alt="banner" style="object-fit: cover;">
     </div>
     <!--BANNER END-->
     <!--TIEN ICH-->
@@ -316,7 +319,8 @@
                     <a class=" nav-link" href="#">
                         <div class="card card-hover  border-0">
                             <div class="overflow-hidden rounded-5 p-3 p-0" style="background-color: #f7f7f5">
-                                <img loading="lazy" src="/images/pet/pet-placeholder.png" class="card-img-top card-image"
+                                <img loading="lazy" src="/images/pet/pet-placeholder.png"
+                                     class="card-img-top card-image"
                                      alt="product">
                             </div>
                             <div class="card-body text-center">
@@ -330,7 +334,8 @@
                     <a class=" nav-link" href="#">
                         <div class="card card-hover  border-0">
                             <div class="overflow-hidden rounded-5 p-3 p-0" style="background-color: #f7f7f5">
-                                <img loading="lazy" src="/images/pet/pet-placeholder.png" class="card-img-top card-image"
+                                <img loading="lazy" src="/images/pet/pet-placeholder.png"
+                                     class="card-img-top card-image"
                                      alt="product">
                             </div>
                             <div class="card-body text-center">
@@ -344,7 +349,8 @@
                     <a class=" nav-link" href="#">
                         <div class="card card-hover  border-0">
                             <div class="overflow-hidden rounded-5 p-3 p-0" style="background-color: #f7f7f5">
-                                <img loading="lazy" src="/images/pet/pet-placeholder.png" class="card-img-top card-image"
+                                <img loading="lazy" src="/images/pet/pet-placeholder.png"
+                                     class="card-img-top card-image"
                                      alt="product">
                             </div>
                             <div class="card-body text-center">
@@ -358,7 +364,8 @@
                     <a class=" nav-link" href="#">
                         <div class="card card-hover  border-0">
                             <div class="overflow-hidden rounded-5 p-3 p-0" style="background-color: #f7f7f5">
-                                <img loading="lazy" src="/images/pet/pet-placeholder.png" class="card-img-top card-image"
+                                <img loading="lazy" src="/images/pet/pet-placeholder.png"
+                                     class="card-img-top card-image"
                                      alt="product">
                             </div>
                             <div class="card-body text-center">
@@ -372,7 +379,8 @@
                     <a class=" nav-link" href="#">
                         <div class="card card-hover  border-0">
                             <div class="overflow-hidden rounded-5 p-3 p-0" style="background-color: #f7f7f5">
-                                <img loading="lazy" src="/images/pet/pet-placeholder.png" class="card-img-top card-image"
+                                <img loading="lazy" src="/images/pet/pet-placeholder.png"
+                                     class="card-img-top card-image"
                                      alt="product">
                             </div>
                             <div class="card-body text-center">
@@ -386,7 +394,8 @@
                     <a class=" nav-link" href="#">
                         <div class="card card-hover  border-0">
                             <div class="overflow-hidden rounded-5 p-3 p-0" style="background-color: #f7f7f5">
-                                <img loading="lazy" src="/images/pet/pet-placeholder.png" class="card-img-top card-image"
+                                <img loading="lazy" src="/images/pet/pet-placeholder.png"
+                                     class="card-img-top card-image"
                                      alt="product">
                             </div>
                             <div class="card-body text-center">
@@ -402,7 +411,8 @@
     <!--THU CUNG MOI END-->
     <!--BANNER-->
     <div class="my-3">
-        <img loading="lazy" src="/images/banner/long-banner-placeholder.png" class="w-100" alt="banner" style="object-fit: cover;">
+        <img loading="lazy" src="/images/banner/long-banner-placeholder.png" class="w-100" alt="banner"
+             style="object-fit: cover;">
     </div>
     <!--BANNER END-->
     <!--SP NOI BAT-->
@@ -434,7 +444,8 @@
                         <div class="p-3" style="background-color: #f7f7f5">
                             <div class="overflow-hidden p-0 position-relative add-to-cart-container">
                                 <a href="/chi-tiet" class="nav-link">
-                                    <img loading="lazy" src="/images/pet/pet-placeholder.png" class="card-img-top card-image"
+                                    <img loading="lazy" src="/images/pet/pet-placeholder.png"
+                                         class="card-img-top card-image"
                                          alt="product">
                                 </a>
                                 <a href="/them-gio-hang"
@@ -464,7 +475,8 @@
                         <div class="p-3" style="background-color: #f7f7f5">
                             <div class="overflow-hidden p-0 position-relative add-to-cart-container">
                                 <a href="/chi-tiet" class="nav-link">
-                                    <img loading="lazy" src="/images/pet/pet-placeholder.png" class="card-img-top card-image"
+                                    <img loading="lazy" src="/images/pet/pet-placeholder.png"
+                                         class="card-img-top card-image"
                                          alt="product">
                                 </a>
                                 <a href="/them-gio-hang"
@@ -494,7 +506,8 @@
                         <div class="p-3" style="background-color: #f7f7f5">
                             <div class="overflow-hidden p-0 position-relative add-to-cart-container">
                                 <a href="/chi-tiet" class="nav-link">
-                                    <img loading="lazy" src="/images/pet/pet-placeholder.png" class="card-img-top card-image"
+                                    <img loading="lazy" src="/images/pet/pet-placeholder.png"
+                                         class="card-img-top card-image"
                                          alt="product">
                                 </a>
                                 <a href="/them-gio-hang"
@@ -524,7 +537,8 @@
                         <div class="p-3" style="background-color: #f7f7f5">
                             <div class="overflow-hidden p-0 position-relative add-to-cart-container">
                                 <a href="/chi-tiet" class="nav-link">
-                                    <img loading="lazy" src="/images/pet/pet-placeholder.png" class="card-img-top card-image"
+                                    <img loading="lazy" src="/images/pet/pet-placeholder.png"
+                                         class="card-img-top card-image"
                                          alt="product">
                                 </a>
                                 <a href="/them-gio-hang"
@@ -554,7 +568,8 @@
                         <div class="p-3" style="background-color: #f7f7f5">
                             <div class="overflow-hidden p-0 position-relative add-to-cart-container">
                                 <a href="/chi-tiet" class="nav-link">
-                                    <img loading="lazy" src="/images/pet/pet-placeholder.png" class="card-img-top card-image"
+                                    <img loading="lazy" src="/images/pet/pet-placeholder.png"
+                                         class="card-img-top card-image"
                                          alt="product">
                                 </a>
                                 <a href="/them-gio-hang"
@@ -584,7 +599,8 @@
                         <div class="p-3" style="background-color: #f7f7f5">
                             <div class="overflow-hidden p-0 position-relative add-to-cart-container">
                                 <a href="/chi-tiet" class="nav-link">
-                                    <img loading="lazy" src="/images/pet/pet-placeholder.png" class="card-img-top card-image"
+                                    <img loading="lazy" src="/images/pet/pet-placeholder.png"
+                                         class="card-img-top card-image"
                                          alt="product">
                                 </a>
                                 <a href="/them-gio-hang"
@@ -621,7 +637,8 @@
             <div class="card card-hover border-0 d-flex justify-content-center align-items-center">
                 <div class="overflow-hidden p-3"
                      style="background-color: #f7f7f5;border-radius: 50%;width: 100%;height: 100%;">
-                    <img loading="lazy" src="/images/pet/pet-placeholder.png" class="card-img-top card-image" alt="product">
+                    <img loading="lazy" src="/images/pet/pet-placeholder.png" class="card-img-top card-image"
+                         alt="product">
                 </div>
                 <div class="card-body text-center">
                     <h4 class="">ten loai sp</h4>
@@ -632,7 +649,8 @@
             <div class="card card-hover border-0 d-flex justify-content-center align-items-center">
                 <div class="overflow-hidden p-3"
                      style="background-color: #f7f7f5;border-radius: 50%;width: 100%;height: 100%;">
-                    <img loading="lazy" src="/images/pet/pet-placeholder.png" class="card-img-top card-image" alt="product">
+                    <img loading="lazy" src="/images/pet/pet-placeholder.png" class="card-img-top card-image"
+                         alt="product">
                 </div>
                 <div class="card-body text-center">
                     <h4 class="">ten loai sp</h4>
@@ -643,7 +661,8 @@
             <div class="card card-hover border-0 d-flex justify-content-center align-items-center">
                 <div class="overflow-hidden p-3"
                      style="background-color: #f7f7f5;border-radius: 50%;width: 100%;height: 100%;">
-                    <img loading="lazy" src="/images/pet/pet-placeholder.png" class="card-img-top card-image" alt="product">
+                    <img loading="lazy" src="/images/pet/pet-placeholder.png" class="card-img-top card-image"
+                         alt="product">
                 </div>
                 <div class="card-body text-center">
                     <h4 class="">ten loai sp</h4>
@@ -654,7 +673,8 @@
             <div class="card card-hover border-0 d-flex justify-content-center align-items-center">
                 <div class="overflow-hidden p-3"
                      style="background-color: #f7f7f5;border-radius: 50%;width: 100%;height: 100%;">
-                    <img loading="lazy" src="/images/pet/pet-placeholder.png" class="card-img-top card-image" alt="product">
+                    <img loading="lazy" src="/images/pet/pet-placeholder.png" class="card-img-top card-image"
+                         alt="product">
                 </div>
                 <div class="card-body text-center">
                     <h4 class="">ten loai sp</h4>
@@ -665,7 +685,8 @@
             <div class="card card-hover border-0 d-flex justify-content-center align-items-center">
                 <div class="overflow-hidden p-3"
                      style="background-color: #f7f7f5;border-radius: 50%;width: 100%;height: 100%;">
-                    <img loading="lazy" src="/images/pet/pet-placeholder.png" class="card-img-top card-image" alt="product">
+                    <img loading="lazy" src="/images/pet/pet-placeholder.png" class="card-img-top card-image"
+                         alt="product">
                 </div>
                 <div class="card-body text-center">
                     <h4 class="">ten loai sp</h4>
@@ -676,7 +697,8 @@
             <div class="card card-hover border-0 d-flex justify-content-center align-items-center">
                 <div class="overflow-hidden p-3"
                      style="background-color: #f7f7f5;border-radius: 50%;width: 100%;height: 100%;">
-                    <img loading="lazy"  src="/images/pet/pet-placeholder.png" class="card-img-top card-image" alt="product">
+                    <img loading="lazy" src="/images/pet/pet-placeholder.png" class="card-img-top card-image"
+                         alt="product">
                 </div>
                 <div class="card-body text-center">
                     <h4 class="">ten loai sp</h4>
@@ -788,7 +810,8 @@
         </div>
         <div class="col-lg-6">
             <div class="card position-relative">
-                <img loading="lazy" src="/images/banner/vertical-banner-placeholder.png" class="" alt="feedback" style="height: 400px;">
+                <img loading="lazy" src="/images/banner/vertical-banner-placeholder.png" class="" alt="feedback"
+                     style="height: 400px;">
                 <div class="card-body text-center position-absolute w-100"
                      style="top: 50%; left: 50%; transform: translate(-50%, -50%);">
                     <h1 class="color fw-bold w-100">Đăng ký để nhận tin tức về các sản phẩm mới nhất, sớm nhất!</h1>
@@ -816,7 +839,9 @@
                         <input type="text" class="form-control" id="exampleInputPassword1">
                     </div>
                     <div class="d-flex justify-content-center">
-                        <button style="border: 1px solid white" type="submit" class="btn text-white rounded-5 py-2 px-4">Đăng ký</button>
+                        <button style="border: 1px solid white" type="submit"
+                                class="btn text-white rounded-5 py-2 px-4">Đăng ký
+                        </button>
                     </div>
                 </form>
             </div>
@@ -828,7 +853,8 @@
         <div class="row">
             <!-- Logo -->
             <div class="col-md-4 d-flex justify-content-center justify-content-md-start align-items-center flex-column">
-                <img loading="lazy" src="/images/logo/logo-2.png" alt="Pet Ninja Logo" class="img-fluid" style="min-width: 300px;">
+                <img loading="lazy" src="/images/logo/logo-2.png" alt="Pet Ninja Logo" class="img-fluid"
+                     style="min-width: 300px;">
                 <h1 class="mt-2 color fw-bold">PET NINJA</h1>
             </div>
             <!-- Contact Information -->
@@ -851,7 +877,8 @@
 
             <!-- Google Map -->
             <div class="col-md-4 text-center text-md-end">
-                <iframe src="https://www.google.com/maps/embed?pb=..." width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=..." width="100%" height="100%" style="border:0;"
+                        allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
     </div>
