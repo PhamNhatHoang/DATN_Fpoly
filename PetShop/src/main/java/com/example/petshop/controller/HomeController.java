@@ -17,9 +17,12 @@ public class HomeController {
 
     @RequestMapping({"/", "/trang-chu", "/home"})
     public String home(Model model) {
-        List<User> userList = userService.findAll();
-        model.addAttribute("userList", userList);
         return "index";
+    }
+
+    @RequestMapping("/cart-detail")
+    public String cart(Model model) {
+        return "_cartDetail";
     }
 
     @RequestMapping("/login")
