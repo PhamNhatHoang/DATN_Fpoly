@@ -13,6 +13,7 @@ import java.time.LocalDate;
 @Entity
 public class Voucher {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "VoucherID", nullable = false)
     private Integer id;
 
@@ -35,11 +36,6 @@ public class Voucher {
     private User userName;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "OrderPetDetailID")
-    private OrderPetDetail orderPetDetailID;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "OrderProductDetailID")
-    private OrderProductDetail orderProductDetailID;
-
+    @JoinColumn(name = "OrderID")
+    private Order orderID;
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" th:replace="~{home.html :: home(~{::body})}" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
@@ -24,7 +24,7 @@
                 <div class="card-body">
                     <form action="/login" method="post">
                         <h5 class="alert font-resp" th:if="${message}" th:text="${message}"
-                            th:classappend="${loginStatus == true ? 'alert-success' : 'alert-danger'}" ></h5>
+                            th:classappend="${loginStatus == true ? 'alert-success' : 'alert-danger'}"></h5>
                         <div class="form-floating mb-3">
                             <input class="form-control" id="username" name="username" placeholder="Tên đăng nhập"
                                    required

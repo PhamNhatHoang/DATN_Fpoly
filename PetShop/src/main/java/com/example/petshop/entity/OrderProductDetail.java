@@ -5,15 +5,13 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
-
 @Getter
 @Setter
 @Entity
 @Table(name = "OrderProductDetails")
 public class OrderProductDetail {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "OrderProductDetailID", nullable = false)
     private Integer id;
 
@@ -34,8 +32,5 @@ public class OrderProductDetail {
     @NotNull
     @Column(name = "Price", nullable = false)
     private Integer price;
-
-    @OneToMany(mappedBy = "orderProductDetailID")
-    private Set<Voucher> vouchers = new LinkedHashSet<>();
 
 }

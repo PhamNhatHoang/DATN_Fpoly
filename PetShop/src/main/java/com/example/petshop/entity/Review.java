@@ -7,15 +7,13 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Nationalized;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
-
 @Getter
 @Setter
 @Entity
 @Table(name = "Reviews")
 public class Review {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ReviewID", nullable = false)
     private Integer id;
 
@@ -32,10 +30,6 @@ public class Review {
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "PetID", nullable = false)
-    private Pet petID;
-
-    @OneToMany(mappedBy = "reviewID")
-    private Set<Rating> ratings = new LinkedHashSet<>();
-
+    @JoinColumn(name = "ProductID", nullable = false)
+    private Product productID;
 }

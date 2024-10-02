@@ -10,6 +10,7 @@ import lombok.Setter;
 @Entity
 public class Rating {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "RatingID", nullable = false)
     private Integer id;
 
@@ -19,7 +20,7 @@ public class Rating {
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "ReviewID", nullable = false)
-    private Review reviewID;
+    @JoinColumn(name = "ProductID", nullable = false)
+    private Product productID;
 
 }

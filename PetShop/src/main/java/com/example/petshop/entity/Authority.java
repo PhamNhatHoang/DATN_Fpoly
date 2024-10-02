@@ -1,28 +1,25 @@
 package com.example.petshop.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 
-import java.util.List;
-
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "Authorities")
 public class Authority implements GrantedAuthority {
+    @EmbeddedId
+    private AuthorityId id;
+
+    @MapsId("username")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "Username", nullable = false)
+    private User username;
+
     @Override
     public String getAuthority() {
-        return roleName;
+        return id.getAuthority();
     }
-
-    @Id
-    @Column(name = "AuthID")
-    private Integer authID;
-
-    @Column(name = "RoleName")
-    private String roleName;
-
-    @OneToMany(mappedBy = "authority")
-    private List<User> users;
-
 }

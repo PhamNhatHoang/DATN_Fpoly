@@ -14,6 +14,7 @@ import java.time.LocalDate;
 @Entity
 public class BookingService {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "BookServiceID", nullable = false)
     private Integer id;
 

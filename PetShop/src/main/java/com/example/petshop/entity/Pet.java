@@ -7,17 +7,14 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Nationalized;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
-
 @Getter
 @Setter
 @Entity
 @Table(name = "Pets")
 public class Pet {
     @Id
-    @Size(max = 1)
-    @Column(name = "PetID", nullable = false, length = 1)
+    @Size(max = 50)
+    @Column(name = "PetID", nullable = false, length = 50)
     private String petID;
 
     @Size(max = 255)
@@ -49,6 +46,22 @@ public class Pet {
     @Column(name = "Photo", nullable = false)
     private String photo;
 
+    @Size(max = 255)
+    @NotNull
+    @Nationalized
+    @Column(name = "Famous", nullable = false)
+    private String famous;
+
+    @Size(max = 255)
+    @NotNull
+    @Nationalized
+    @Column(name = "Hair", nullable = false)
+    private String hair;
+
+    @NotNull
+    @Column(name = "Enable", nullable = false)
+    private Boolean enable = false;
+
     @NotNull
     @Column(name = "Available", nullable = false)
     private Boolean available = false;
@@ -57,20 +70,5 @@ public class Pet {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "PetCategoryID", nullable = false)
     private PetCategory petCategoryID;
-
-    @OneToMany(mappedBy = "petID")
-    private Set<OrderPetDetail> orderPetDetails = new LinkedHashSet<>();
-
-    @OneToMany(mappedBy = "petID")
-    private Set<PetFamous> petFamous = new LinkedHashSet<>();
-
-    @OneToMany(mappedBy = "petID")
-    private Set<PetHair> petHairs = new LinkedHashSet<>();
-
-    @OneToMany(mappedBy = "petID")
-    private Set<PetImage> petImages = new LinkedHashSet<>();
-
-    @OneToMany(mappedBy = "petID")
-    private Set<Review> reviews = new LinkedHashSet<>();
 
 }

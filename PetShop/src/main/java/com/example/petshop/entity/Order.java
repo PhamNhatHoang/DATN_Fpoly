@@ -17,18 +17,13 @@ import java.util.Set;
 @Table(name = "Orders")
 public class Order {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "OrderID", nullable = false)
     private Integer id;
 
     @NotNull
     @Column(name = "OrderDate", nullable = false)
     private LocalDate orderDate;
-
-    @Size(max = 50)
-    @NotNull
-    @Nationalized
-    @Column(name = "OrderStatus", nullable = false, length = 50)
-    private String orderStatus;
 
     @Size(max = 255)
     @Nationalized
@@ -48,10 +43,19 @@ public class Order {
     @Column(name = "Enable", nullable = false)
     private Boolean enable = false;
 
-    @OneToMany(mappedBy = "orderID")
-    private Set<OrderPetDetail> orderPetDetails = new LinkedHashSet<>();
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "OrderStatusID", nullable = false)
+    private OrderStatus orderStatusID;
+
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "PaymentStatusID", nullable = false)
+    private PaymentStatus paymentStatusID;
 
     @OneToMany(mappedBy = "orderID")
     private Set<OrderProductDetail> orderProductDetails = new LinkedHashSet<>();
 
+    @OneToMany(mappedBy = "orderID")
+    private Set<Voucher> vouchers = new LinkedHashSet<>();
 }

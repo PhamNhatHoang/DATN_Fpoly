@@ -5,6 +5,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.List;
 
 
 public class CustomUserDetails implements UserDetails {
@@ -22,7 +23,7 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public String getPassword() {
-        return user.getUserPassword();
+        return user.getPassword();
     }
 
     @Override
@@ -47,6 +48,6 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return user.getEnable();
+        return true;
     }
 }

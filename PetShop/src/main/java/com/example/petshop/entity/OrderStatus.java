@@ -13,24 +13,19 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-public class PetCategory {
+public class OrderStatus {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "PetCategoryID", nullable = false)
+    @Column(name = "OrderStatusID", nullable = false)
     private Integer id;
 
     @Size(max = 255)
     @NotNull
     @Nationalized
-    @Column(name = "PetCategoryName", nullable = false)
-    private String petCategoryName;
+    @Column(name = "StatusName", nullable = false)
+    private String statusName;
 
-    @Size(max = 255)
-    @NotNull
-    @Column(name = "Photo", nullable = false)
-    private String photo;
-
-    @OneToMany(mappedBy = "petCategoryID")
-    private Set<Pet> pets = new LinkedHashSet<>();
+    @OneToMany(mappedBy = "orderStatusID")
+    private Set<Order> orders = new LinkedHashSet<>();
 
 }

@@ -3,43 +3,54 @@ package com.example.petshop.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.Data;
-import org.springframework.security.core.GrantedAuthority;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.Nationalized;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.Instant;
-import java.util.Collection;
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "Users")
 public class User implements UserDetails {
-
     @Id
-    @Column(name = "UserName")
-    private String username;
+    @Size(max = 50)
+    @Column(name = "UserName", nullable = false, length = 50)
+    private String userName;
 
-    @Column(name = "UserPassword")
+    @Size(max = 50)
+    @NotNull
+    @Nationalized
+    @Column(name = "UserPassword", nullable = false, length = 50)
     private String userPassword;
 
-    @Column(name = "FullName")
+    @Size(max = 50)
+    @NotNull
+    @Nationalized
+    @Column(name = "FullName", nullable = false, length = 50)
     private String fullName;
 
-    @Column(name = "Email")
+    @Size(max = 50)
+    @NotNull
+    @Nationalized
+    @Column(name = "Email", nullable = false, length = 50)
     private String email;
 
-    @Column(name = "PhoneNumber")
+    @Size(max = 20)
+    @NotNull
+    @Nationalized
+    @Column(name = "PhoneNumber", nullable = false, length = 20)
     private String phoneNumber;
 
-    @Column(name = "UserAddress")
+    @Size(max = 255)
+    @NotNull
+    @Nationalized
+    @Column(name = "UserAddress", nullable = false)
     private String userAddress;
-
-    @ManyToOne
-    @JoinColumn(name = "AuthID")
-    private Authority authority;
 
     @NotNull
     @Column(name = "Enable", nullable = false)
@@ -54,6 +65,9 @@ public class User implements UserDetails {
     @Column(name = "DateCreated", nullable = false)
     private Instant dateCreated;
 
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "username")
+    private Set<Authority> authorities = new LinkedHashSet<>();
+
     @OneToMany(mappedBy = "userName")
     private Set<BookingService> bookingServices = new LinkedHashSet<>();
 
@@ -67,11 +81,32 @@ public class User implements UserDetails {
     private Set<Voucher> vouchers = new LinkedHashSet<>();
 
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(authority);
-    }
-    @Override
     public String getPassword() {
         return userPassword;
+    }
+
+    @Override
+    public String getUsername() {
+        return userName;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }

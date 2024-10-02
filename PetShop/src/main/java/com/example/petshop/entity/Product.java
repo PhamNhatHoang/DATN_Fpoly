@@ -16,6 +16,7 @@ import java.util.Set;
 @Table(name = "Products")
 public class Product {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ProductID", nullable = false)
     private Integer id;
 
@@ -38,6 +39,10 @@ public class Product {
     @Column(name = "Available", nullable = false)
     private Boolean available = false;
 
+    @NotNull
+    @Column(name = "Quantity", nullable = false)
+    private Integer quantity;
+
     @Size(max = 255)
     @NotNull
     @Nationalized
@@ -51,5 +56,11 @@ public class Product {
 
     @OneToMany(mappedBy = "productID")
     private Set<OrderProductDetail> orderProductDetails = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "productID")
+    private Set<Rating> ratings = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "productID")
+    private Set<Review> reviews = new LinkedHashSet<>();
 
 }
