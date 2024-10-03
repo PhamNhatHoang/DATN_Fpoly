@@ -1,0 +1,164 @@
+body {
+	background: url("/images/background/bg.png");
+	font-family: 'Grandstander', cursive;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+.logo-center {
+	transition: 0.5s;
+}
+
+.logo-center:hover {
+	transform: scale(1.1);
+}
+
+.color {
+	color: #AC1A08;
+}
+
+.background-color {
+	background-color: #F88601;
+}
+
+.menu-item {
+	display: inline-block;
+	color: #000000;
+	text-align: center;
+	border-radius: 4px;
+	position: relative;
+	transition: color 0.3s ease;
+}
+
+.menu-item::after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	width: 0;
+	height: 5px;
+	border-radius: 4px;
+	background-color: #FFBB35;
+	transition: width 0.3s ease, left 0.3s ease;
+	transform-origin: center;
+}
+
+.menu-item:hover::after {
+	width: 100%;
+	left: 0;
+}
+
+.card-image {
+	transition: 0.5s;
+}
+
+.card-image:hover {
+	transform: scale(1.1) rotate(5deg);
+}
+
+h1 {
+	font-size: 1.9rem !important;
+	color: #A73E14;
+}
+
+h2 {
+	font-size: 1.7rem !important;
+	color: #A73E14;
+}
+
+h3 {
+	font-size: 1.5rem !important;
+	color: #A73E14;
+}
+
+h4 {
+	font-size: 1.3rem !important;
+	color: #A73E14;
+}
+
+h5 {
+	font-size: 1rem !important;
+	color: #A73E14;
+}
+
+p {
+	font-size: 0.9rem !important;
+	color: #000000;
+}
+
+@media ( max-width : 992px) {
+	h1 {
+		font-size: 1.7rem !important;
+	}
+	h2 {
+		font-size: 1.5rem !important;
+	}
+	h3 {
+		font-size: 1.2rem !important;
+	}
+	h4 {
+		font-size: 1rem !important;
+	}
+	h5 {
+		font-size: 0.8rem !important;
+	}
+	p {
+		font-size: 0.7rem !important;
+	}
+}
+
+@media ( max-width : 768px) {
+	h1 {
+		font-size: 1.5rem !important;
+	}
+	h2 {
+		font-size: 1.3rem !important;
+	}
+	h3 {
+		font-size: 1rem !important;
+	}
+	h4 {
+		font-size: 0.8rem !important;
+	}
+	h5 {
+		font-size: 0.7rem !important;
+	}
+	p {
+		font-size: 0.6rem !important;
+	}
+}
+
+.add-to-cart {
+	opacity: 0;
+	transition: opacity 0.5s;
+}
+
+.add-to-cart-container:hover .add-to-cart {
+	opacity: 1;
+}
+
+.add-to-cart:hover {
+	background-color: #AC1A08 !important;
+}
+
+.sticky-element {
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+	z-index: 999;
+}
+
+.nav-link {
+	position: relative;
+	padding: 10px 15px;
+	border-radius: 5px;
+	transition: background-color 0.3s;
+}
+
+.nav-link:hover {
+	background-color: #F88601;
+}
+
+.fas.fa-shopping-cart {
+	margin-right: 5px;
+}
