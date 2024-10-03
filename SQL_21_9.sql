@@ -19,7 +19,7 @@ CREATE TABLE Authorities
 
 CREATE TABLE ProductCategory
 (
-  ProductCategoryID INT NOT NULL PRIMARY KEY,
+  ProductCategoryID INT identity(1,1) NOT NULL PRIMARY KEY,
   ProductCategoryName NVARCHAR(255) NOT NULL,
   Photo VARCHAR(255) NOT NULL
 );
@@ -52,45 +52,46 @@ CREATE TABLE Pets
   PetID varchar(50) NOT NULL PRIMARY KEY,
   Breed NVARCHAR(255) NOT NULL,
   Age INT NOT NULL,
-  Gender bit NOT NULL,  -- Sử dụng CHAR(1) cho giới tính rõ ràng hơn
+  Gender bit NOT NULL, 
   Price INT NOT NULL,
   PetDescription NVARCHAR(255) NOT NULL,
   Photo VARCHAR(255) NOT NULL,
+  Famous nvarchar(255) not null,
+  Hair nvarchar(255) not null,
+  Enable bit not null,
   Available BIT NOT NULL,
   PetCategoryID INT NOT NULL,
   FOREIGN KEY (PetCategoryID) REFERENCES PetCategory(PetCategoryID)
 );
 
+create table OrderStatus
+(
+	OrderStatusID int identity(1,1) NOT NULL PRIMARY KEY,
+	StatusName nvarchar(255) not null
+)
+
+create table PaymentStatus
+(
+	PaymentStatusID int identity(1,1) NOT NULL PRIMARY KEY,
+	StatusPayment nvarchar(255) not null
+)
 
 CREATE TABLE Orders
 (
   OrderID int identity(1,1) NOT NULL PRIMARY KEY,
   OrderDate DATE NOT NULL,
-  OrderStatus NVARCHAR(50) NOT NULL,
   ShippingAddress NVARCHAR(255),
   TotalAmount INT NOT NULL,
   UserName VARCHAR(50) NOT NULL,
   Enable bit not null,
-  FOREIGN KEY (UserName) REFERENCES Users(UserName)
-);
-
-CREATE TABLE Reviews
-(
-  ReviewID int identity(1,1) NOT NULL PRIMARY KEY,
-  Comment NVARCHAR(255) NOT NULL,
-  UserName VARCHAR(50) NOT NULL,
-  PetID VARCHAR(50) NOT NULL,
+  OrderStatusID int NOT NULL,
+  PaymentStatusID int not null,
   FOREIGN KEY (UserName) REFERENCES Users(UserName),
-  FOREIGN KEY (PetID) REFERENCES Pets(PetID)
+  FOREIGN KEY (OrderStatusID) REFERENCES OrderStatus(OrderStatusID),
+  FOREIGN KEY (PaymentStatusID) REFERENCES PaymentStatus(PaymentStatusID)
 );
 
-CREATE TABLE PetImage
-(
-  PetImageID int identity(1,1) NOT NULL PRIMARY KEY,
-  Photo VARCHAR(255) NOT NULL,
-  PetID VARCHAR(50) NOT NULL,
-  FOREIGN KEY (PetID) REFERENCES Pets(PetID)
-);
+
 
 CREATE TABLE Products
 (
@@ -98,10 +99,21 @@ CREATE TABLE Products
   ProductName NVARCHAR(255) NOT NULL,
   Price INT NOT NULL,
   Photo VARCHAR(255) NOT NULL,
-  Available BIT NOT NULL,  -- Sửa lỗi chính tả từ 'Avaliable' thành 'Available'
+  Available BIT NOT NULL, 
+  Quantity int not null,
   ProductDescription NVARCHAR(255) NOT NULL,
   ProductCategoryID INT NOT NULL,
   FOREIGN KEY (ProductCategoryID) REFERENCES ProductCategory(ProductCategoryID)
+);
+
+CREATE TABLE Reviews
+(
+  ReviewID int identity(1,1) NOT NULL PRIMARY KEY,
+  Comment NVARCHAR(255) NOT NULL,
+  UserName VARCHAR(50) NOT NULL,
+  ProductID int NOT NULL,
+  FOREIGN KEY (UserName) REFERENCES Users(UserName),
+  FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
 );
 
 CREATE TABLE BookingService
@@ -117,39 +129,12 @@ CREATE TABLE BookingService
   FOREIGN KEY (ServiceID) REFERENCES Service(ServiceID)
 );
 
-CREATE TABLE PetHair
-(
-  PetHairID int identity(1,1) NOT NULL PRIMARY KEY,
-  PetHairName NVARCHAR(255) NOT NULL,
-  PetID VARCHAR(50) NOT NULL,
-  FOREIGN KEY (PetID) REFERENCES Pets(PetID)
-);
-
-CREATE TABLE PetFamous
-(
-  PetFamousID int identity(1,1) NOT NULL PRIMARY KEY,
-  PetFamousName NVARCHAR(255) NOT NULL,
-  PetID VARCHAR(50) NOT NULL,
-  FOREIGN KEY (PetID) REFERENCES Pets(PetID)
-);
-
 CREATE TABLE Rating
 (
   RatingID int identity(1,1) NOT NULL PRIMARY KEY,
   Number INT NOT NULL,
-  ReviewID INT NOT NULL,
-  FOREIGN KEY (ReviewID) REFERENCES Reviews(ReviewID)
-);
-
-CREATE TABLE OrderPetDetails
-(
-  OrderPetDetailID int identity(1,1) NOT NULL PRIMARY KEY,
-  OrderID INT NOT NULL,
-  PetID VARCHAR(50) NOT NULL,
-  Quantity INT NOT NULL,
-  Price INT NOT NULL,
-  FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
-  FOREIGN KEY (PetID) REFERENCES Pets(PetID)
+  ProductID INT NOT NULL,
+  FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
 );
 
 CREATE TABLE OrderProductDetails
@@ -169,12 +154,10 @@ CREATE TABLE Voucher
   Code VARCHAR(50) NOT NULL,
   Discount INT NOT NULL,
   ExpiryDate DATE NOT NULL,
-  UserName VARCHAR(50) NOT NULL,
-  OrderPetDetailID INT NULL,  
-  OrderProductDetailID INT NULL, 
+  UserName VARCHAR(50) NOT NULL, 
+  OrderID INT NULL, 
   FOREIGN KEY (UserName) REFERENCES Users(UserName),
-  /*FOREIGN KEY (OrderPetDetailID) REFERENCES OrderPetDetails(OrderPetDetailID),*/
-  FOREIGN KEY (OrderProductDetailID) REFERENCES OrderProductDetails(OrderProductDetailID)
+  FOREIGN KEY (OrderID) REFERENCES Orders(OrderID)
 );
 
 CREATE TABLE SliderBar
