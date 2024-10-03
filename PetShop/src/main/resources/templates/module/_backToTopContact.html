@@ -1,0 +1,98 @@
+<style>
+    /* CSS cho phần nút chia sẻ */
+    .social-button {
+        display: none;
+        position: fixed;
+        left: 40px; /* Đặt vị trí bên trái */
+        z-index: 9999;
+        background-color: #AC1A08;
+        color: #FFBB35;
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+        transition: background-color 0.3s;
+        margin-bottom: 10px; /* Khoảng cách giữa các nút */
+    }
+
+    .social-button:hover {
+        background-color: #F88601;
+    }
+
+    /* Nút Facebook */
+    #facebookButton {
+        bottom: 210px;
+    }
+
+    /* Nút TikTok */
+    #tiktokButton {
+        bottom: 130px;
+    }
+
+    /* Nút Zalo */
+    #zaloButton {
+        bottom: 50px;
+    }
+
+    /* CSS cho nút quay lại đầu trang */
+    #goToTop {
+        display: none;
+        position: fixed;
+        bottom: 40px;
+        right: 40px;
+        z-index: 9999;
+        background-color: #AC1A08;
+        color: #FFBB35;
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+        transition: background-color 0.3s;
+    }
+
+    #goToTop:hover {
+        background-color: #F88601;
+    }
+</style>
+
+<div id="socialButtons">
+        <!-- Nút cho Facebook -->
+        <button class="social-button" id="facebookButton" onclick="window.open('https://www.facebook.com/your-profile', '_blank')">
+            <i class="fa-brands fa-facebook"></i>
+        </button>
+
+        <!-- Nút cho TikTok -->
+        <button class="social-button" id="tiktokButton" onclick="window.open('https://www.tiktok.com/@your-profile', '_blank')">
+            <i class="fa-brands fa-tiktok"></i>
+        </button>
+
+        <!-- Nút cho Zalo -->
+        <button class="social-button" id="zaloButton" onclick="window.open('https://zalo.me/your-profile', '_blank')">
+            <i class="fa-brands fa-zalo"></i>
+        </button>
+    </div>
+
+    <!-- Nút quay lại đầu trang -->
+    <button class="btn" id="goToTop" onclick="goTop()">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script type="text/javascript">
+        let socialButtons = document.querySelectorAll('.social-button');
+        let goToTop = document.getElementById('goToTop');
+        window.onscroll = function () {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                socialButtons.forEach(button => button.style.display = 'block');
+                goToTop.style.display = 'block';
+            } else {
+                socialButtons.forEach(button => button.style.display = 'none');
+                goToTop.style.display = 'none';
+            }
+        }
+        function goTop() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
