@@ -13,6 +13,14 @@ CREATE TABLE PetCategory
   Photo VARCHAR(255) NOT NULL
 );
 
+<<<<<<<< HEAD:SQL_21_9.sql
+CREATE TABLE Authorities
+(
+  AuthID int identity(1,1) NOT NULL PRIMARY KEY,
+  RoleName NVARCHAR(50) NOT NULL
+);
+========
+>>>>>>>> AnhNgo:2-10-PetShop.sql
 
 CREATE TABLE ProductCategory
 (
