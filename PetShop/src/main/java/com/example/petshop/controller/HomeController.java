@@ -22,6 +22,16 @@ public class HomeController {
         return "_cartDetail";
     }
 
+    @RequestMapping("/pet")
+    public String pet(Model model) {
+        return "pet";
+    }
+
+    @RequestMapping("/product")
+    public String product(Model model) {
+        return "product";
+    }
+
     @RequestMapping("/login")
     public String login(Model model,
                         @RequestParam(value = "error", required = false) boolean error,
