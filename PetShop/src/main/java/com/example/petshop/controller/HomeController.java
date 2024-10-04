@@ -46,8 +46,14 @@ public class HomeController {
         }
         return "security/login";
     }
+
     @RequestMapping("/access-denied")
     public String accessDenied(Model model) {
         return "security/access-denied";
+    }
+
+    @RequestMapping("/admin")
+    public String admin(Model model) {
+        return "product";
     }
 }

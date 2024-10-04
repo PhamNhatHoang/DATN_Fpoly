@@ -223,10 +223,10 @@
                     <li class="nav-item text-center">
                         <a class="nav-link menu-item" href="/register">Register</a>
                     </li>
-                    <li class="nav-item text-center">
+                    <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item text-center">
                         <a class="nav-link menu-item" href="/admin">Admin</a>
                     </li>
-                    <li class="nav-item text-center">
+                    <li sec:authorize="hasRole('ROLE_USER')" class="nav-item text-center">
                         <a class="nav-link menu-item" href="/user">User</a>
                     </li>
                     <li class="nav-item text-center">
