@@ -6,6 +6,4 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class BookingServiceServiceImpl implements BookingServiceService {
-    @Autowired
-    private BookingServiceService bookingServiceService;
 }

@@ -6,6 +6,4 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class OrderServiceImpl implements OrderService {
-    @Autowired
-    private OrderService orderService;
 }

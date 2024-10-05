@@ -6,6 +6,4 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ServiceServiceImpl implements ServiceService {
-    @Autowired
-    private ServiceService serviceService;
 }

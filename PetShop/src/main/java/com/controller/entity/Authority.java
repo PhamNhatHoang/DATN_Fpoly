@@ -9,6 +9,8 @@ import lombok.Data;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Data
 @Entity
 @Table(name = "Authorities")
@@ -22,6 +24,7 @@ public class Authority {
     private String roleName;
 
     @OneToMany(mappedBy = "authority")
-    private List<User> users; 
+    @JsonManagedReference
+    private List<User> users;
 
 }

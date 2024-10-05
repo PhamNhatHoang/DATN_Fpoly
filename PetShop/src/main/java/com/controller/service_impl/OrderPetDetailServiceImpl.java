@@ -6,6 +6,4 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class OrderPetDetailServiceImpl implements OrderPetDetailService {
-    @Autowired
-    private OrderPetDetailService orderPetDetailService;
 }

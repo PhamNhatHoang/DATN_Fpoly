@@ -6,6 +6,4 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class PetHairServiceImpl implements PetHairService {
-    @Autowired
-    private PetHairService petHairService;
 }

@@ -6,6 +6,4 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ProductCategoryServiceImpl implements ProductCategoryService {
-    @Autowired
-    private ProductCategoryService productCategoryService;
 }

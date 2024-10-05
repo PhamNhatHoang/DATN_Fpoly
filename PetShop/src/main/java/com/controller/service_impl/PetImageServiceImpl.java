@@ -6,6 +6,4 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class PetImageServiceImpl implements PetImageService {
-    @Autowired
-    private PetImageService petImageService;
 }

@@ -6,6 +6,4 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SlideBarServiceImpl implements SlideBarService {
-    @Autowired
-    private SlideBarService slideBarService;
 }
