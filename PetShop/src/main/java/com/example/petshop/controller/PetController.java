@@ -1,6 +1,8 @@
 package com.example.petshop.controller;
 
 import com.example.petshop.entity.Pet;
+import com.example.petshop.entity.PetCategory;
+import com.example.petshop.service.PetCategoryService;
 import com.example.petshop.service.PetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,19 +16,23 @@ import java.util.Optional;
 public class PetController {
     @Autowired
     private PetService petService;
+    @Autowired
+    private PetCategoryService petCategoryService;
 
     @GetMapping
     public List<Pet> getPet() {
-       return petService.getAll();
+        return petService.getAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<Pet> getPetId(@PathVariable("id") String id){
-       return petService.findById(id);
+    public Optional<Pet> getPetId(@PathVariable("id") String id) {
+        return petService.findById(id);
     }
 
     @PostMapping
     public void save(@RequestBody Pet pet) {
+        int petCategoryId = 1;
+        pet.setPetCategoryID(petCategoryService.findById(petCategoryId));
         petService.save(pet);
     }
 

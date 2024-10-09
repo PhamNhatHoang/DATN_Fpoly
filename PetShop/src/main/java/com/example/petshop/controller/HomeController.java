@@ -72,7 +72,6 @@ public class HomeController {
 
     @RequestMapping("/admin")
     public String admin(Model model) {
-        return "_product";
+        return "test";
     }
-
 }

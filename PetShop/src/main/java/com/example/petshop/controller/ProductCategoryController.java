@@ -34,4 +34,8 @@ public class ProductCategoryController {
         productCategory.setId(id);
         return productCategoryService.save(productCategory);
     }
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable int id) {
+        productCategoryService.deleteById(id);
+    }
 }

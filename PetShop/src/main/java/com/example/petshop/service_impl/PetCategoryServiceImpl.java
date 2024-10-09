@@ -29,7 +29,7 @@ public class PetCategoryServiceImpl implements PetCategoryService {
     }
 
     @Override
-    public void findById(int id) {
-        petCategoryRepo.findById(id).orElse(null);
+    public PetCategory findById(int id) {
+        return petCategoryRepo.findById(id).orElse(null);
     }
 }

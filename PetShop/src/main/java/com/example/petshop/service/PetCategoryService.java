@@ -13,5 +13,5 @@ public interface PetCategoryService {
 
     void deleteId(int id);
 
-    void findById(int id);
+    PetCategory findById(int id);
 }

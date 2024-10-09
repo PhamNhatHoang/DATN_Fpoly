@@ -20,7 +20,7 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 
     @Override
     public ProductCategory getById(int id) {
-        return productCategoryRepo.getById(id);
+        return productCategoryRepo.findById(id).orElse(null);
     }
 
     @Override
