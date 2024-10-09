@@ -1,5 +1,6 @@
 package com.example.petshop.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -66,7 +67,8 @@ public class Pet {
     @Column(name = "Available", nullable = false)
     private Boolean available = false;
 
-    @NotNull
+
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "PetCategoryID", nullable = false)
     private PetCategory petCategoryID;
