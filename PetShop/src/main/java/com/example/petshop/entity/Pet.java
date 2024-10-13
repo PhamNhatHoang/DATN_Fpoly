@@ -68,7 +68,6 @@ public class Pet {
     @Column(name = "Available", nullable = false)
     private Boolean available = false;
 
-    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "PetCategoryID", nullable = false)
     private PetCategory petCategoryID;

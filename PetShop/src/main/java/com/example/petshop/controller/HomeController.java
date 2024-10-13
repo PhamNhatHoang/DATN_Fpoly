@@ -70,8 +70,5 @@ public class HomeController {
         return "security/access-denied";
     }
 
-    @RequestMapping("/admin")
-    public String admin(Model model) {
-        return "test";
-    }
+
 }

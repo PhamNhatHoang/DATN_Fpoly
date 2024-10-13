@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" th:fragment="home(view)" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
 <head>
     <meta charset="UTF-8">
     <title>Anh Ngô</title>
@@ -12,8 +13,9 @@
     <!--    FONT-GOOGLE-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
-          rel="stylesheet">
+    <link
+            href="https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+            rel="stylesheet">
     <!--    FONTAWESOME-->
     <script src="https://kit.fontawesome.com/246169b37f.js" crossorigin="anonymous"></script>
     <style>
@@ -23,6 +25,7 @@
             background-size: cover;
             background-attachment: fixed;
         }
+
         .color {
             color: #f04336;
         }
@@ -181,14 +184,14 @@
              data-bs-scroll="true" id="offcanvasNavbar" tabindex="-1" style="background: white">
             <!--            sidebar-header-->
             <div class="offcanvas-header border-top font-color">
-                <button aria-label="Close" class=" btn-close shadow-0" data-bs-dismiss="offcanvas"
-                        type="button">
+                <button aria-label="Close" class=" btn-close shadow-0" data-bs-dismiss="offcanvas" type="button">
                 </button>
             </div>
             <div class="offcanvas-body">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item text-center">
-                        <a class="nav-link active background-color text-white fw-bold" aria-current="page" href="#">Trang
+                        <a class="nav-link active background-color text-white fw-bold" aria-current="page"
+                           href="#">Trang
                             chủ</a>
                     </li>
                     <li class="nav-item text-center">
@@ -200,12 +203,12 @@
                     <li class="nav-item text-center">
                         <a class="nav-link menu-item" href="#">Dịch vụ</a>
                     </li>
-                    <!--<li class="nav-item">
+                    <li class="nav-item">
                         <form class="d-flex" role="search">
                             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                             <button class="btn btn-outline-success" type="submit">Search</button>
                         </form>
-                    </li>-->
+                    </li>
                 </ul>
                 <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
                     <li class="nav-item text-center">
@@ -215,7 +218,7 @@
                         <a class="nav-link menu-item" href="/register">Register</a>
                     </li>
                     <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item text-center">
-                        <a class="nav-link menu-item" href="/admin">Admin</a>
+                        <a class="nav-link menu-item" href="/quan-tri-he-thong">Quản trị</a>
                     </li>
                     <li sec:authorize="hasRole('ROLE_USER')" class="nav-item text-center">
                         <a class="nav-link menu-item" href="/user">User</a>
@@ -235,7 +238,8 @@
     <div class="container">
         <div class="row">
             <!-- Logo -->
-            <div class="col-md-4 d-flex justify-content-center justify-content-md-start align-items-center flex-column">
+            <div
+                    class="col-md-4 d-flex justify-content-center justify-content-md-start align-items-center flex-column">
                 <img loading="lazy" src="/images/logo/logo-2.png" alt="Pet Ninja Logo" class="img-fluid"
                      style="min-width: 300px;">
                 <h1 class="mt-2 color fw-bold">PET NINJA</h1>
