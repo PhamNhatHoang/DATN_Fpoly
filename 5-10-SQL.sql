@@ -32,7 +32,7 @@ CREATE TABLE Service
 CREATE TABLE Users
 (
   UserName VARCHAR(50) NOT NULL PRIMARY KEY,
-  UserPassword NVARCHAR(50) NOT NULL,
+  UserPassword NVARCHAR(100) NOT NULL,
   FullName NVARCHAR(50) NOT NULL,
   Email NVARCHAR(50) NOT NULL,
   PhoneNumber NVARCHAR(20) NOT NULL,
@@ -41,12 +41,17 @@ CREATE TABLE Users
   ActiveToken varchar(200) not null,
   DateCreated datetime not null,
 );
+CREATE TABLE Roles (
+   Id VARCHAR(50) primary key,
+   Name VARCHAR(50)
+)
 CREATE TABLE Authorities
 (
-  Username VARCHAR(50),
-  Authority VARCHAR(50),
-  primary key (Username,Authority),
-  foreign key (Username) references Users(UserName)
+  Id int identity(1,1) primary key,
+  UserName VARCHAR(50),
+  RoleId VARCHAR(50),
+  foreign key (RoleId) references Roles(Id),
+  foreign key (UserName) references Users(UserName)
 );
 
 CREATE TABLE Pets
