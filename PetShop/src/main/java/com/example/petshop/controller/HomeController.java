@@ -42,12 +42,12 @@ public class HomeController {
 
     @RequestMapping("/pet")
     public String pet(Model model) {
-        return "_petDetail";
+        return "/layout/_petDetail";
     }
 
     @RequestMapping("/product")
     public String product(Model model) {
-        return "_productDetaill";
+        return "/layout/_productDetail";
     }
 
     @RequestMapping("/login")
