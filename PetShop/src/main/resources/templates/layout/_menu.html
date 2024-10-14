@@ -45,6 +45,20 @@
             animation: fadeIn 0.5s;
         }
 
+        .user-button:hover .mini-user-box {
+            display: block;
+        }
+
+        .mini-user-box {
+            position: absolute;
+            top: 85%;
+            right: 0;
+            background: white;
+            display: none;
+            z-index: 1000;
+            animation: fadeIn 0.5s;
+        }
+
         .search-button:hover .mini-search-box {
             display: block;
         }
@@ -83,7 +97,7 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-3">
                     <li class="nav-item text-center">
                         <a class="nav-link active background-color text-white fw-bold" aria-current="page"
-                           href="#">Trang chủ</a>
+                           href="/">Trang chủ</a>
                     </li>
                     <li class="nav-item text-center">
                         <a class="nav-link menu-item" href="#">Cửa hàng</a>
@@ -119,14 +133,34 @@
                     <li sec:authorize="isAnonymous()" class="nav-item text-center">
                         <a class="nav-link menu-item" href="/register">Register</a>
                     </li>
-                    <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item text-center">
-                        <a class="nav-link menu-item" href="/quan-tri-he-thong">Quản trị</a>
-                    </li>
-                    <li sec:authorize="hasRole('ROLE_USER')" class="nav-item text-center">
-                        <a class="nav-link menu-item" href="/user">User</a>
+                    <li sec:authorize="isAuthenticated()" class="nav-item text-center user-button">
+                        <a class="nav-link menu-item " href="/thong-tin-ca-nhan">
+                            <i class="fa-solid fa-user-large"></i>
+                            <span th:text="${fullname}">FULLNAME</span>
+                        </a>
+                        <div class="mini-user-box p-4 rounded-3 shadow">
+                            <div class="user-avatar mb-3">
+                                <img src="/images/user/user-placeholder.png" alt="User Avatar"
+                                     class="img-fluid rounded-circle" width="80">
+                            </div>
+                            <div class="user-info">
+                                <h5 th:text="${#authentication.name}" class="user-name mb-1">Tên người dùng</h5>
+                                <!--CHƯA FIX XONG-->
+                                <p th:text="${#authentication.authorities.contains('ROLE_ADMIN') ? 'Quản trị viên' : 'Người dùng'}"
+                                   class="user-role text-muted mb-2">Vai trò: Quản trị viên</p>
+                                <p class="user-email text-muted">Email: user@example.com</p>
+                            </div>
+                            <div class="user-actions mt-3">
+                                <a href="#" class="btn btn-primary btn-sm">Xem hồ sơ</a>
+                                <a href="#" class="btn btn-outline-secondary btn-sm">Chỉnh sửa</a>
+                                <a href="/logout" class="btn btn-danger btn-sm">Đăng xuất</a>
+                            </div>
+                        </div>
                     </li>
                     <li class="nav-item text-center card-button">
-                        <a class="nav-link menu-item " href="/cart"><i class="fa-solid fa-cart-shopping"></i></a>
+                        <a class="nav-link menu-item " href="/cart">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </a>
                         <div class="mini-cart-box p-4 rounded-3 shadow">
                             <img class="mini-cart-img" src="/images/background/no-cart.png" alt="">
                             <p class="m-0">Chưa có sản phẩm</p>

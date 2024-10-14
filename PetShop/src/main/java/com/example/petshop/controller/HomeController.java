@@ -1,11 +1,16 @@
 package com.example.petshop.controller;
 
 import com.example.petshop.entity.Product;
+import com.example.petshop.entity.User;
 import com.example.petshop.service.ProductService;
 import com.example.petshop.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -19,6 +24,18 @@ public class HomeController {
 
     @Autowired
     private ProductService productService;
+
+    @ModelAttribute("fullname")
+    public void getUser(Model model, HttpServletRequest request) {
+        try {
+            User user = userService.findByUsername(request.getUserPrincipal().getName());
+            if (user != null) {
+                model.addAttribute("fullname", user.getFullName());
+            }
+        } catch (Exception e) {
+            model.addAttribute("fullname", "Khách");
+        }
+    }
 
     @RequestMapping({"/", "/trang-chu", "/home"})
     public String home(Model model) {
