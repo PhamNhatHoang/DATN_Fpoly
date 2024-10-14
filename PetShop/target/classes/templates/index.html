@@ -42,37 +42,42 @@
         }
 
         .button-image {
-            border: none;
-            background-image: url("/images/background/button.png");
-            background-size: cover;
+            background-color: white;
+            border: 2px solid black;
+            background-image: url("/images/background/button-2.png");
             background-repeat: no-repeat;
+            background-size: cover;
+            cursor: pointer;
+            transition: 0.5s;
         }
 
-        .menu-item {
-            display: inline-block;
-            color: black;
-            text-align: center;
-            border-radius: 4px;
-            position: relative;
-            transition: color 0.3s ease;
+        .button-image:hover {
+            border: 2px solid black;
+            transform: translate(-5px, -5px);
+            box-shadow: 1px 1px 0px #000,
+            2px 2px 0px #000,
+            3px 3px 0px #000,
+            4px 4px 0px #000,
+            5px 5px 0px #000,
+            6px 6px 0px #000;
         }
 
-        .menu-item::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 5px;
-            border-radius: 4px;
-            background-color: #f04336;
-            transition: width 0.3s ease, left 0.3s ease;
-            transform-origin: center;
+        .button-image-white {
+            text-shadow: 0 0 10px rgb(0, 0, 0);
+            background-image: url("/images/background/button-white.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            cursor: pointer;
+            transition: 0.5s;
         }
 
-        .menu-item:hover::after {
-            width: 100%;
-            left: 0;
+        .button-image-white:hover {
+            box-shadow: 1px 1px 0px #000,
+            2px 2px 0px #000,
+            3px 3px 0px #000,
+            4px 4px 0px #000,
+            5px 5px 0px #000,
+            6px 6px 0px #000;
         }
 
         .card-image {

@@ -8,12 +8,22 @@
         background-color: #f04336;
         color: white;
         border: none;
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
-        font-size: 20px;
+        border-radius: 25px;
+        width: 70px;
+        height: 70px;
+        font-size: 40px;
+        transition: 0.3s;
+    }
+
+    #goToTop i {
+        transform: translateY(5px) rotate(180deg);
+        transition: 0.3s;
+    }
+
+    #goToTop:hover i {
+        transform: translateY(5px) rotate(0deg);
     }
 </style>
-<button class="btn p-0" id="goToTop" onclick="goTop()">
+<button class="btn p-0 button-image-white" id="goToTop" onclick="goTop()">
     <i class="fa-solid fa-arrow-up m-0"></i>
 </button>

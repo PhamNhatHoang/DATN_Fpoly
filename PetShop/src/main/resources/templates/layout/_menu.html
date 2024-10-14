@@ -4,14 +4,42 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
+        .menu-item {
+            display: inline-block;
+            color: black;
+            text-align: center;
+            border-radius: 4px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .menu-item::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 5px;
+            border-radius: 4px;
+            background-color: #f04336;
+            transition: width 0.3s ease, left 0.3s ease;
+            transform-origin: center;
+        }
+
+        .menu-item:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
         .mini-cart-box {
             position: absolute;
             top: 70px;
             right: 0;
             background: white;
-            display: none;
             z-index: 1000;
-            animation: fadeIn 0.5s;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
         }
 
         .mini-cart-box::after {
@@ -22,16 +50,16 @@
             border: 20px solid transparent;
             border-bottom-color: #ff0000;
             filter: drop-shadow(0 0 0.75rem #ff0000);
-
         }
 
-        .mini-cart-img {
+        .mini-cart-box .mini-cart-img {
             width: 100%;
             height: 200px;
         }
 
         .card-button:hover .mini-cart-box {
-            display: block;
+            opacity: 1;
+            visibility: visible;
         }
 
         .mini-search-box {
@@ -40,13 +68,10 @@
             right: 50%;
             transform: translateX(50%);
             background: white;
-            display: none;
             z-index: 1000;
-            animation: fadeIn 0.5s;
-        }
-
-        .user-button:hover .mini-user-box {
-            display: block;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
         }
 
         .mini-user-box {
@@ -54,28 +79,43 @@
             top: 85%;
             right: 0;
             background: white;
-            display: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
             z-index: 1000;
-            animation: fadeIn 0.5s;
+        }
+
+        .user-button:hover .mini-user-box {
+            opacity: 1;
+            visibility: visible;
         }
 
         .search-button:hover .mini-search-box {
-            display: block;
+            opacity: 1;
+            visibility: visible;
         }
 
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
+
+        .user-button-decor {
+            transition: 0.5s;
+            border: 2px solid black;
+        }
+
+        .user-button-decor:hover {
+            transform: translate(-5px, -5px);
+            border: 2px solid black;
+            box-shadow: 1px 1px 0px #000,
+            2px 2px 0px #000,
+            3px 3px 0px #000,
+            4px 4px 0px #000,
+            5px 5px 0px #000,
+            6px 6px 0px #000;
         }
     </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-light shadow p-0 bg-white">
-    <div class="container position-relative">
+    <div class="container position-relative p-0">
         <!-- BRAND -->
         <a class="navbar-brand" href="/">
             <img loading="lazy" alt="brand" src="/images/logo/logo-2.png" style="width: 225px;">
@@ -94,9 +134,10 @@
                 </button>
             </div>
             <div class="offcanvas-body">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-3">
+                <ul class="navbar-nav me-auto mb-lg-0 gap-3">
                     <li class="nav-item text-center">
-                        <a class="nav-link active background-color text-white fw-bold" aria-current="page"
+                        <a class="nav-link active background-color border-5 text-white fw-bold button-image-white"
+                           aria-current="page"
                            href="/">Trang chủ</a>
                     </li>
                     <li class="nav-item text-center">
@@ -119,14 +160,14 @@
                                 </button>
                                 <input id="keyword" type="text" class="form-control border-0" name="keyword"
                                        placeholder="Tìm kiếm...">
-                                <button type="submit" class="btn background-color">
+                                <button type="submit" class="rounded-2 px-3 py-2 background-color button-image-white">
                                     <i class="fas fa-search m-0 text-white"></i>
                                 </button>
                             </form>
                         </div>
                     </li>
                 </ul>
-                <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
+                <ul class="navbar-nav mb-lg-0 ms-auto gap-2">
                     <li sec:authorize="isAnonymous()" class="nav-item text-center">
                         <a class="nav-link menu-item" href="/login">Login</a>
                     </li>
@@ -134,9 +175,10 @@
                         <a class="nav-link menu-item" href="/register">Register</a>
                     </li>
                     <li sec:authorize="isAuthenticated()" class="nav-item text-center user-button">
-                        <a class="nav-link menu-item " href="/thong-tin-ca-nhan">
+                        <a class="nav-link menu-item" href="/thong-tin-ca-nhan">
                             <i class="fa-solid fa-user-large"></i>
                             <span th:text="${fullname}">FULLNAME</span>
+                            <i class="fa-solid fa-chevron-down"></i>
                         </a>
                         <div class="mini-user-box p-4 rounded-3 shadow">
                             <div class="user-avatar mb-3">
@@ -151,15 +193,15 @@
                                 <p class="user-email text-muted">Email: user@example.com</p>
                             </div>
                             <div class="user-actions mt-3">
-                                <a href="#" class="btn btn-primary btn-sm">Xem hồ sơ</a>
-                                <a href="#" class="btn btn-outline-secondary btn-sm">Chỉnh sửa</a>
-                                <a href="/logout" class="btn btn-danger btn-sm">Đăng xuất</a>
+                                <a href="#" class="btn btn-primary btn-sm user-button-decor">Xem hồ sơ</a>
+                                <a href="#" class="btn btn-outline-secondary btn-sm user-button-decor">Chỉnh sửa</a>
+                                <a href="/logout" class="btn btn-danger btn-sm user-button-decor">Đăng xuất</a>
                             </div>
                         </div>
                     </li>
                     <li class="nav-item text-center card-button">
-                        <a class="nav-link menu-item " href="/cart">
-                            <i class="fa-solid fa-cart-shopping"></i>
+                        <a class="nav-link button-image-white background-color rounded-2 px-4" href="/cart">
+                            <i class="fa-solid fa-cart-shopping p-0 text-white"></i>
                         </a>
                         <div class="mini-cart-box p-4 rounded-3 shadow">
                             <img class="mini-cart-img" src="/images/background/no-cart.png" alt="">
