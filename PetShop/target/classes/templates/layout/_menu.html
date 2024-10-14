@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
+        nav {
+            background-image: url("/images/background/menu-background.png");
+        }
         .menu-item {
             display: inline-block;
             color: black;
@@ -33,68 +36,62 @@
 
         .mini-cart-box {
             position: absolute;
-            top: 70px;
+            top: 90%;
+            width: 500px;
             right: 0;
             background: white;
             z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
+            display: none;
             transition: opacity 0.5s ease, visibility 0.5s ease;
         }
 
-        .mini-cart-box::after {
-            content: "";
-            position: absolute;
-            top: -40px;
-            right: 2%;
-            border: 20px solid transparent;
-            border-bottom-color: #ff0000;
-            filter: drop-shadow(0 0 0.75rem #ff0000);
-        }
+        /*.mini-cart-box::after {*/
+        /*    content: "";*/
+        /*    position: absolute;*/
+        /*    top: -40px;*/
+        /*    right: 2%;*/
+        /*    border-width: 20px 30px;*/
+        /*    border-style: solid;*/
+        /*    border-color: transparent transparent #ff0000 transparent;*/
+        /*    filter: drop-shadow(0 0 0.75rem #ff0000);*/
+        /*}*/
 
         .mini-cart-box .mini-cart-img {
             width: 100%;
             height: 200px;
         }
 
-        .card-button:hover .mini-cart-box {
-            opacity: 1;
-            visibility: visible;
-        }
 
         .mini-search-box {
             position: absolute;
-            top: 85%;
+            top: 90%;
             right: 50%;
             transform: translateX(50%);
             background: white;
             z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
+            display: none;
         }
 
         .mini-user-box {
             position: absolute;
-            top: 85%;
+            top: 90%;
             right: 0;
             background: white;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
+            display: none;
             z-index: 1000;
         }
 
+        .card-button:hover .mini-cart-box {
+            display: block;
+        }
+
         .user-button:hover .mini-user-box {
-            opacity: 1;
-            visibility: visible;
+            display: block;
         }
 
         .search-button:hover .mini-search-box {
-            opacity: 1;
-            visibility: visible;
+            display: block;
         }
-
 
         .user-button-decor {
             transition: 0.5s;
@@ -136,7 +133,7 @@
             <div class="offcanvas-body">
                 <ul class="navbar-nav me-auto mb-lg-0 gap-3">
                     <li class="nav-item text-center">
-                        <a class="nav-link active background-color border-5 text-white fw-bold button-image-white"
+                        <a class="nav-link active background-color text-white fw-bold button-image-white"
                            aria-current="page"
                            href="/">Trang chủ</a>
                     </li>
@@ -206,6 +203,31 @@
                         <div class="mini-cart-box p-4 rounded-3 shadow">
                             <img class="mini-cart-img" src="/images/background/no-cart.png" alt="">
                             <p class="m-0">Chưa có sản phẩm</p>
+                            <div class="card">
+                                <div class="card-body">
+                                    <div id="cart-items">
+                                        <!-- Danh sách sản phẩm -->
+                                        <div class="cart-item d-flex align-items-center mb-3">
+                                            <img src="/images/product/product-placeholder.png" alt="Sản phẩm"
+                                                 class="img-fluid"
+                                                 style="width: 80px; height: 80px; margin-right: 15px;">
+                                            <div class="me-auto">
+                                                <h6 class="mb-0">Party hat</h6>
+                                                <p class="mb-0">QTY: <span class="quantity">1</span></p>
+                                                <p class="mb-0" style="color: red;">$120</p>
+                                            </div>
+                                            <div class="ms-2">
+                                                <button class="btn ms-2">
+                                                    <i class="fa-solid fa-xmark color fs-3"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <!-- Thêm nhiều sản phẩm ở đây -->
+                                    </div>
+
+                                    <a href="/cart" class="btn btn-primary">Xem giỏ hàng</a>
+                                </div>
+                            </div>
                         </div>
                     </li>
                 </ul>
