@@ -7,22 +7,22 @@
         .mini-cart-box {
             position: absolute;
             top: 70px;
-            right: -40px;
+            right: 0;
             background: white;
-            opacity: 0; /* Thay display: none bằng opacity: 0 */
-            visibility: hidden; /* Thêm visibility: hidden để ẩn hoàn toàn */
-            transition: opacity 0.5s ease, visibility 0.5s ease; /* Thay đổi các thuộc tính chuyển tiếp */
+            display: none;
             z-index: 1000;
+            animation: fadeIn 0.5s;
         }
 
         .mini-cart-box::after {
             content: "";
             position: absolute;
             top: -40px;
-            right: 42%;
+            right: 2%;
             border: 20px solid transparent;
             border-bottom-color: #ff0000;
             filter: drop-shadow(0 0 0.75rem #ff0000);
+
         }
 
         .mini-cart-img {
@@ -31,8 +31,22 @@
         }
 
         .card-button:hover .mini-cart-box {
-            opacity: 1; /* Hiện hộp giỏ hàng bằng cách thay đổi opacity */
-            visibility: visible; /* Đặt visibility thành visible */
+            display: block;
+        }
+
+        .mini-search-box {
+            position: absolute;
+            top: 85%;
+            right: 50%;
+            transform: translateX(50%);
+            background: white;
+            display: none;
+            z-index: 1000;
+            animation: fadeIn 0.5s;
+        }
+
+        .search-button:hover .mini-search-box {
+            display: block;
         }
 
         @keyframes fadeIn {
@@ -46,7 +60,7 @@
     </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-xl navbar-light shadow p-0 bg-white">
+<nav class="navbar navbar-expand-md navbar-light shadow p-0 bg-white">
     <div class="container position-relative">
         <!-- BRAND -->
         <a class="navbar-brand" href="/">
@@ -69,8 +83,7 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-3">
                     <li class="nav-item text-center">
                         <a class="nav-link active background-color text-white fw-bold" aria-current="page"
-                           href="#">Trang
-                            chủ</a>
+                           href="#">Trang chủ</a>
                     </li>
                     <li class="nav-item text-center">
                         <a class="nav-link menu-item" href="#">Cửa hàng</a>
@@ -81,20 +94,25 @@
                     <li class="nav-item text-center">
                         <a class="nav-link menu-item" href="#">Dịch vụ</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item text-center search-button">
                         <button class="nav-link menu-item" data-bs-toggle="modal" data-bs-target="#searchModal">
                             <i class="fas fa-search m-0"></i>
                         </button>
+                        <div class="mini-search-box p-2 rounded-3 shadow">
+                            <form action="/search" method="get" class="d-flex align-items-center shadow">
+                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">
+                                    <i class="fa-solid fa-bars"></i>
+                                </button>
+                                <input id="keyword" type="text" class="form-control border-0" name="keyword"
+                                       placeholder="Tìm kiếm...">
+                                <button type="submit" class="btn background-color">
+                                    <i class="fas fa-search m-0 text-white"></i>
+                                </button>
+                            </form>
+                        </div>
                     </li>
                 </ul>
                 <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
-                    <li class="nav-item text-center card-button">
-                        <a class="nav-link menu-item " href="/cart"><i class="fa-solid fa-cart-shopping"></i></a>
-                        <div class="mini-cart-box p-4 rounded-3 shadow">
-                            <img class="mini-cart-img" src="/images/background/no-cart.png" alt="">
-                            <p class="m-0">Chưa có sản phẩm</p>
-                        </div>
-                    </li>
                     <li sec:authorize="isAnonymous()" class="nav-item text-center">
                         <a class="nav-link menu-item" href="/login">Login</a>
                     </li>
@@ -106,6 +124,13 @@
                     </li>
                     <li sec:authorize="hasRole('ROLE_USER')" class="nav-item text-center">
                         <a class="nav-link menu-item" href="/user">User</a>
+                    </li>
+                    <li class="nav-item text-center card-button">
+                        <a class="nav-link menu-item " href="/cart"><i class="fa-solid fa-cart-shopping"></i></a>
+                        <div class="mini-cart-box p-4 rounded-3 shadow">
+                            <img class="mini-cart-img" src="/images/background/no-cart.png" alt="">
+                            <p class="m-0">Chưa có sản phẩm</p>
+                        </div>
                     </li>
                 </ul>
             </div>
