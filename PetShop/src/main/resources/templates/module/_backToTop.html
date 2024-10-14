@@ -14,21 +14,6 @@
         font-size: 20px;
     }
 </style>
-<button class="btn" id="goToTop" onclick="goTop()">
-    <i class="fa-solid fa-arrow-up"></i>
+<button class="btn p-0" id="goToTop" onclick="goTop()">
+    <i class="fa-solid fa-arrow-up m-0"></i>
 </button>
-<script type="text/javascript">
-    let goToTop = document.getElementById('goToTop');
-    window.onscroll = function () {
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            goToTop.style.display = 'block';
-        } else {
-            goToTop.style.display = 'none';
-        }
-    }
-
-    function goTop() {
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
-    }
-</script>

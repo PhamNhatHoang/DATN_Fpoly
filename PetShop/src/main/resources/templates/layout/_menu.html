@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .mini-cart-box {
+            position: absolute;
+            top: 70px;
+            right: -40px;
+            background: white;
+            opacity: 0; /* Thay display: none bằng opacity: 0 */
+            visibility: hidden; /* Thêm visibility: hidden để ẩn hoàn toàn */
+            transition: opacity 0.5s ease, visibility 0.5s ease; /* Thay đổi các thuộc tính chuyển tiếp */
+            z-index: 1000;
+        }
+
+        .mini-cart-box::after {
+            content: "";
+            position: absolute;
+            top: -40px;
+            right: 42%;
+            border: 20px solid transparent;
+            border-bottom-color: #ff0000;
+            filter: drop-shadow(0 0 0.75rem #ff0000);
+        }
+
+        .mini-cart-img {
+            width: 100%;
+            height: 200px;
+        }
+
+        .card-button:hover .mini-cart-box {
+            opacity: 1; /* Hiện hộp giỏ hàng bằng cách thay đổi opacity */
+            visibility: visible; /* Đặt visibility thành visible */
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-xl navbar-light shadow p-0 bg-white">
+    <div class="container position-relative">
+        <!-- BRAND -->
+        <a class="navbar-brand" href="/">
+            <img loading="lazy" alt="brand" src="/images/logo/logo-2.png" style="width: 225px;">
+        </a>
+        <!--        button toggle-->
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!--        offcanvas-->
+        <div aria-labelledby="offcanvasNavbarLabel" class="offcanvas offcanvas-end w-100" data-bs-backdrop="true"
+             data-bs-scroll="true" id="offcanvasNavbar" tabindex="-1" style="background: white">
+            <!--            sidebar-header-->
+            <div class="offcanvas-header border-top font-color">
+                <button aria-label="Close" class=" btn-close shadow-0" data-bs-dismiss="offcanvas" type="button">
+                </button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-3">
+                    <li class="nav-item text-center">
+                        <a class="nav-link active background-color text-white fw-bold" aria-current="page"
+                           href="#">Trang
+                            chủ</a>
+                    </li>
+                    <li class="nav-item text-center">
+                        <a class="nav-link menu-item" href="#">Cửa hàng</a>
+                    </li>
+                    <li class="nav-item text-center">
+                        <a class="nav-link menu-item" href="#">Thú cưng</a>
+                    </li>
+                    <li class="nav-item text-center">
+                        <a class="nav-link menu-item" href="#">Dịch vụ</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link menu-item" data-bs-toggle="modal" data-bs-target="#searchModal">
+                            <i class="fas fa-search m-0"></i>
+                        </button>
+                    </li>
+                </ul>
+                <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
+                    <li class="nav-item text-center card-button">
+                        <a class="nav-link menu-item " href="/cart"><i class="fa-solid fa-cart-shopping"></i></a>
+                        <div class="mini-cart-box p-4 rounded-3 shadow">
+                            <img class="mini-cart-img" src="/images/background/no-cart.png" alt="">
+                            <p class="m-0">Chưa có sản phẩm</p>
+                        </div>
+                    </li>
+                    <li sec:authorize="isAnonymous()" class="nav-item text-center">
+                        <a class="nav-link menu-item" href="/login">Login</a>
+                    </li>
+                    <li sec:authorize="isAnonymous()" class="nav-item text-center">
+                        <a class="nav-link menu-item" href="/register">Register</a>
+                    </li>
+                    <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item text-center">
+                        <a class="nav-link menu-item" href="/quan-tri-he-thong">Quản trị</a>
+                    </li>
+                    <li sec:authorize="hasRole('ROLE_USER')" class="nav-item text-center">
+                        <a class="nav-link menu-item" href="/user">User</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+</body>
+<script>
+
+
+</script>
+</html>
