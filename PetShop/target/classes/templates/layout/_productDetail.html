@@ -7,7 +7,7 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
 
     <style>
         .rounded-image {
@@ -29,12 +29,12 @@
 
 <div class="container my-5">
     <!-- Pet details -->
-    <div class="row mb-5">
+    <div class="row mb-5" th:each="p : ${detailProducts}">
         <div class="col-md-6">
-            <img src="/images/pet/pet-placeholder.png" class="img-fluid" alt="Thú cưng ABC">
+            <img th:src="@{/images/product/{photo}(photo=${p.photo})}" class="img-fluid" alt="Thú cưng ABC">
         </div>
         <div class="col-md-6">
-            <h1>TÊN Sản </h1>
+            <h1 th:text="${p.productName}">TÊN Sản </h1>
             <p class="fs-4">Giá: <span class="text-danger">400.000đ</span></p>
             <label for="quantity" class="form-label">Số lượng</label>
             <div class="input-group">
@@ -157,53 +157,11 @@
         <h2 class="text-center">Thú cưng khác</h2>
         <hr style="color: red;">
         <div class="row">
-            <div class="col-sm-6 col-md-4 mb-4">
+            <div class="col-sm-6 col-md-4 mb-4" th:each="product : ${products}">
                 <div class="card">
                     <div class="card-body text-center">
-                        <p class="card-text">Tên thú cưng 1</p>
-                        <p class="text-danger">400.000đ</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4 mb-4">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <p class="card-text">Tên thú cưng 2</p>
-                        <p class="text-danger">400.000đ</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4 mb-4">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <p class="card-text">Tên thú cưng 2</p>
-                        <p class="text-danger">400.000đ</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6 col-md-4 mb-4">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <p class="card-text">Tên thú cưng 1</p>
-                        <p class="text-danger">400.000đ</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4 mb-4">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <p class="card-text">Tên thú cưng 2</p>
-                        <p class="text-danger">400.000đ</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4 mb-4">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <p class="card-text">Tên thú cưng 2</p>
-                        <p class="text-danger">400.000đ</p>
+                        <p class="card-text" th:text="${product.productName}">Tên thú cưng 1</p>
+                        <p class="text-danger" th:text="${product.price}">400.000đ</p>
                     </div>
                 </div>
             </div>

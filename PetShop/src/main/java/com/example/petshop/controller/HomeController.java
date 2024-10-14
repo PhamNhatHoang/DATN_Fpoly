@@ -1,6 +1,8 @@
 package com.example.petshop.controller;
 
+import com.example.petshop.entity.Pet;
 import com.example.petshop.entity.Product;
+import com.example.petshop.service.PetService;
 import com.example.petshop.service.ProductService;
 import com.example.petshop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +22,12 @@ public class HomeController {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private PetService petService;
+
     @RequestMapping({"/", "/trang-chu", "/home"})
     public String home(Model model) {
+        //product
         List<Product> productsList = productService.getAll();
         Product latestProduct = productsList.stream()
                 .max(Comparator.comparingInt(Product::getId))
@@ -32,6 +38,20 @@ public class HomeController {
                 .collect(Collectors.toList());
         model.addAttribute("firstProduct", latestProduct);
         model.addAttribute("nextSixProducts", nextSixProducts);
+
+        //pet
+        List<Pet> petsList = petService.getAll();
+        Pet firstPet = petsList.stream()
+                .max(Comparator.comparing(Pet::getPetID))
+                .orElseThrow(() -> new NoSuchElementException("No product found"));
+        Collection<Pet> nextSixPet = petsList.stream()
+                .skip(1)
+                .limit(6)
+                .collect(Collectors.toList());
+        model.addAttribute("firstPet", firstPet);
+        model.addAttribute("nextSixPet", nextSixPet);
+
+
         return "/layout/_main";
     }
 
@@ -42,12 +62,26 @@ public class HomeController {
 
     @RequestMapping("/pet")
     public String pet(Model model) {
-        return "_petDetail";
+        return "/layout/_petDetail";
     }
 
     @RequestMapping("/product")
     public String product(Model model) {
-        return "_productDetaill";
+        return "/layout/_productDetaill";
+    }
+
+    @RequestMapping("/allPet")
+    public String allPet(Model model) {
+        List<Pet> list = petService.getAll();
+        model.addAttribute("listPet", list);
+        return "/layout/_allPet";
+    }
+
+    @RequestMapping("/allProduct")
+    public String allProduct(Model model) {
+        List<Product> list = productService.getAll();
+        model.addAttribute("listProduct", list);
+        return "/layout/_allProduct";
     }
 
     @RequestMapping("/login")
