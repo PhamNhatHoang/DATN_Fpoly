@@ -10,16 +10,21 @@ import org.springframework.security.core.GrantedAuthority;
 @Entity
 @Table(name = "Authorities")
 public class Authority implements GrantedAuthority {
-    @EmbeddedId
-    private AuthorityId id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "Id", nullable = false)
+    private Integer id;
 
-    @MapsId("username")
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "Username", nullable = false)
-    private User username;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "UserName")
+    private User userName;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "RoleId")
+    private Role role;
 
     @Override
     public String getAuthority() {
-        return id.getAuthority();
+        return role.getName();
     }
 }

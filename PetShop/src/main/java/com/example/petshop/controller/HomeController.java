@@ -1,5 +1,7 @@
 package com.example.petshop.controller;
 
+import com.example.petshop.entity.Product;
+import com.example.petshop.service.ProductService;
 import com.example.petshop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,29 +9,45 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.*;
+import java.util.stream.Collectors;
+
 @Controller
 public class HomeController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private ProductService productService;
+
     @RequestMapping({"/", "/trang-chu", "/home"})
     public String home(Model model) {
-        return "index";
+        List<Product> productsList = productService.getAll();
+        Product latestProduct = productsList.stream()
+                .max(Comparator.comparingInt(Product::getId))
+                .orElseThrow(() -> new NoSuchElementException("No product found"));
+        Collection<Product> nextSixProducts = productsList.stream()
+                .skip(1)
+                .limit(6)
+                .collect(Collectors.toList());
+        model.addAttribute("firstProduct", latestProduct);
+        model.addAttribute("nextSixProducts", nextSixProducts);
+        return "/layout/_main";
     }
 
     @RequestMapping("/cart-detail")
     public String cart(Model model) {
-        return "_cartDetail";
+        return "/layout/_cartDetail";
     }
 
     @RequestMapping("/pet")
     public String pet(Model model) {
-        return "pet";
+        return "/layout/_petDetail";
     }
 
     @RequestMapping("/product")
     public String product(Model model) {
-        return "product";
+        return "/layout/_productDetail";
     }
 
     @RequestMapping("/login")
@@ -46,8 +64,11 @@ public class HomeController {
         }
         return "security/login";
     }
+
     @RequestMapping("/access-denied")
     public String accessDenied(Model model) {
         return "security/access-denied";
     }
+
+
 }

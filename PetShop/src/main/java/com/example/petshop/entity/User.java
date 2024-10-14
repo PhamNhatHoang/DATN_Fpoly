@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.Nationalized;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -65,9 +66,6 @@ public class User implements UserDetails {
     @Column(name = "DateCreated", nullable = false)
     private Instant dateCreated;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "username")
-    private Set<Authority> authorities = new LinkedHashSet<>();
-
     @OneToMany(mappedBy = "userName")
     private Set<BookingService> bookingServices = new LinkedHashSet<>();
 
@@ -80,6 +78,9 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "userName")
     private Set<Voucher> vouchers = new LinkedHashSet<>();
 
+    @OneToMany(mappedBy = "userName", fetch = FetchType.EAGER)
+    private Set<Authority> authorities = new LinkedHashSet<>();
+
     @Override
     public String getPassword() {
         return userPassword;
@@ -88,25 +89,5 @@ public class User implements UserDetails {
     @Override
     public String getUsername() {
         return userName;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
     }
 }

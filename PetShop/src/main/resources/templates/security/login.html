@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{/index.html::home(~{::body})}">
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
@@ -49,6 +49,7 @@
                             <button class="btn font-resp" type="submit">Đăng nhập</button>
                             <a class="btn font-resp" href="/dang-ki" style="background: #AACCFF">Đăng kí</a>
                         </div>
+                        <a href="/logout">LOG OUT</a>
                     </form>
                 </div>
             </div>
