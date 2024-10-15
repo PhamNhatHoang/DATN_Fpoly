@@ -26,9 +26,7 @@
         </div>
     </div>
     <!--End banner-->
-    <!--Product-->
-    <div class="row">
-        <!--Title-->
+    <!--Title-->
         <div class="row">
             <div class="title-list">
                 <h3 class="text-danger">Danh mục sản phẩm</h3>
@@ -36,83 +34,12 @@
             </div>
         </div>
         <!--End title-->
-        <!--List product-->
-        <div class="col-9">
-            <!--Filter-->
-            <div class="row py-2">
-                <!--Sort-->
-                <div class="col-6">
-                    <select class="form-select form-select-lg mb-3" aria-label="Large select example">
-                        <option selected>Chọn theo giá</option>
-                        <option value="1">Tăng dần</option>
-                        <option value="2">Giảm dần</option>
-                    </select>
-                </div>
-                <!--End sort-->
-                <!--Search-->
-                <div class="col-6">
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control form-control-lg" placeholder="Tìm kiếm sản phẩm..."
-                               aria-label="Recipient's username" aria-describedby="basic-addon2">
-                        <button type="button" class="btn btn-outline-danger">Tìm kiếm <i class="bi bi-search"></i>
-                        </button>
-                    </div>
-                </div>
-                <!--End search-->
-            </div>
-            <div class="row">
-                <div class="col-4 mb-4" th:each="product : ${listProduct}">
-                    <div class="card" style="width: 18rem;height: 22rem; position: relative;">
-                        <div style="position: absolute; top: 10px; left: 10px; background-color: green; color: white; padding: 5px; width: 80px; text-align: center; font-size: 14px;">
-                            Còn hàng
-                        </div>
-                        <img th:src="@{/images/product/{photo}(photo=${product.photo})}" class="card-img-top"
-                             style="height: 18rem;" alt="Khay thức ăn cho chó">
-                        <div class="card-body my-0 px-0" style="margin-top: 0; padding-top: 0;">
-                            <a href="#" class="btn btn-block btn-danger w-100 "
-                               style="border-radius: 0; margin-bottom: 15px;">Add to cart</a>
-                            <p class="card-text text-center mb-0" th:text="${product.productName}">Khay thức ăn cho
-                                chó</p>
-                            <p class="card-text text-center mt-0"><span class="text-danger" th:text="${product.price}">400.000đ</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--End product-->
-        <!--Begin select page-->
-        <div class="row py-3">
-            <div class="col">
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item">
-                            <a class="page-link text-white bg-danger mx-1" href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li class="page-item"><a class="page-link text-danger bg-outline-danger mx-1" href="#">1</a>
-                        </li>
-                        <li class="page-item"><a class="page-link text-danger bg-outline-danger mx-1" href="#">2</a>
-                        </li>
-                        <li class="page-item"><a class="page-link text-danger bg-outline-danger mx-1" href="#">3</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link text-white bg-danger mx-1" href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-        <!--End select page-->
-    </div>
-    <!--End list product-->
+    <!--Product-->
+    <div class="row">
     <!-- Category -->
-    <div class="col-3">
+    	<div class="col-3">
         <!-- Danh mục -->
-        <div class="row" style="margin-top: 100px; margin-bottom: 20px;">
+        <div class="row">
             <div class="col" style="border-radius: 5px; padding: 10px; box-shadow: 0 4px 15px grey;">
                 <div class="title-category">
                     <h6 class="text-white text-center bg-danger p-2" style="margin-right: 200px">Danh mục</h6>
@@ -182,7 +109,82 @@
             </div>
         </div>
     </div>
-    <!-- End Category -->
+    	<!-- End Category -->
+        <!--List product-->
+        <div class="col-9">
+            <!--Filter-->
+            <div class="row py-2">
+                <!--Sort-->
+                <div class="col-6">
+                    <select class="form-select form-select-lg mb-3" aria-label="Large select example">
+                        <option selected>Chọn theo giá</option>
+                        <option value="1">Tăng dần</option>
+                        <option value="2">Giảm dần</option>
+                    </select>
+                </div>
+                <!--End sort-->
+                <!--Search-->
+                <div class="col-6">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control form-control-lg" placeholder="Tìm kiếm sản phẩm..."
+                               aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <button type="button" class="btn btn-outline-danger">Tìm kiếm <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <!--End search-->
+            </div>
+            <div class="row">
+                <div class="col-4 mb-4" th:each="product : ${listProduct}">
+                    <div class="card" style="width: 18rem;height: 100%; position: relative; ">
+                        <div style="position: absolute; top: 10px; left: 10px; background-color: green; color: white; padding: 5px; width: 80px; text-align: center; font-size: 14px;">
+                            Còn hàng
+                        </div>
+                        <img th:src="@{/images/product/{photo}(photo=${product.photo})}" class="card-img-top"
+                             style="height: 18rem; object-fit: cover;" alt="Khay thức ăn cho chó">
+                        <div class="card-body my-0 px-0" style="margin-top: 0; padding-top: 0;">
+                            <a href="#" class="btn btn-block btn-danger w-100 "
+                               style="border-radius: 0; margin-bottom: 15px;">Add to cart</a>
+                            <p class="card-text text-center mb-0" th:text="${product.productName}">Khay thức ăn cho
+                                chó</p>
+                            <p class="card-text text-center mt-0"><span class="text-danger" th:text="${product.price}">400.000đ</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End product-->
+        
+        <!--Begin select page-->
+        <div class="row py-3">
+            <div class="col">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item">
+                            <a class="page-link text-white bg-danger mx-1" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item"><a class="page-link text-danger bg-outline-danger mx-1" href="#">1</a>
+                        </li>
+                        <li class="page-item"><a class="page-link text-danger bg-outline-danger mx-1" href="#">2</a>
+                        </li>
+                        <li class="page-item"><a class="page-link text-danger bg-outline-danger mx-1" href="#">3</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link text-white bg-danger mx-1" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <!--End select page-->
+    </div>
+    <!--End list product-->
+    
 </div>
 <!--End product-->
 </div>

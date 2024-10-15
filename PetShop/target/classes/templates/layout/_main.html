@@ -133,24 +133,26 @@
     <div class="row g-3">
       <!--ITEMS-->
       <div th:each="pet : ${nextSixPet}" class="col-lg-4 col-md-6 col-sm-6 col-6">
-        <a class=" nav-link" th:href="@{/pet/detail/{id}(id=${pet.petID})}">
-          <div class="card card-hover  border-0 position-relative">
-            <div class="overflow-hidden rounded-5 p-3 p-0 "
-                 style="background-color: #f7f7f5">
-              <img loading="lazy" th:src="@{/images/pet/{photo}(photo=${pet.photo})}"
-                   class="card-img-top card-image"
-                   alt="product">
-            </div>
-            <div class="badge bg-warning position-absolute"
-                 style="top: 0; right: 0; z-index: 1000;">
-              <h5 class="m-0">New</h5>
-            </div>
-            <div class="card-body text-center">
-              <h5 class="" th:text="${pet.breed}">ten thu cung</h5>
-            </div>
-          </div>
-        </a>
+  <a class="nav-link" th:href="@{/pet/detail/{id}(id=${pet.petID})}">
+    <div class="card card-hover border-0 position-relative">
+      <div class="overflow-hidden rounded-5 p-3" style="background-color: #f7f7f5">
+        <img 
+          loading="lazy" 
+          th:src="@{/images/pet/{photo}(photo=${pet.photo})}" 
+          class="card-img-top card-image" 
+          alt="product"
+          style="width: 100%; height: 200px; object-fit: cover;"> <!-- Add this style -->
       </div>
+      <div class="badge bg-warning position-absolute" style="top: 0; right: 0; z-index: 1000;">
+        <h5 class="m-0">New</h5>
+      </div>
+      <div class="card-body text-center">
+        <h5 th:text="${pet.breed}">ten thu cung</h5>
+      </div>
+    </div>
+  </a>
+</div>
+
     </div>
     <div class="d-flex justify-content-center mb-3">
       <a class="btn color py-2 px-4 rounded-5" style="border: 1px solid #f04336;" href="/allPet">Xem thêm</a>
@@ -189,40 +191,41 @@
     <div class="row g-3">
       <!--ITEMS-->
       <div th:each="p : ${nextSixProducts}" class="col-lg-4 col-md-6 col-sm-6 col-6">
-        <div class="card card-hover border-0">
-          <div class="p-3 position-relative" style="background-color: #f7f7f5">
-            <div class="overflow-hidden p-0 position-relative add-to-cart-container">
-              <a th:href="@{/product/detail/{id}(id=${p.id})}" class="nav-link">
-                <img loading="lazy" th:src="@{/images/product/{photo}(photo=${p.photo})}"
-                     class="card-img-top card-image"
-                     alt="product">
-              </a>
-              <a href="/them-gio-hang"
-                 class="btn background-color add-to-cart w-100 py-3 rounded-0 position-absolute"
-                 style="bottom: 0; left: 0;">
-                <h5 class="text-white m-0">
-                  Add to cart <i class="fas fa-cart-plus"></i>
-                </h5>
-              </a>
-            </div>
-            <div class="badge bg-success position-absolute"
-                 style="top: 0; right: 0; z-index: 1000;">
-              <h5 class="m-0">HOT</h5>
-            </div>
-          </div>
-          <div class="card-body text-center">
-            <div class="d-flex justify-content-center gap-2 my-2">
-              <i class="fa-solid fa-star text-warning"></i>
-              <i class="fa-solid fa-star text-warning"></i>
-              <i class="fa-solid fa-star text-warning"></i>
-              <i class="fa-solid fa-star text-warning"></i>
-              <i class="fa-solid fa-star"></i>
-            </div>
-            <h5 class="" th:text="${p.productName}">ten sp</h5>
-            <h4 class="color fw-bold" th:text="${#numbers.formatCurrency(p.price)}">100.000đ</h4>
-          </div>
-        </div>
+  <div class="card card-hover border-0">
+    <div class="p-3 position-relative" style="background-color: #f7f7f5">
+      <div class="overflow-hidden p-0 position-relative add-to-cart-container">
+        <a th:href="@{/product/detail/{id}(id=${p.id})}" class="nav-link">
+          <img 
+            loading="lazy" 
+            th:src="@{/images/product/{photo}(photo=${p.photo})}" 
+            class="card-img-top card-image" 
+            alt="product"
+            style="width: 100%; height: 200px; object-fit: cover;"> <!-- Add this style -->
+        </a>
+        <a href="/them-gio-hang" class="btn background-color add-to-cart w-100 py-3 rounded-0 position-absolute" style="bottom: 0; left: 0;">
+          <h5 class="text-white m-0">
+            Add to cart <i class="fas fa-cart-plus"></i>
+          </h5>
+        </a>
       </div>
+      <div class="badge bg-success position-absolute" style="top: 0; right: 0; z-index: 1000;">
+        <h5 class="m-0">HOT</h5>
+      </div>
+    </div>
+    <div class="card-body text-center">
+      <div class="d-flex justify-content-center gap-2 my-2">
+        <i class="fa-solid fa-star text-warning"></i>
+        <i class="fa-solid fa-star text-warning"></i>
+        <i class="fa-solid fa-star text-warning"></i>
+        <i class="fa-solid fa-star text-warning"></i>
+        <i class="fa-solid fa-star"></i>
+      </div>
+      <h5 th:text="${p.productName}">ten sp</h5>
+      <h4 class="color fw-bold" th:text="${#numbers.formatCurrency(p.price)}">100.000đ</h4>
+    </div>
+  </div>
+</div>
+
     </div>
     <div class="d-flex justify-content-center mb-3">
       <a class="btn color py-2 px-4 rounded-5" style="border: 1px solid #f04336;" href="/allProduct">Xem thêm
@@ -238,18 +241,22 @@
   <div th:each="pet : ${nextSixPet}" class="col-lg-2 col-md-4 col-sm-4 col-3">
     <a href="/filter" class="nav-link">
       <div class="card card-hover border-0 d-flex justify-content-center align-items-center">
-        <div class="overflow-hidden p-3"
-             style="background-color: #f7f7f5;border-radius: 50%;width: 100%;height: 100%;">
-          <img loading="lazy" th:src="@{/images/pet/{photo}(photo=${pet.photo})}" class="card-img-top card-image"
-               alt="product">
+        <div class="overflow-hidden p-3" style="background-color: #f7f7f5; border-radius: 50%; width: 100%; height: 100%;">
+          <img 
+            loading="lazy" 
+            th:src="@{/images/pet/{photo}(photo=${pet.photo})}" 
+            class="card-img-top card-image" 
+            alt="product"
+            style="width: 100%; height: 200px; object-fit: cover;"> <!-- Add this style -->
         </div>
         <div class="card-body text-center">
-          <h5 class="" th:text="${pet.breed}">ten loai sp</h5>
+          <h5 th:text="${pet.breed}">ten loai sp</h5>
         </div>
       </div>
     </a>
   </div>
 </div>
+
 <!--LOAI SP DANH CHO THU CUNG END-->
 <!--FEEDBACK-->
 <div class="row my-3 g-4 d-flex align-items-center">
