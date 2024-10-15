@@ -13,11 +13,14 @@
     <!--    FONT-GOOGLE-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-            href="https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
-            rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+          rel="stylesheet">
     <!--    FONTAWESOME-->
     <script src="https://kit.fontawesome.com/246169b37f.js" crossorigin="anonymous"></script>
+    <!--    ANIMATE.CSS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
     <style>
         body {
             background: url("/images/background/bg.png");
@@ -34,31 +37,53 @@
             background-color: #f04336;
         }
 
-        .menu-item {
-            display: inline-block;
-            color: black;
-            text-align: center;
-            border-radius: 4px;
-            position: relative;
-            transition: color 0.3s ease;
+        .container {
+            max-width: 1500px;
         }
 
-        .menu-item::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 5px;
-            border-radius: 4px;
-            background-color: #f04336;
-            transition: width 0.3s ease, left 0.3s ease;
-            transform-origin: center;
+        #menu {
+            transition: 0.5s;
         }
 
-        .menu-item:hover::after {
-            width: 100%;
-            left: 0;
+        .button-image {
+            background-color: white;
+            border: 2px solid black;
+            background-image: url("/images/background/button-2.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+
+        .button-image:hover {
+            border: 2px solid black;
+            transform: translate(-5px, -5px);
+            box-shadow: 1px 1px 0px #000,
+            2px 2px 0px #000,
+            3px 3px 0px #000,
+            4px 4px 0px #000,
+            5px 5px 0px #000,
+            6px 6px 0px #000;
+        }
+
+        .button-image-white {
+            border: 2px solid black;
+            text-shadow: 0 0 10px rgb(0, 0, 0);
+            background-image: url("/images/background/button-white.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+
+        .button-image-white:hover {
+            transform: translate(-5px, -5px);
+            box-shadow: 1px 1px 0px #000,
+            2px 2px 0px #000,
+            3px 3px 0px #000,
+            4px 4px 0px #000,
+            5px 5px 0px #000,
+            6px 6px 0px #000;
         }
 
         .card-image {
@@ -66,7 +91,7 @@
         }
 
         .card-image:hover {
-            transform: scale(1.1) rotate(5deg);
+            transform: scale(1.2);
         }
 
         h1 {
@@ -147,7 +172,7 @@
 
         .add-to-cart {
             opacity: 0;
-            transition: opacity 0.5s;
+            transition: all 0.5s;
         }
 
         .add-to-cart-container:hover .add-to-cart {
@@ -166,121 +191,104 @@
         }
     </style>
 </head>
-
 <body>
-<nav class="navbar navbar-expand-xl navbar-light sticky-top shadow p-0 bg-white">
-    <div class="container">
-        <!-- BRAND -->
-        <a class="navbar-brand" href="/">
-            <img loading="lazy" alt="brand" src="/images/logo/logo-2.png" style="width: 225px;">
-        </a>
-        <!--        button toggle-->
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-                aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <!--        offcanvas-->
-        <div aria-labelledby="offcanvasNavbarLabel" class="offcanvas offcanvas-end w-100" data-bs-backdrop="true"
-             data-bs-scroll="true" id="offcanvasNavbar" tabindex="-1" style="background: white">
-            <!--            sidebar-header-->
-            <div class="offcanvas-header border-top font-color">
-                <button aria-label="Close" class=" btn-close shadow-0" data-bs-dismiss="offcanvas" type="button">
-                </button>
-            </div>
-            <div class="offcanvas-body">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item text-center">
-                        <a class="nav-link active background-color text-white fw-bold" aria-current="page"
-                           href="#">Trang
-                            chủ</a>
-                    </li>
-                    <li class="nav-item text-center">
-                        <a class="nav-link menu-item" href="#">Cửa hàng</a>
-                    </li>
-                    <li class="nav-item text-center">
-                        <a class="nav-link menu-item" href="#">Thú cưng</a>
-                    </li>
-                    <li class="nav-item text-center">
-                        <a class="nav-link menu-item" href="#">Dịch vụ</a>
-                    </li>
-                    <li class="nav-item">
-                        <form class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Search</button>
-                        </form>
-                    </li>
-                </ul>
-                <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
-                    <li class="nav-item text-center">
-                        <a class="nav-link menu-item" href="/login">Login</a>
-                    </li>
-                    <li class="nav-item text-center">
-                        <a class="nav-link menu-item" href="/register">Register</a>
-                    </li>
-                    <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item text-center">
-                        <a class="nav-link menu-item" href="/quan-tri-he-thong">Quản trị</a>
-                    </li>
-                    <li sec:authorize="hasRole('ROLE_USER')" class="nav-item text-center">
-                        <a class="nav-link menu-item" href="/user">User</a>
-                    </li>
-                    <li class="nav-item text-center">
-                        <a class="nav-link menu-item" href="/cart">Giỏ hàng</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</nav>
-<main class="container py-3 bg-white" th:insert="${view}">
-
-</main>
-<footer class="bg-white py-4 container">
-    <div class="container">
-        <div class="row">
-            <!-- Logo -->
-            <div
-                    class="col-md-4 d-flex justify-content-center justify-content-md-start align-items-center flex-column">
-                <img loading="lazy" src="/images/logo/logo-2.png" alt="Pet Ninja Logo" class="img-fluid"
-                     style="min-width: 300px;">
-                <h1 class="mt-2 color fw-bold">PET NINJA</h1>
-            </div>
-            <!-- Contact Information -->
-            <div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
-                <h5 class="fw-bold">Cửa hàng Thú Cưng <span class="text-danger">PET NINJA</span></h5>
-                <p>Địa chỉ: 123 Đường ABC, Phường XYZ, Quận 1, TP Hồ Chí Minh</p>
-                <p>Điện thoại: (028) 1234 5678</p>
-                <p>Email: contact@petzone.vn</p>
-                <p>Giờ mở cửa:</p>
-                <ul class="list-unstyled">
-                    <li>
-                        <h4>Thứ 2 - Thứ 7: 8:00 - 20:00</h4>
-                    </li>
-                    <li>
-                        <h4>Chủ Nhật: 9:00 - 18:00</h4>
-                    </li>
-                </ul>
-                <div>
-                    <a href="#"><i class="fab fa-facebook fa-2x me-2"></i></a>
-                    <a href="#"><i class="fab fa-zalo fa-2x me-2"></i></a>
-                    <a href="#"><i class="fab fa-tiktok fa-2x"></i></a>
-                </div>
-            </div>
-
-            <!-- Google Map -->
-            <div class="col-md-4 text-center text-md-end">
-                <iframe src="https://www.google.com/maps/embed?pb=..." width="100%" height="100%" style="border:0;"
-                        allowfullscreen="" loading="lazy"></iframe>
-            </div>
-        </div>
-    </div>
-</footer>
+<header id="menu" class="sticky-top" th:insert="~{/layout/_menu}"></header>
+<main class="container py-3 bg-white border border-2 border-dark"
+      th:insert="${view}"></main>
+<footer th:insert="~{/layout/_footer}" class="bg-white py-4 container "></footer>
+<!--MODULE-->
 <div th:insert=" ~{/module/_backToTop}"></div>
 <div th:insert=" ~{/module/_loadingSpinner}"></div>
+<!-- Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 </body>
 <!--    BOOTSTRAP5-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 <!--    JS-->
+<script>
+    var prevScrollpos = window.scrollY;
+    let goToTop = document.getElementById('goToTop');
+
+    window.onscroll = function () {
+        // Điều khiển menu khi cuộn
+        var currentScrollPos = window.scrollY;
+        if (prevScrollpos > currentScrollPos) {
+            document.getElementById("menu").style.top = "0";
+        } else {
+            document.getElementById("menu").style.top = "-100px";
+        }
+        prevScrollpos = currentScrollPos;
+
+        // Điều khiển nút "Go to Top"
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            goToTop.style.display = 'block';
+        } else {
+            goToTop.style.display = 'none';
+        }
+    };
+
+    // Hàm để cuộn lên đầu trang
+    function goTop() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+
+    // Swiper
+    const swiper = new Swiper('.swiper-container', {
+        slidesPerView: 2,
+        spaceBetween: 20,
+        // Phản hồi (responsive)
+        breakpoints: {
+            576: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            },
+            768: {
+                slidesPerView: 4,
+                spaceBetween: 40,
+            },
+            992: {
+                slidesPerView: 5,
+                spaceBetween: 50,
+            },
+            1200: {
+                slidesPerView: 6,
+                spaceBetween: 60,
+            },
+        },
+        autoplay: {
+            delay: 3000, // 3 giây
+            disableOnInteraction: false,
+        },
+        loop: true,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        }
+    });
+    const swiper_banner = new Swiper('.swiper-container-banner', {
+        slidesPerView: 1,
+        loop: true,
+        autoplay: {
+            delay: 3000, // 3 giây
+            disableOnInteraction: false,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next-banner',
+            prevEl: '.swiper-button-prev-banner',
+        },
+        pagination: {
+            el: '.swiper-pagination-banner',
+            clickable: true,
+        },
+        crossFade: true,
+    });
+</script>
 
 </html>
