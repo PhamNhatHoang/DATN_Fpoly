@@ -205,7 +205,7 @@
                             <i class="fa-solid fa-star"></i>
                         </div>
                         <h5 class="" th:text="${p.productName}">ten sp</h5>
-                        <h4 class="color fw-bold" th:text="${#numbers.formatCurrency(p.price)}">100.000đ</h4>
+                        <h4 class="color fw-bold" th:text="${#numbers.formatDecimal(p.price, 0, 'COMMA', 0, 'POINT') + 'đ'}">100.000đ</h4>
                     </div>
                 </div>
             </div>
