@@ -13,6 +13,7 @@
         /*    transform: scale(1.1);*/
         /*}*/
 
+
     </style>
 </head>
 <body>
@@ -155,7 +156,7 @@
                             <h5 class="m-0">New</h5>
                         </div>
                         <div class="card-body text-center">
-                            <h5 th:text="${pet.petCategoryID.petCategoryName + '' + pet.breed + '' + pet.hair + '' + pet.petID}"
+                            <h5 th:text="${pet.petCategoryID.petCategoryName + ' ' + pet.breed + ' ' + pet.hair}"
                                 class="">ten thu cung</h5>
                             <span th:text="${'ID : '+pet.petID}">ID</span>
                         </div>
@@ -249,24 +250,36 @@
 </div>
 <!--SP NOI BAT END-->
 <!--LOAI SP DANH CHO THU CUNG-->
-<div class="row my-3 g-2 d-flex align-items-center justify-content-center">
-    <h1 class="color fw-bold text-center">LOẠI SẢN PHẨM DÀNH CHO THÚ CƯNG</h1>
-    <!--ITEMS-->
-    <div class="col-lg-2 col-md-4 col-sm-4 col-3">
-        <a href="/filter" class="nav-link">
-            <div class="card card-hover border-0 d-flex justify-content-center align-items-center">
-                <div class="overflow-hidden p-3"
-                     style="background-color: #f7f7f5;border-radius: 50%;width: 100%;height: 100%;">
-                    <img loading="lazy" src="/images/pet/pet-placeholder.png" class="card-img-top card-image"
-                         alt="product">
-                </div>
-                <div class="card-body text-center">
-                    <h5 class="">ten loai sp</h5>
-                </div>
+<div class="container my-5 overflow-hidden">
+    <h1 class="color fw-bold text-center mb-4">LOẠI SẢN PHẨM DÀNH CHO THÚ CƯNG</h1>
+    <!-- Swiper -->
+    <div class="swiper-container position-relative">
+        <div class="swiper-wrapper">
+            <!--ITEMS-->
+            <div th:each="pc : ${productCategories}" class="swiper-slide">
+                <a href="/filter" class="nav-link">
+                    <div class="card card-hover border-0 d-flex justify-content-center align-items-center">
+                        <div class="overflow-hidden p-3 button-image"
+                             style="background-color: #f7f7f5; border-radius: 50%; width: 100%; height: 100%;">
+                            <img loading="lazy" th:src="@{/images/product_category/{photo}(photo=${pc.photo})}"
+                                 class="card-img-top card-image"
+                                 th:alt="${pc.productCategoryName}">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 th:text="${pc.productCategoryName}" class="">Tên loại sản phẩm</h5>
+                        </div>
+                    </div>
+                </a>
             </div>
-        </a>
+        </div>
+        <!-- Nút điều hướng -->
+        <div class="swiper-button-next color" style="position: absolute;top: 35%"></div>
+        <div class="swiper-button-prev color" style="position: absolute;top: 35%"></div>
+        <!-- Thanh phân trang -->
+        <div class="swiper-pagination color" style="position: static"></div>
     </div>
 </div>
+
 <!--LOAI SP DANH CHO THU CUNG END-->
 <!--FEEDBACK-->
 <div class="row my-3 g-4 d-flex align-items-center">
@@ -522,4 +535,5 @@
     </div>
 </div>
 </body>
+
 </html>

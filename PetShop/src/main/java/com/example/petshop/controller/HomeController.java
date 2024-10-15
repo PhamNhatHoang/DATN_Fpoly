@@ -4,6 +4,7 @@ import com.example.petshop.entity.Pet;
 import com.example.petshop.entity.Product;
 import com.example.petshop.entity.User;
 import com.example.petshop.service.PetService;
+import com.example.petshop.service.ProductCategoryService;
 import com.example.petshop.service.ProductService;
 import com.example.petshop.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -31,6 +32,9 @@ public class HomeController {
     @Autowired
     private PetService petService;
 
+    @Autowired
+    private ProductCategoryService productCategoryService;
+
     @ModelAttribute("fullname")
     public void getUser(Model model, HttpServletRequest request) {
         try {
@@ -55,6 +59,7 @@ public class HomeController {
         model.addAttribute("nextSixProducts", nextSixProducts);
         model.addAttribute("firstPet", latestPet);
         model.addAttribute("nextSixPet", nextSixPet);
+        model.addAttribute("productCategories", productCategoryService.getAll());
         return "/layout/_main";
     }
 

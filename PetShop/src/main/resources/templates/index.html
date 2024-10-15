@@ -19,6 +19,8 @@
     <script src="https://kit.fontawesome.com/246169b37f.js" crossorigin="anonymous"></script>
     <!--    ANIMATE.CSS-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
     <style>
         body {
             background: url("/images/background/bg.png");
@@ -196,6 +198,9 @@
 <!--MODULE-->
 <div th:insert=" ~{/module/_backToTop}"></div>
 <div th:insert=" ~{/module/_loadingSpinner}"></div>
+
+<!-- Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 </body>
 <!--    BOOTSTRAP5-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
@@ -229,5 +234,44 @@
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
     }
+
+    // Swiper
+    var swiper = new Swiper('.swiper-container', {
+        slidesPerView: 2,
+        spaceBetween: 20,
+        // Phản hồi (responsive)
+        breakpoints: {
+            576: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            },
+            768: {
+                slidesPerView: 4,
+                spaceBetween: 40,
+            },
+            992: {
+                slidesPerView: 5,
+                spaceBetween: 50,
+            },
+            1200: {
+                slidesPerView: 6,
+                spaceBetween: 60,
+            },
+        },
+        autoplay: {
+            delay: 3000, // 3 giây
+            disableOnInteraction: false,
+        },
+        loop: true,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        }
+    });
 </script>
+
 </html>
