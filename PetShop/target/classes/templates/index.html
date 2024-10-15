@@ -193,8 +193,9 @@
 </head>
 <body>
 <header id="menu" class="sticky-top" th:insert="~{/layout/_menu}"></header>
-<main class="container py-3 bg-white" th:insert="${view}"></main>
-<footer th:insert="~{/layout/_footer}" class="bg-white py-4 container"></footer>
+<main class="container py-3 bg-white border border-2 border-dark animate__animated animate__fadeIn"
+      th:insert="${view}"></main>
+<footer th:insert="~{/layout/_footer}" class="bg-white py-4 container "></footer>
 <!--MODULE-->
 <div th:insert=" ~{/module/_backToTop}"></div>
 <div th:insert=" ~{/module/_loadingSpinner}"></div>
@@ -235,7 +236,7 @@
     }
 
     // Swiper
-    var swiper = new Swiper('.swiper-container', {
+    const swiper = new Swiper('.swiper-container', {
         slidesPerView: 2,
         spaceBetween: 20,
         // Phản hồi (responsive)
@@ -270,6 +271,23 @@
             el: '.swiper-pagination',
             clickable: true,
         }
+    });
+    const swiper_banner = new Swiper('.swiper-container-banner', {
+        slidesPerView: 1,
+        loop: true,
+        autoplay: {
+            delay: 3000, // 3 giây
+            disableOnInteraction: false,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next-banner',
+            prevEl: '.swiper-button-prev-banner',
+        },
+        pagination: {
+            el: '.swiper-pagination-banner',
+            clickable: true,
+        },
+        crossFade: true,
     });
 </script>
 

@@ -3,10 +3,7 @@ package com.example.petshop.controller;
 import com.example.petshop.entity.Pet;
 import com.example.petshop.entity.Product;
 import com.example.petshop.entity.User;
-import com.example.petshop.service.PetService;
-import com.example.petshop.service.ProductCategoryService;
-import com.example.petshop.service.ProductService;
-import com.example.petshop.service.UserService;
+import com.example.petshop.service.*;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -35,6 +32,9 @@ public class HomeController {
     @Autowired
     private ProductCategoryService productCategoryService;
 
+    @Autowired
+    private SlideBarService slideBarService;
+
     @ModelAttribute("fullname")
     public void getUser(Model model, HttpServletRequest request) {
         try {
@@ -60,6 +60,7 @@ public class HomeController {
         model.addAttribute("firstPet", latestPet);
         model.addAttribute("nextSixPet", nextSixPet);
         model.addAttribute("productCategories", productCategoryService.getAll());
+        model.addAttribute("slides", slideBarService.getAll());
         return "/layout/_main";
     }
 

@@ -20,49 +20,18 @@
 <!--SLIDE-->
 <div class="row g-0">
     <div class="col-lg-8">
-        <div id="carouselExampleCaptions" class="carousel slide">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0"
-                        class="active"
-                        aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-                        aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-                        aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img loading="lazy" src="/images/slide/placeholder-slide.png" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>First slide label</h5>
-                        <p>Some representative placeholder content for the first slide.</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img loading="lazy" src="/images/slide/placeholder-slide.png" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Second slide label</h5>
-                        <p>Some representative placeholder content for the second slide.</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img loading="lazy" src="/images/slide/placeholder-slide.png" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Third slide label</h5>
-                        <p>Some representative placeholder content for the third slide.</p>
-                    </div>
+        <!-- Shaders slider -->
+        <div class="swiper swiper-container-banner" pagination-type="progressbar">
+            <div class="swiper-wrapper">
+                <div th:each="s : ${slides}" class="swiper-slide">
+                    <!-- shaders image must be a direct child of the slide and have additional "swiper-gl-image" class  -->
+                    <img class="swiper-gl-image" th:src="@{/images/banner/{photo}(photo = ${s.sliderImage})}" th:alt="${s.sliderImage}">
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-                    data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-                    data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
+
+            <div class="swiper-button-prev swiper-button-next-banner"></div>
+            <div class="swiper-button-next swiper-button-next-banner"></div>
+            <div class="swiper-pagination swiper-pagination-banner"></div>
         </div>
     </div>
     <div class="col-lg-4">
@@ -90,37 +59,37 @@
 <div class="row my-3 g-4">
     <div class="col-lg-3 col-6">
         <div class="d-flex justify-content-center align-items-center gap-2">
-            <i class="fas fa-truck fa-3x color"></i>
-            <h5 class="text-center">
-                Giao hỏa tốc
-                Nội thành TP. HCM trong 4h
+            <i class="fas fa-paw fa-3x color"></i>
+            <h5 class="text-start">
+                Sản phẩm chất lượng
+                Được kiểm định an toàn
             </h5>
         </div>
     </div>
     <div class="col-lg-3 col-6">
         <div class="d-flex justify-content-center align-items-center gap-2">
-            <i class="fas fa-truck fa-3x color"></i>
-            <h5 class="text-center">
-                Giao hỏa tốc
-                Nội thành TP. HCM trong 4h
+            <i class="fas fa-dog fa-3x color"></i>
+            <h5 class="text-start">
+                Thức ăn cho thú cưng
+                Đa dạng và bổ dưỡng
             </h5>
         </div>
     </div>
     <div class="col-lg-3 col-6">
         <div class="d-flex justify-content-center align-items-center gap-2">
-            <i class="fas fa-truck fa-3x color"></i>
-            <h5 class="text-center">
-                Giao hỏa tốc
-                Nội thành TP. HCM trong 4h
+            <i class="fas fa-cat fa-3x color"></i>
+            <h5 class="text-start">
+                Phụ kiện thú cưng
+                Thời trang và tiện ích
             </h5>
         </div>
     </div>
     <div class="col-lg-3 col-6">
         <div class="d-flex justify-content-center align-items-center gap-2">
-            <i class="fas fa-truck fa-3x color"></i>
-            <h5 class="text-center">
-                Giao hỏa tốc
-                Nội thành TP. HCM trong 4h
+            <i class="fas fa-clinic-medical fa-3x color"></i>
+            <h5 class="text-start">
+                Dịch vụ chăm sóc
+                Khám và điều trị tận nơi
             </h5>
         </div>
     </div>
