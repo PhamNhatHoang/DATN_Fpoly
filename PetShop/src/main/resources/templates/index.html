@@ -91,7 +91,7 @@
         }
 
         .card-image:hover {
-            transform: scale(1.1) rotate(5deg);
+            transform: scale(1.2);
         }
 
         h1 {
@@ -172,7 +172,7 @@
 
         .add-to-cart {
             opacity: 0;
-            transition: opacity 0.5s;
+            transition: all 0.5s;
         }
 
         .add-to-cart-container:hover .add-to-cart {
@@ -198,7 +198,6 @@
 <!--MODULE-->
 <div th:insert=" ~{/module/_backToTop}"></div>
 <div th:insert=" ~{/module/_loadingSpinner}"></div>
-
 <!-- Swiper JS -->
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 </body>
