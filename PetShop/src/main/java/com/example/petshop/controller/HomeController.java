@@ -40,10 +40,10 @@ public class HomeController {
         try {
             User user = userService.findByUsername(request.getUserPrincipal().getName());
             if (user != null) {
-                model.addAttribute("fullname", user.getFullName());
+                model.addAttribute("user", user);
             }
         } catch (Exception e) {
-            model.addAttribute("fullname", "Khách");
+            model.addAttribute("user", null);
         }
     }
 

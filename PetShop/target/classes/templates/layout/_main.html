@@ -25,7 +25,8 @@
             <div class="swiper-wrapper">
                 <div th:each="s : ${slides}" class="swiper-slide">
                     <!-- shaders image must be a direct child of the slide and have additional "swiper-gl-image" class  -->
-                    <img class="swiper-gl-image" th:src="@{/images/banner/{photo}(photo = ${s.sliderImage})}" th:alt="${s.sliderImage}">
+                    <img loading="lazy" class="swiper-gl-image" th:src="@{/images/slide/{photo}(photo = ${s.sliderImage})}"
+                         th:alt="${s.sliderImage}">
                 </div>
             </div>
 
@@ -174,8 +175,8 @@
         <div class="row g-3">
             <!--ITEMS-->
             <div th:each="p : ${nextSixProducts}" class="col-lg-4 col-md-6 col-sm-6 col-6">
-                <div class="card card-hover border-0">
-                    <div class="p-3  position-relative button-image add-to-cart-container"
+                <div class="card card-hover border-0 ">
+                    <div class="p-3 position-relative  button-image add-to-cart-container"
                          style="background-color: #f7f7f5">
                         <div class="overflow-hidden p-0 position-relative  ">
                             <a href="/chi-tiet" class="nav-link">
@@ -184,9 +185,9 @@
                                      alt="product">
                             </a>
                         </div>
-                        <div class="badge bg-success position-absolute"
+                        <div class="badge position-absolute"
                              style="top: 0; right: 0; z-index: 1000;">
-                            <h5 class="m-0">HOT</h5>
+                            <img src="/images/logo/hot-badge.png" alt="hot-badge" style="width: 50px;">
                         </div>
                         <a href="/them-gio-hang"
                            class="btn background-color button-image-white add-to-cart w-100 py-3 rounded-0 position-absolute"
@@ -205,7 +206,8 @@
                             <i class="fa-solid fa-star"></i>
                         </div>
                         <h5 class="" th:text="${p.productName}">ten sp</h5>
-                        <h4 class="color fw-bold" th:text="${#numbers.formatDecimal(p.price, 0, 'COMMA', 0, 'POINT') + 'đ'}">100.000đ</h4>
+                        <h4 class="color fw-bold"
+                            th:text="${#numbers.formatDecimal(p.price, 0, 'COMMA', 0, 'POINT') + 'đ'}">100.000đ</h4>
                     </div>
                 </div>
             </div>
