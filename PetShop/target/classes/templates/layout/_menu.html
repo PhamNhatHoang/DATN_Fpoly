@@ -177,24 +177,24 @@
                     <li sec:authorize="isAuthenticated()" class="nav-item text-center user-button">
                         <a class="nav-link menu-item" href="/thong-tin-ca-nhan">
                             <i class="fa-solid fa-user-large"></i>
-                            <span th:text="${fullname}">FULLNAME</span>
+                            <span th:text="${user.fullName}">FULLNAME</span>
                             <i class="fa-solid fa-chevron-down"></i>
                         </a>
                         <div class="mini-user-box p-4 rounded-3 shadow">
                             <div class="user-avatar mb-3">
-                                <img src="/images/user/user-placeholder.png" alt="User Avatar"
+                                <img loading="lazy" src="/images/user/user-placeholder.png" alt="User Avatar"
                                      class="img-fluid rounded-circle" width="80">
                             </div>
                             <div class="user-info">
-                                <h5 th:text="${#authentication.name}" class="user-name mb-1">Tên người dùng</h5>
-                                <!--CHƯA FIX XONG-->
-                                <p th:text="${#authentication.authorities.contains('ROLE_ADMIN') ? 'Quản trị viên' : 'Người dùng'}"
-                                   class="user-role text-muted mb-2">Vai trò: Quản trị viên</p>
-                                <p class="user-email text-muted">Email: user@example.com</p>
+                                <h5 th:text="${#authorization.expression('hasRole(''ROLE_ADMIN'')') ? 'Quản trị viên: ' + user.fullName : 'Khách hàng: ' + user.fullName}"
+                                    class="user-name mb-1">
+                                    Tên người dùng
+                                </h5>
+                                <p th:text="${'Email : '+user.email}" class="user-email text-muted">Email: user@example.com</p>
                             </div>
                             <div class="user-actions mt-3">
                                 <a href="#" class="btn btn-primary btn-sm user-button-decor">Xem hồ sơ</a>
-                                <a href="#" class="btn btn-outline-secondary btn-sm user-button-decor">Chỉnh sửa</a>
+                                <a sec:authorize="hasRole('ROLE_ADMIN')" href="/quan-tri-he-thong" class="btn btn-outline-secondary btn-sm user-button-decor">Quản trị</a>
                                 <a href="/logout" class="btn btn-danger btn-sm user-button-decor">Đăng xuất</a>
                             </div>
                         </div>
@@ -204,14 +204,14 @@
                             <i class="fa-solid fa-cart-shopping p-0 text-white"></i>
                         </a>
                         <div class="mini-cart-box p-4 rounded-3 shadow">
-                            <img class="mini-cart-img" src="/images/background/no-cart.png" alt="">
+                            <img  loading="lazy" class="mini-cart-img" src="/images/background/no-cart.png" alt="">
                             <p class="m-0">Chưa có sản phẩm</p>
                             <div class="card">
                                 <div class="card-body">
                                     <div id="cart-items">
                                         <!-- Danh sách sản phẩm -->
                                         <div class="cart-item d-flex align-items-center mb-3">
-                                            <img src="/images/product/product-placeholder.png" alt="Sản phẩm"
+                                            <img loading="lazy" src="/images/product/product-placeholder.png" alt="Sản phẩm"
                                                  class="img-fluid"
                                                  style="width: 80px; height: 80px; margin-right: 15px;">
                                             <div class="me-auto">

@@ -38,7 +38,7 @@
         }
 
         .container {
-            max-width: 1500px;
+            max-width: 1600px;
         }
 
         #menu {
@@ -193,19 +193,18 @@
 </head>
 <body>
 <header id="menu" class="sticky-top" th:insert="~{/layout/_menu}"></header>
-<main class="container py-3 bg-white border border-2 border-dark"
-      th:insert="${view}"></main>
+<main class="container py-3 bg-white rounded-3 border border-2 border-dark" th:insert="${view}"></main>
 <footer th:insert="~{/layout/_footer}" class="bg-white py-4 container "></footer>
 <!--MODULE-->
 <div th:insert=" ~{/module/_backToTop}"></div>
 <div th:insert=" ~{/module/_loadingSpinner}"></div>
-<!-- Swiper JS -->
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 </body>
 <!--    BOOTSTRAP5-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+<!-- Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <!--    JS-->
 <script>
     var prevScrollpos = window.scrollY;
