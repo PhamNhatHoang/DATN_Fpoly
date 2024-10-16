@@ -49,16 +49,14 @@
                             <button class="btn font-resp" type="submit">Đăng nhập</button>
                             <a class="btn font-resp" href="/dang-ki" style="background: #AACCFF">Đăng kí</a>
                         </div>
-                        <a href="/logout">LOG OUT</a>
-                        <div id="redirect-message"></div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="countdownModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+    <div class="modal fade" data-bs-backdrop="static" id="countdownModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalLabel">Thông báo</h5>
@@ -66,7 +64,8 @@
                 <div class="modal-body">
                     <p id="modal-message"></p>
                     <div class="progress" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-                        <div id="progressBar" class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width: 0"></div>
+                        <div id="progressBar" class="progress-bar bg-danger progress-bar-striped progress-bar-animated"
+                             style="width: 0"></div>
                     </div>
                 </div>
             </div>
