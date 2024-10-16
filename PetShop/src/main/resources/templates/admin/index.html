@@ -43,7 +43,7 @@
 <script src="https://cdn.jsdelivr.net/npm/ng-table/bundles/ng-table.min.js"></script>
 <script>
     var app = angular.module('myApp', ['ngRoute', 'ngTable']);
-    app.controller('myCtrl', function ($scope, $http, NgTableParams) {
+    app.controller('myCtrl', function ($scope, $http, NgTableParams, $filter) {
         var baseUrl = 'http://localhost:8080/api/';
         $scope.petData = [];
         $scope.petCategoryData = [];
@@ -51,9 +51,10 @@
         $http.get(baseUrl + 'pet').then(function (response) {
             $scope.petData = response.data;
             $scope.petsTable = new NgTableParams({
-                page: 1,
-                count: 10
+                page: 1,    // Trang đầu tiên
+                count: 10   // Số lượng mục trên mỗi trang
             }, {
+                total: $scope.petData.length, // Tổng số mục
                 dataset: $scope.petData
             });
         }).catch(function (error) {
