@@ -21,7 +21,8 @@
         </select>
     </div>
     <div class="text-center">
-        <table ng-table="petsTable" class="table table-responsive table-hover table-sm table-sm shadow" show-filter="true">
+        <table ng-table="petsTable" class="table table-responsive table-hover table-sm table-sm shadow p-5"
+               show-filter="true">
             <tr ng-repeat="pet in $data" class="align-middle">
                 <td data-title="'#'" class="p-2 px-3 text-center">
                     <b>{{ $index + 1 }}</b>
@@ -32,18 +33,18 @@
                     <span ng-if="pet.gender" class="badge bg-primary">Đực</span>
                     <span ng-if="!pet.gender" class="badge bg-warning">Cái</span>
                 </td>
-                <td data-title="'Hình ảnh'"  class="text-center">
+                <td data-title="'Hình ảnh'" class="text-center">
                     <img height="100px" width="100px" ng-src="/images/pet/{{ pet.photo }}" alt="{{ pet.photo }}"
                          class="img-thumbnail pet-image">
                 </td>
-                <td sortable="'available'" data-title="'Trạng thái'"  class="text-center">
+                <td sortable="'available'" data-title="'Trạng thái'" class="text-center">
                     <span ng-if="pet.available" class="badge bg-success">Đã bán</span>
                     <span ng-if="!pet.available" class="badge bg-danger">Chưa bán</span>
                 </td>
                 <td sortable="'petCategoryID.petCategoryName'" filter="{ 'petCategoryID.petCategoryName': 'text' }"
-                    data-title="'Loài'"  class="text-center">{{ pet.petCategoryID.petCategoryName }}
+                    data-title="'Loài'" class="text-center">{{ pet.petCategoryID.petCategoryName }}
                 </td>
-                <td data-title="'Tool'"  class="text-center">
+                <td data-title="'Tool'" class="text-center">
                     <button class="btn btn-warning" ng-click="editPet(pet.petID)">Sửa</button>
                     <button class="btn btn-danger" ng-click="deletePet(pet.petID)">Xóa</button>
                 </td>
