@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{/admin/index.html::admin(~{::body})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Danh sách Thú cưng</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-app="petApp" ng-controller="petController">
+<div class="container mt-4">
+    <h1 class="mb-4 text-center">Danh sách Thú cưng</h1>
+
+    <div class="table-responsive">
+        <div class="pagination-controls">
+            <button ng-disabled="currentPage == 0" ng-click="prevPage()">Trang trước</button>
+            <span>Trang {{currentPage + 1}}/{{numberOfPages()}}</span>
+            <button ng-disabled="currentPage >= numberOfPages() - 1" ng-click="nextPage()">Trang sau</button>
+        </div>
+
+        <table class="table table-hover table-striped">
+            <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Giống</th>
+                <th>Giới tính</th>
+                <th>Ảnh</th>
+                <th>Trạng thái</th>
+                <th>Loại</th>
+            </tr>
+            </thead>
+            <tbody>
+<!--            .slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage)-->
+            <tr ng-repeat="pet in petData | limitTo : 5" class="align-middle">
+                <td>{{pet.petID}}</td>
+                <td>{{pet.breed}}</td>
+                <td ng-switch="pet.gender">
+                    <span ng-if="pet.gender == true" class="badge bg-primary">Đực</span>
+                    <span ng-if="pet.gender == false" class="badge bg-primary">Cái</span>
+                </td>
+                <td><img ng-src="/images/pet/{{ pet.photo }}" alt="Pet Image" class="img-thumbnail pet-image" style="width: 100px; height: 100px"></td>
+                <td>
+                    <span ng-if="pet.available == true" class="badge bg-success">Đang bán</span>
+                    <span ng-if="pet.available == false" class="badge bg-danger">Không bán</span>
+                </td>
+                <td>{{pet.petCategoryID.petCategoryName}}</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="pagination-controls">
+            <button ng-disabled="currentPage == 0" ng-click="prevPage()">Trang trước</button>
+            <span>Trang {{currentPage + 1}}/{{numberOfPages()}}</span>
+            <button ng-disabled="currentPage >= numberOfPages() - 1" ng-click="nextPage()">Trang sau</button>
+        </div>
+    </div>
+</div>
+
+<!--<script>-->
+<!--    // Khởi tạo ứng dụng AngularJS-->
+<!--    var app = angular.module('petApp', []);-->
+
+<!--    // Khởi tạo controller PetController-->
+<!--    app.controller('petController', function ($scope, $http) {-->
+<!--        $scope.currentPage = 0;  // Biến theo dõi trang hiện tại-->
+<!--        $scope.itemsPerPage = 5;  // Số lượng thú cưng hiển thị mỗi trang-->
+<!--        $scope.petData = [];  // Khởi tạo mảng thú cưng-->
+
+<!--        // Lấy dữ liệu danh sách thú cưng từ RESTful API-->
+<!--        $http.get('/api/pets').then(function (response) {-->
+<!--            $scope.petData = response.data;  // Gán dữ liệu vào petData-->
+<!--        }, function (error) {-->
+<!--            console.error('Error fetching pet data:', error);-->
+<!--        });-->
+
+<!--        // Tính số trang-->
+<!--        $scope.numberOfPages = function () {-->
+<!--            return Math.ceil($scope.petData.length / $scope.itemsPerPage);-->
+<!--        };-->
+
+<!--        // Chuyển đến trang trước-->
+<!--        $scope.prevPage = function () {-->
+<!--            if ($scope.currentPage > 0) {-->
+<!--                $scope.currentPage&#45;&#45;;-->
+<!--            }-->
+<!--        };-->
+
+<!--        // Chuyển đến trang sau-->
+<!--        $scope.nextPage = function () {-->
+<!--            if ($scope.currentPage < $scope.numberOfPages() - 1) {-->
+<!--                $scope.currentPage++;-->
+<!--            }-->
+<!--        };-->
+<!--    });-->
+<!--</script>-->
+
+</body>
+</html>

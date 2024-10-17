@@ -1,5 +1,6 @@
 package com.example.petshop.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -30,6 +31,7 @@ public class ProductCategory {
     @Column(name = "Photo", nullable = false)
     private String photo;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "productCategoryID")
     private Set<Product> products = new LinkedHashSet<>();
 
