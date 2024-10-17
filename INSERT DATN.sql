@@ -226,10 +226,3 @@ VALUES
 (5, 2), -- Đánh giá 5 cho sản phẩm có ProductID là 2
 (2, 3), -- Đánh giá 2 cho sản phẩm có ProductID là 3
 (1, 3); -- Đánh giá 1 cho sản phẩm có ProductID là 3
-
-INSERT INTO BookingService (NumberPhone, BookDate, BookStatus, Note, UserName, ServiceID) 
-VALUES 
-(N'0123456789', '2024-10-15', N'Đã xác nhận', N'Khách hàng yêu cầu dịch vụ khách sạn thú cưng.', N'hoanghien', 1), -- Sử dụng ServiceID 1
-(N'0987654321', '2024-10-16', N'Chờ xác nhận', N'Khách hàng đặt lịch cho dịch vụ Spa cho thú cưng.', N'nhathoang', 2), -- Sử dụng ServiceID 2
-(N'0912345678', '2024-10-17', N'Đã hủy', N'Khách hàng không thể đến dịch vụ cắt tỉa lông thú cưng.', N'trongphuc', 3), -- Sử dụng ServiceID 3
-(N'0834567890', '2024-10-18', N'Đang chờ', N'Khách hàng muốn tư vấn thêm về dịch vụ huấn luyện thú cưng.', N'vietanh', 4); -- Sử dụng ServiceID 4
