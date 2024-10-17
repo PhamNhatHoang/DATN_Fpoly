@@ -24,7 +24,6 @@
         <div class="swiper swiper-container-banner">
             <div class="swiper-wrapper">
                 <div th:each="s : ${slides}" class="swiper-slide">
-                    <!-- shaders image must be a direct child of the slide and have additional "swiper-gl-image" class  -->
                     <img loading="lazy" class="swiper-gl-image w-100" th:src="@{/images/slide/{photo}(photo = ${s.sliderImage})}"
                          th:alt="${s.sliderImage}">
                 </div>

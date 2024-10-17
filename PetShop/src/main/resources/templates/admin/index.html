@@ -13,19 +13,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
     <style>
+        nav {
+            background-color: #030f39 !important;
+        }
 
+        .container {
+            max-width: 1600px;
+        }
     </style>
 </head>
 
 <body ng-controller="myCtrl">
+<!--<header id="menu" class="sticky-top" th:insert="~{/layout/_menu}"></header>-->
 <div class="container-fluid p-0 d-flex">
     <div th:insert="~{/admin/_sidebar.html}"></div>
     <div class="bg-light flex-fill">
         <!-- MINI MENU -->
         <div th:insert="~{/admin/_miniMenu.html}"></div>
         <!-- MAIN CONTENT -->
-        <div class="container bg-light mt-3 animate__animated animate__slideInDown">
-            <div th:insert="${view}"></div>
+        <div>
+            <div th:insert="~{/admin/_menu.html}"></div>
+            <div class="container animate__animated animate__fadeIn" th:insert="${view}"></div>
         </div>
     </div>
 </div>

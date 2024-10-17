@@ -2,12 +2,17 @@ package com.example.petshop.controller;
 
 import com.example.petshop.entity.Pet;
 import com.example.petshop.entity.Product;
+import com.example.petshop.entity.SliderBar;
+import com.example.petshop.entity.User;
 import com.example.petshop.service.PetService;
 import com.example.petshop.service.ProductService;
+import com.example.petshop.service.SlideBarService;
 import com.example.petshop.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -24,6 +29,21 @@ public class HomeController {
 
     @Autowired
     private PetService petService;
+
+    @Autowired
+    private SlideBarService slideBarService;
+
+    @ModelAttribute("fullname")
+    public void getUser(Model model, HttpServletRequest request) {
+        try {
+            User user = userService.findByUsername(request.getUserPrincipal().getName());
+            if (user != null) {
+                model.addAttribute("user", user);
+            }
+        } catch (Exception e) {
+            model.addAttribute("user", null);
+        }
+    }
 
     @RequestMapping({"/", "/trang-chu", "/home"})
     public String home(Model model) {
@@ -50,7 +70,7 @@ public class HomeController {
                 .collect(Collectors.toList());
         model.addAttribute("firstPet", firstPet);
         model.addAttribute("nextSixPet", nextSixPet);
-
+        model.addAttribute("slides", slideBarService.getAll());
 
         return "/layout/_main";
     }
