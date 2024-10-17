@@ -7,28 +7,22 @@
         z-index: 9999;
         background-color: #f04336;
         color: white;
-        border: none;
         border-radius: 50%;
-        width: 50px;
-        height: 50px;
-        font-size: 20px;
-    }
-</style>
-<button class="btn" id="goToTop" onclick="goTop()">
-    <i class="fa-solid fa-arrow-up"></i>
-</button>
-<script type="text/javascript">
-    let goToTop = document.getElementById('goToTop');
-    window.onscroll = function () {
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            goToTop.style.display = 'block';
-        } else {
-            goToTop.style.display = 'none';
-        }
+        width: 70px;
+        height: 70px;
+        font-size: 40px;
+        transition: 0.3s;
     }
 
-    function goTop() {
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
+    #goToTop i {
+        transform: translateY(5px) rotate(180deg);
+        transition: 0.3s;
     }
-</script>
+
+    #goToTop:hover i {
+        transform: translateY(5px) rotate(0deg);
+    }
+</style>
+<button class="btn p-0 button-image-white" id="goToTop" onclick="goTop()">
+    <i class="fa-solid fa-arrow-up m-0"></i>
+</button>

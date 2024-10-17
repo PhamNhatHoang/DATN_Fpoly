@@ -26,4 +26,6 @@ public class AdminController {
     public String adminUser(Model model) {
         return "admin/_users";
     }
+
+
 }
