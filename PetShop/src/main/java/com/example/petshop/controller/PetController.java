@@ -31,8 +31,6 @@ public class PetController {
 
     @PostMapping
     public void save(@RequestBody Pet pet) {
-        PetCategory category = petCategoryService.findById(pet.getPetCategoryID().getId());
-        pet.setPetCategoryID(category);
         petService.save(pet);
     }
 

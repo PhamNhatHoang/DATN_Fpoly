@@ -4,28 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Document</title>
-    <style>
-        .ng-table-pager {
-            display: flex;
-            justify-content: center;
-        }
-    </style>
 </head>
 <body>
 <div class="mt-4">
-    <div class="mb-3">
-        <label for="petCategory_TomSelect" class="form-label">Chọn loại thú cưng:</label>
-        <select id="petCategory_TomSelect" placeholder="Chọn loại thú cưng..." autocomplete="off">
-            <option value="">Tất cả</option>
-            <option ng-repeat="pc in petCategoryData" value="{{pc.petCategoryID}}">{{pc.petCategoryName}}</option>
-        </select>
-    </div>
-    <div class="text-center">
-        <table ng-table="petsTable" class="table table-responsive table-hover table-sm table-sm shadow p-5"
-               show-filter="true">
+    <h1 class="text-center">
+        <span class="badge bg-primary">Danh sách thú cưng</span>
+    </h1>
+    <div class="text-center mt-1 mb-5">
+        <table ng-table="petsTable" class="table table-responsive table-hover table-sm table-sm shadow p-5" show-filter="true">
             <tr ng-repeat="pet in $data" class="align-middle">
+                <!-- STT tính toán dựa trên trang hiện tại -->
                 <td data-title="'#'" class="p-2 px-3 text-center">
-                    <b>{{ $index + 1 }}</b>
+                    <b>{{ (petsTable.page() - 1) * petsTable.count() + $index + 1 }}</b>
                 </td>
                 <td sortable="'petID'" filter="{ 'petID': 'text' }" data-title="'Pet Id'">{{ pet.petID }}</td>
                 <td sortable="'breed'" filter="{ 'breed': 'text' }" data-title="'Giống'">{{ pet.breed }}</td>
@@ -45,7 +35,7 @@
                     data-title="'Loài'" class="text-center">{{ pet.petCategoryID.petCategoryName }}
                 </td>
                 <td data-title="'Tool'" class="text-center">
-                    <button class="btn btn-warning" ng-click="editPet(pet.petID)">Sửa</button>
+                    <button ng-click="openEditModal(pet)" class="btn btn-primary">Sửa</button>
                     <button class="btn btn-danger" ng-click="deletePet(pet.petID)">Xóa</button>
                 </td>
             </tr>
