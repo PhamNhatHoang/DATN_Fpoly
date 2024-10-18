@@ -177,7 +177,7 @@
                     <li sec:authorize="isAuthenticated()" class="nav-item text-center user-button">
                         <a class="nav-link menu-item" href="/thong-tin-ca-nhan">
                             <i class="fa-solid fa-user-large"></i>
-                            <span th:text="${user.fullName}">FULLNAME</span>
+                            <span sec:authentication="principal.fullName"></span>
                             <i class="fa-solid fa-chevron-down"></i>
                         </a>
                         <div class="mini-user-box p-4 rounded-3 shadow">
@@ -186,16 +186,17 @@
                                      class="img-fluid rounded-circle" width="80">
                             </div>
                             <div class="user-info">
-                                <h5 th:text="${#authorization.expression('hasRole(''ROLE_ADMIN'')') ? 'Quản trị viên: ' + user.fullName : 'Khách hàng: ' + user.fullName}"
+                                <h5 th:text="${#authorization.expression('hasRole(''ROLE_ADMIN'')') ? 'Quản trị viên' : 'Khách hàng'}"
                                     class="user-name mb-1">
                                     Tên người dùng
                                 </h5>
-                                <p th:text="${'Email : '+user.email}" class="user-email text-muted">Email: user@example.com</p>
                             </div>
                             <div class="user-actions mt-3">
                                 <a href="#" class="btn btn-primary btn-sm user-button-decor">Xem hồ sơ</a>
-                                <a sec:authorize="hasRole('ROLE_ADMIN')" href="/quan-tri-he-thong" class="btn btn-outline-secondary btn-sm user-button-decor">Quản trị</a>
-                                <a href="/logout" class="btn btn-danger btn-sm user-button-decor">Đăng xuất</a>
+                                <a sec:authorize="hasRole('ROLE_ADMIN')" href="/quan-tri-he-thong"
+                                   class="btn btn-outline-secondary btn-sm user-button-decor">Quản trị</a>
+                                <a href="javascript:void(0)" onclick="logout()"
+                                   class="btn btn-danger btn-sm user-button-decor">Đăng xuất</a>
                             </div>
                         </div>
                     </li>
@@ -204,14 +205,15 @@
                             <i class="fa-solid fa-cart-shopping p-0 text-white"></i>
                         </a>
                         <div class="mini-cart-box p-4 rounded-3 shadow">
-                            <img  loading="lazy" class="mini-cart-img" src="/images/background/no-cart.png" alt="">
+                            <img loading="lazy" class="mini-cart-img" src="/images/background/no-cart.png" alt="">
                             <p class="m-0">Chưa có sản phẩm</p>
                             <div class="card">
                                 <div class="card-body">
                                     <div id="cart-items">
                                         <!-- Danh sách sản phẩm -->
                                         <div class="cart-item d-flex align-items-center mb-3">
-                                            <img loading="lazy" src="/images/product/product-placeholder.png" alt="Sản phẩm"
+                                            <img loading="lazy" src="/images/product/product-placeholder.png"
+                                                 alt="Sản phẩm"
                                                  class="img-fluid"
                                                  style="width: 80px; height: 80px; margin-right: 15px;">
                                             <div class="me-auto">
@@ -238,5 +240,28 @@
         </div>
     </div>
 </nav>
+<script>
+    function logout() {
+        Swal.fire({
+            title: 'Bạn có chắc chắn muốn đăng xuất?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Đăng xuất',
+            cancelButtonText: 'Hủy'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: 'Đăng xuất thành công!',
+                    icon: 'success',
+                })
+                setTimeout(() => {
+                    window.location.href = '/logout';
+                }, 1000)
+            }
+        })
+    }
+</script>
 </body>
 </html>
