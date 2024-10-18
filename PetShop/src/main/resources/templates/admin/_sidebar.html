@@ -1,7 +1,7 @@
 <!-- Sidebar -->
 <style>
     .sidebar {
-        min-height: 100vh;
+        min-height: 100%;
         min-width: 250px;
     }
 
@@ -18,9 +18,7 @@
         background-color: #6057cd;
     }
 </style>
-
-<div id="bdSidebar"
-     class="sidebar bg-color d-flex flex-column flex-shrink-0 text-white offcanvas-md offcanvas-start">
+<div id="bdSidebar" class="sidebar bg-color d-flex flex-column flex-shrink-0 text-white offcanvas-md offcanvas-start">
     <!-- Brand -->
     <div class="navbar-brand p-4 d-flex align-items-center">
         <i class="fas fa-user-circle fa-2x"></i> <!-- Example Brand Icon -->
@@ -37,10 +35,10 @@
         <!-- Settings Dropdown -->
         <li class="nav-item mb-2">
             <a href="#manage" class="nav-link text-white d-flex justify-content-between align-items-center"
-               data-bs-toggle="collapse" aria-expanded="false" aria-controls="settings">
-            <span>
-                <i class="fas fa-cog me-2"></i> Quản lí
-            </span>
+                data-bs-toggle="collapse" aria-expanded="false" aria-controls="settings">
+                <span>
+                    <i class="fas fa-cog me-2"></i> Quản lí
+                </span>
                 <i class="fas fa-chevron-down"></i>
             </a>
             <ul class="collapse list-unstyled ps-3 mt-2" id="manage">
@@ -66,9 +64,8 @@
         </li>
     </ul>
     <div class="d-flex justify-content-center align-items-center p-4">
-        <button class="btn d-md-none rounded-pill bg-light p-3 btn-close" type="button"
-                data-bs-toggle="offcanvas" data-bs-target="#bdSidebar" aria-controls="bdSidebar"
-                aria-label="Mở menu">
+        <button class="btn d-md-none rounded-pill bg-light p-3 btn-close" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#bdSidebar" aria-controls="bdSidebar" aria-label="Mở menu">
         </button>
     </div>
 </div>
