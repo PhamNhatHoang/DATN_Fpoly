@@ -18,8 +18,10 @@ public class ProductServiceImpl implements ProductService {
         return productRepo.findAll();
     }
 
-    @Override
-    public Product getById(int id) {
-        return productRepo.findById(id).orElse(null);
-    }
+	@Override
+	public Product getById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -2,14 +2,6 @@ package com.example.petshop.controller;
 
 import com.example.petshop.entity.Pet;
 import com.example.petshop.entity.Product;
-<<<<<<< HEAD
-import com.example.petshop.service.PetService;
-import com.example.petshop.service.ProductService;
-import com.example.petshop.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-=======
 import com.example.petshop.entity.User;
 import com.example.petshop.service.*;
 import jakarta.servlet.http.HttpServletRequest;
@@ -20,7 +12,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
->>>>>>> 1ca2bf2910c223089592b9fb43660604cf8a1054
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -102,6 +93,11 @@ public class HomeController {
 			model.addAttribute("loginStatus", true);
 		}
 		return "security/login";
+	}
+	
+	@RequestMapping("/register")
+		public String register() {
+		return "security/register";
 	}
 
 	@RequestMapping("/access-denied")

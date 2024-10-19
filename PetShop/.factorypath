@@ -14,11 +14,6 @@
     <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/data/spring-data-relational/3.3.3/spring-data-relational-3.3.3.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/data/spring-data-commons/3.3.3/spring-data-commons-3.3.3.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/spring-tx/6.1.12/spring-tx-6.1.12.jar" enabled="true" runInBatchMode="false"/>
-<<<<<<< HEAD
-    <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/spring-context/6.1.12/spring-context-6.1.12.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/spring-beans/6.1.12/spring-beans-6.1.12.jar" enabled="true" runInBatchMode="false"/>
-=======
->>>>>>> 1ca2bf2910c223089592b9fb43660604cf8a1054
     <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/boot/spring-boot-starter-data-jpa/3.3.3/spring-boot-starter-data-jpa-3.3.3.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/boot/spring-boot-starter-aop/3.3.3/spring-boot-starter-aop-3.3.3.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/aspectj/aspectjweaver/1.9.22.1/aspectjweaver-1.9.22.1.jar" enabled="true" runInBatchMode="false"/>
@@ -51,10 +46,6 @@
     <factorypathentry kind="VARJAR" id="M2_REPO/org/slf4j/jul-to-slf4j/2.0.16/jul-to-slf4j-2.0.16.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/yaml/snakeyaml/2.2/snakeyaml-2.2.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/spring-aop/6.1.12/spring-aop-6.1.12.jar" enabled="true" runInBatchMode="false"/>
-<<<<<<< HEAD
-    <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/security/spring-security-config/6.3.3/spring-security-config-6.3.3.jar" enabled="true" runInBatchMode="false"/>
-=======
->>>>>>> 1ca2bf2910c223089592b9fb43660604cf8a1054
     <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/security/spring-security-web/6.3.3/spring-security-web-6.3.3.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/spring-expression/6.1.12/spring-expression-6.1.12.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/boot/spring-boot-starter-validation/3.3.3/spring-boot-starter-validation-3.3.3.jar" enabled="true" runInBatchMode="false"/>
@@ -91,10 +82,8 @@
     <factorypathentry kind="VARJAR" id="M2_REPO/org/unbescape/unbescape/1.1.6.RELEASE/unbescape-1.1.6.RELEASE.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/thymeleaf/extras/thymeleaf-extras-springsecurity6/3.1.2.RELEASE/thymeleaf-extras-springsecurity6-3.1.2.RELEASE.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/slf4j/slf4j-api/2.0.16/slf4j-api-2.0.16.jar" enabled="true" runInBatchMode="false"/>
-<<<<<<< HEAD
-=======
     <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/security/spring-security-config/6.3.3/spring-security-config-6.3.3.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/spring-beans/6.1.12/spring-beans-6.1.12.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/spring-context/6.1.12/spring-context-6.1.12.jar" enabled="true" runInBatchMode="false"/>
->>>>>>> 1ca2bf2910c223089592b9fb43660604cf8a1054
+    <factorypathentry kind="PLUGIN" id="org.eclipse.jst.ws.annotations.core" enabled="false" runInBatchMode="false"/>
 </factorypath>

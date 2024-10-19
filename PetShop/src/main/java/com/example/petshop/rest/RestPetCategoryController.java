@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @CrossOrigin("*")
-@RequestMapping("/api/pet-category")
+@RequestMapping("/api/pet-category/rest")
 @RestController
 public class RestPetCategoryController {
     @Autowired

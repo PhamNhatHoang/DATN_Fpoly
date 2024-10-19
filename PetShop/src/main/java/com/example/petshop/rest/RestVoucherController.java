@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/api/voucher")
+@RequestMapping("/api/voucher/rest")
 public class RestVoucherController {
     @Autowired
     private VoucherService voucherService;
