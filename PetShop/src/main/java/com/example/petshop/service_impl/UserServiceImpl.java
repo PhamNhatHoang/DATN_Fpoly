@@ -4,6 +4,9 @@ package com.example.petshop.service_impl;
 import com.example.petshop.entity.User;
 import com.example.petshop.repo.UserRepo;
 import com.example.petshop.service.UserService;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -27,4 +30,34 @@ public class UserServiceImpl implements UserService {
     public User findByUsername(String name) {
         return userRepo.findByUsername(name);
     }
+
+	@Override
+	public List<User> findAll() {
+		return userRepo.findAll();
+	}
+
+	@Override
+	public User create(User user) { 
+		return userRepo.save(user);
+	}
+
+	@Override
+	public void update(User user) {
+		userRepo.save(user);
+	}
+
+	@Override
+	public boolean existedByUsername(String username) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public User findByToken(String token) {
+		User user  = userRepo.findByToken(token);
+		if (user == null) {
+            throw new UsernameNotFoundException("User not found with token: " + token);
+        }
+        return user;
+	}
 }

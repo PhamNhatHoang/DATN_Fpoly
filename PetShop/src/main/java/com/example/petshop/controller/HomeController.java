@@ -99,6 +99,15 @@ public class HomeController {
 		public String register() {
 		return "security/register";
 	}
+	@RequestMapping("/activeSuccess")
+	public String activeSuccess() {
+	return "security/activeSuccess";
+	}
+	@RequestMapping("/activeFail")
+	public String activeFail() {
+	return "security/activeFail";
+	}
+
 
 	@RequestMapping("/access-denied")
 	public String accessDenied(Model model) {
