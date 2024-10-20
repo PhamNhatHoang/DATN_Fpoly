@@ -1,5 +1,6 @@
 package com.example.petshop.service;
 
+import com.example.petshop.config.CustomUserDetails;
 import com.example.petshop.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

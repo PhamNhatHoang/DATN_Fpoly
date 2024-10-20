@@ -1,4 +1,4 @@
-package com.example.petshop.service;
+package com.example.petshop.config;
 
 import com.example.petshop.entity.User;
 import org.springframework.security.core.GrantedAuthority;
@@ -32,6 +32,13 @@ public class CustomUserDetails implements UserDetails {
         return user.getFullName();
     }
 
+    public String getEmail() {
+        return user.getEmail();
+    }
+
+    public String getRole() {
+        return user.getAuthorities().toString();
+    }
 
 
     @Override
