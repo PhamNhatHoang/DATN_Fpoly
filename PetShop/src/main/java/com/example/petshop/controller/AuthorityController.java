@@ -1,4 +1,4 @@
-package com.example.petshop;
+package com.example.petshop.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
