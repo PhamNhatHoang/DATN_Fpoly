@@ -99,13 +99,11 @@ public class HomeController {
 		public String register() {
 		return "security/register";
 	}
-	@RequestMapping("/activeSuccess")
-	public String activeSuccess() {
-	return "security/activeSuccess";
-	}
-	@RequestMapping("/activeFail")
-	public String activeFail() {
-	return "security/activeFail";
+	
+	
+	@RequestMapping("/confirmation")
+	public String confirmation(@RequestParam("confirmation_token") String confirmation_token) {
+	return "security/confirmation";
 	}
 
 

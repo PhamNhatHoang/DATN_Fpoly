@@ -9,14 +9,18 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.Nationalized;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import java.time.Instant;
 import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.UUID;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "Users")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class User implements UserDetails {
     @Id
     @Size(max = 50)
@@ -59,7 +63,7 @@ public class User implements UserDetails {
 
     @Size(max = 200)
     @NotNull
-    @Column(name = "ActiveToken", nullable = false, length = 200)
+    @Column(name = "ActiveToken", nullable = false)
     private String activeToken;
 
     @NotNull
