@@ -247,18 +247,18 @@
                     petTemp[categoryName] = (petTemp[categoryName] || 0) + 1;
                     return petTemp;
                 }, {});
-                $scope.labels = Object.keys(petCounts);
-                $scope.data = Object.values(petCounts);
+                $scope.petLabelsChart = Object.keys(petCounts);
+                $scope.petDataChart = Object.values(petCounts);
                 // Tạo biểu đồ
                 new Chart(document.getElementById('petChart-Bar').getContext('2d'), {
                     type: 'bar',
                     data: {
-                        labels: $scope.labels,
+                        labels: $scope.petLabelsChart,
                         datasets: [{
                             label: 'Số lượng từng loài',
-                            data: $scope.data,
-                            backgroundColor: colors.slice(0, $scope.labels.length),
-                            borderColor: colors.slice(0, $scope.labels.length),
+                            data: $scope.petDataChart,
+                            backgroundColor: colors.slice(0, $scope.petLabelsChart.length),
+                            borderColor: colors.slice(0, $scope.petLabelsChart.length),
                             borderWidth: 1
                         }]
                     },
@@ -372,6 +372,48 @@
                 }, {
                     counts: ['Hiển thị', '5', '10', '20', '30', '50', $scope.productData.length],
                     dataset: $scope.productData
+                });
+                // PRODUCT CHART
+                const productCounts = $scope.productData.reduce((productTemp, currentProduct) => {
+                    const categoryName = currentProduct.productCategoryID.productCategoryName;
+                    productTemp[categoryName] = (productTemp[categoryName] || 0) + 1;
+                    return productTemp;
+                }, {});
+                $scope.productLabelsChart = Object.keys(productCounts);
+                $scope.productDataChart = Object.values(productCounts);
+                // Tạo biểu đồ
+                new Chart(document.getElementById('productChart-Bar').getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: $scope.productLabelsChart,
+                        datasets: [{
+                            label: 'Số lượng từng sản phẩm',
+                            data: $scope.productDataChart,
+                            backgroundColor: colors.slice(0, $scope.productLabelsChart.length),
+                            borderColor: colors.slice(0, $scope.productLabelsChart.length),
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        plugins: {
+                            legend: {
+                                display: true,
+                                labels: {
+                                    generateLabels: function (chart) {
+                                        return chart.data.labels.map((label, index) => {
+                                            return {
+                                                text: label,
+                                                fillStyle: colors[index],
+                                                strokeStyle: colors[index],
+                                                lineWidth: 1,
+                                                index: index
+                                            };
+                                        });
+                                    }
+                                }
+                            }
+                        }
+                    }
                 });
             }).catch(function (error) {
                 console.error('Lỗi khi lấy dữ liệu sản phẩm:', error);
