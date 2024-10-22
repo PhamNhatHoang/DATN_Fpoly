@@ -214,7 +214,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
 <script type="text/javascript">
-    // Bôi màu cho menu hiện tại thoôi nhìn gì?
+    /* Bôi màu cho menu hiện tại thoôi nhìn gì?*/
     const currentUrl = window.location.pathname;
     const links = document.querySelectorAll('.nav-link');
     links.forEach(link => {
@@ -222,6 +222,7 @@
             link.classList.add('active');
         }
     });
+    // Calendar
     $(document).ready(function () {
         const calendarEl = document.getElementById('calendar');
         let currentDate;
@@ -231,7 +232,7 @@
         calendar.render();
 
     });
-    // Đây mới là phần chính của AngularJS nè =))
+    /* Đây mới là phần chính của AngularJS nè =))*/
     var app = angular.module('myApp', ['ngRoute', 'ngTable']);
     app.controller('myCtrl', function ($scope, $http, NgTableParams) {
         var baseUrl = 'http://localhost:8080/api/';
