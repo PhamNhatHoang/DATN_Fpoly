@@ -1,6 +1,5 @@
 package com.example.petshop.rest;
 
-import org.hibernate.id.GUIDGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.time.Instant;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -69,7 +67,6 @@ public class RestUserController {
 	    return dtos;
 	}
 
-	
 	//Hàm tìm người dùng thông qua active token
 	@GetMapping("/getByToken/{token}")
 	public UserDTO getByToken(@PathVariable String token) {
@@ -83,33 +80,67 @@ public class RestUserController {
 	    return dto;
 	}
 	
+	//Đăng ký
 	@PostMapping("/register")
-	public UserDTO register(@RequestBody User user) {
-	    BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-	    String encodedPassword = bCryptPasswordEncoder.encode(user.getPassword());
-	    UUID uuid = UUID.randomUUID();
-	    Authority authority = new Authority();
-	    String uuidString = uuid.toString();
-	    user.setActiveToken(uuidString);
-	    user.setUserPassword(encodedPassword);
-	    user.setDateCreated(Instant.now());
-	    Role role = roleService.findById("USER");
-	    if (role == null) {
-	        throw new RuntimeException("Role not found!");
+	public ResponseEntity<Object> register(@RequestBody User user) {
+	    try {
+	        // Kiểm tra xem tên đăng nhập đã tồn tại chưa
+	        if (service.existedByUsername(user.getUsername())) {
+	            return ResponseEntity.status(HttpStatus.CONFLICT)
+	                    .body("{\"success\": false, \"message\": \"Tên đăng nhập đã tồn tại\"}");
+	        }
+
+	        // Mã hóa mật khẩu người dùng
+	        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+	        String encodedPassword = bCryptPasswordEncoder.encode(user.getPassword());
+	        mailerService = new MailerService();
+	        
+	        // Tạo mã thông báo và thiết lập thông tin người dùng
+	        UUID uuid = UUID.randomUUID();
+	        String uuidString = uuid.toString();
+	        user.setActiveToken(uuidString);
+	        user.setUserPassword(encodedPassword);
+	        user.setDateCreated(Instant.now());
+
+	        // Gán vai trò cho người dùng
+	        Role role = roleService.findById("USER");
+	        if (role == null) {
+	            throw new RuntimeException("Role not found!");
+	        }
+
+	        // Tạo quyền và gán cho người dùng
+	        Authority authority = new Authority();
+	        authority.setRole(role);
+	        authority.setUserName(user);
+	        user.getAuthorities().add(authority);
+
+	        // Lưu người dùng và quyền
+	        User newUser = service.create(user);
+	        Authority newAuthority = authorityService.create(authority);
+
+	        // Chuyển đổi người dùng mới thành UserDTO
+	        UserDTO newUserDto = new UserDTO(newUser);
+
+	        // Gửi email xác nhận
+	        mailerService.sendEmail(
+	                user.getEmail(),
+	                "Pet Shop",
+	                "Confirm your email",
+	                user.getFullName(),
+	                user.getActiveToken()
+	        );
+
+	        // Trả về người dùng mới với mã trạng thái HTTP 201 (Created)
+	        return new ResponseEntity<>(newUserDto, HttpStatus.CREATED);
+
+	    } catch (Exception e) {
+	        // Ghi lại lỗi và trả về trạng thái 400 Bad Request
+	        System.err.println("Error during registration: " + e.getMessage());
+	        return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 	    }
-	    authority.setRole(role);
-	    authority.setUserName(user);
-	    user.getAuthorities().add(authority);
-	    User newUser = service.create(user);
-	    Authority newAuthority = authorityService.create(authority);
-	    UserDTO newUserDto = new UserDTO(newUser);
-	    mailerService = new MailerService();
-	    mailerService.sendEmail(user.getEmail(), "Pet Shop", "Confirm your email", user.getFullName(), user.getActiveToken());
-	    
-	    return newUserDto;
 	}
 
-	
+	//Đường dẫn kích hoạt tài khoản
 	@PutMapping("/confirmation")
 	public ResponseEntity<?> Confirmation(@RequestParam("confirmation_token") String confirmation_token) {
 	    // Tìm user theo token
@@ -140,5 +171,10 @@ public class RestUserController {
 	    return ResponseEntity.ok(dto);
 	}
 
-
+	//Quên mật khấu
+	@PutMapping("/forgot-password")
+	public ResponseEntity<Object> forgotPassword(@PathVariable String username){
+		
+		return new ResponseEntity<>(null, HttpStatus.OK);
+	}
 }

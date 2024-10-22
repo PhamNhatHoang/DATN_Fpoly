@@ -1,29 +1,24 @@
-﻿USE PetShop
+﻿USE PetShop;
 GO
 
-INSERT INTO Users (UserName, UserPassword, FullName, Email, PhoneNumber, UserAddress, Enable, ActiveToken, DateCreated)
-VALUES 
-('hoanghien', 'hien', N'Hoàng Hiển', 'hoanghien@gmail.com', '0912567832', N'123 Trường Chinh', 1, 'token123', GETDATE()),
-('nhathoang', 'hoang', N'Nhật Hoàng', 'nhathoang@gmail.com', '0357214579', N'27 Hoàng Văn Thụ', 1, 'token456', GETDATE()),
-('trongphuc', 'phuc', N'Trọng Phúc', 'trongphuc@gmail.com', '0765427654', N'76 Nguyễn Văn Tới', 1, 'token789', GETDATE()),
-('vietanh', 'anh', N'Việt Anh', 'vietanh@gmail.com', '0343421345', N'Số 8 Ngô Quyền', 1, 'token321', GETDATE()),
-('minhtam', 'tam', N'Minh Tâm', 'minhtam@gmail.com', '0921739055', N'25 Cách Mạng Tháng 8', 1, 'token654', GETDATE()),
-('tanphat', 'phat', N'Tấn Phát', 'tanphat@gmail.com', '0867346511', N'12 Nguyễn Văn Linh', 1, 'token133', GETDATE());
+INSERT [dbo].[Users] ([UserName], [UserPassword], [FullName], [Email], [PhoneNumber], [UserAddress], [Enable], [ActiveToken], [DateCreated]) VALUES (N'hien', N'$2a$10$SzQ2QZxe7EuslUYJefVTPevFfmJ1rNg/wWAc5xeFCigpn6KXxQlG6', N'Hoàng Hiền', N'hien', N'353453535', N'hien', 1, N'4545645645', CAST(N'2024-10-05T21:43:01.000' AS DateTime))
+INSERT [dbo].[Users] ([UserName], [UserPassword], [FullName], [Email], [PhoneNumber], [UserAddress], [Enable], [ActiveToken], [DateCreated]) VALUES (N'phuc', N'$2a$10$SzQ2QZxe7EuslUYJefVTPevFfmJ1rNg/wWAc5xeFCigpn6KXxQlG6', N'Phúc', N'phuc', N'4564', N'phuc', 1, N'4554646', CAST(N'2024-10-05T21:28:28.000' AS DateTime))
+INSERT [dbo].[Users] ([UserName], [UserPassword], [FullName], [Email], [PhoneNumber], [UserAddress], [Enable], [ActiveToken], [DateCreated]) VALUES (N'vietanh', N'$2a$10$SzQ2QZxe7EuslUYJefVTPevFfmJ1rNg/wWAc5xeFCigpn6KXxQlG6', N'Việt Anh', N'vietanh', N'4687458967', N'vietanh', 1, N'4674586', CAST(N'2024-10-05T21:28:02.000' AS DateTime))
+INSERT [dbo].[Users] ([UserName], [UserPassword], [FullName], [Email], [PhoneNumber], [UserAddress], [Enable], [ActiveToken], [DateCreated]) VALUES (N'tam', N'$2a$10$eNWEJ08kxzMi5r1OD9nl1O0gMnnvUJHVsHqCQshB7Zl2UhV4IsmPG', N'Minh Tâm', N'tam', N'4687458967', N'tam', 1, N'4674586', CAST(N'2024-10-05T21:28:02.000' AS DateTime))
+INSERT [dbo].[Users] ([UserName], [UserPassword], [FullName], [Email], [PhoneNumber], [UserAddress], [Enable], [ActiveToken], [DateCreated]) VALUES (N'hoang', N'$2a$10$JH4DRgqYWhiQAssV5uOfVu2IzlG91QIPfc9M9T1bClhTig133TtMe', N'Nhật Hoàng', N'hoang', N'4687458967', N'hoang', 1, N'4674586', CAST(N'2024-10-05T21:28:02.000' AS DateTime))
+GO
 
-INSERT INTO Roles (Id, Name)
-VALUES 
-('user', 'User'),
-('admin', 'Administrator'),
-('staff', 'Staff');
+INSERT [dbo].[Roles] ([Id], [Name]) VALUES (N'ADMIN', N'ROLE_ADMIN')
+INSERT [dbo].[Roles] ([Id], [Name]) VALUES (N'STAFF', N'ROLE_STAFF')
+INSERT [dbo].[Roles] ([Id], [Name]) VALUES (N'USER', N'ROLE_USER')
+GO
 
-INSERT INTO Authorities (UserName, RoleId)
-VALUES
-('hoanghien', 'staff'),
-('nhathoang', 'staff'),
-('trongphuc', 'admin'),
-('vietanh', 'admin'),
-('minhtam', 'admin'),
-('tanphat', 'User');
+INSERT [dbo].[Authorities] ([UserName], [RoleId]) VALUES (N'vietanh', N'ADMIN')
+INSERT [dbo].[Authorities] ([UserName], [RoleId]) VALUES (N'phuc', N'STAFF')
+INSERT [dbo].[Authorities] ([UserName], [RoleId]) VALUES (N'hien', N'USER')
+INSERT [dbo].[Authorities] ([UserName], [RoleId]) VALUES (N'hoang', N'ADMIN')
+INSERT [dbo].[Authorities] ([UserName], [RoleId]) VALUES (N'tam', N'USER')
+Go
 
 INSERT INTO PetCategory (PetCategoryName, Photo)
 VALUES 
@@ -36,7 +31,7 @@ VALUES
 (N'Pate', 'pate.jpg'),
 (N'Sữa tắm, dầu gội', 'suatam_daugoi.jpg'),
 (N'Dụng cụ ăn uống', 'dungcuanuong.jpg'),
-(N'Dụng cụ vệ sinh', 'null.jpg'),
+(N'Dụng cụ vệ sinh', 'dungcuvesinh.jpg'),
 (N'Vòng cổ', 'vongco.jpg'),
 (N'Túi xách|Balo', 'tuixach_balo.jpg'),
 (N'Chuồng|Lồng', 'chuong_long.jpg'),
@@ -99,7 +94,6 @@ VALUES
 (N'Bình uống nước cho chó', 40000, 'product_binh_nuoc.jpg', 1, 180, N'Bình uống nước cho chó tiện lợi.', 4),
 (N'Bình uống nước cho mèo', 35000, 'product_binh_nuoc.jpg', 1, 190, N'Bình uống nước dành cho mèo.', 4);
 
-
 -- Sản phẩm cho Vệ sinh
 INSERT INTO Products (ProductName, Price, Photo, Available, Quantity, ProductDescription, ProductCategoryID)
 VALUES
@@ -141,7 +135,6 @@ VALUES
 (N'Bóng cho chó', 60000, 'product_bong_cho_meo.jpg', 1, 80, N'Bóng cho chó, kích thích vận động.', 9),
 (N'Bóng cho mèo', 55000, 'product_bong_cho_meo.jpg', 1, 70, N'Búp bê cho mèo, dễ thương.', 9);
 
-
 -- Sản phẩm cho Ổ đệm
 INSERT INTO Products (ProductName, Price, Photo, Available, Quantity, ProductDescription, ProductCategoryID)
 VALUES
@@ -172,11 +165,9 @@ VALUES
 
 INSERT INTO Orders (OrderDate, ShippingAddress, TotalAmount, UserName, Enable, OrderStatusID, PaymentStatusID)
 VALUES
-(GETDATE(), N'12 Cống Lỡ', 650000, 'hoanghien', 1, 1, 1),	-- Đơn hàng 1
-(GETDATE(), N'76 Lê Quý Đôn', 410000, 'nhathoang', 1, 2, 2),		-- Đơn hàng 2
-(GETDATE(), N'22 Nguyễn Văn Cừ', 410000, 'trongphuc', 1, 1, 1),		-- Đơn hàng 3
-(GETDATE(), N'11 Trường Chinh', 400000, 'vietanh', 1, 3, 2),		-- Đơn hàng 4
-(GETDATE(), N'23 Bạch Đàng', 400000, 'minhtam', 1, 2, 1);		-- Đơn hàng 5
+(GETDATE(), N'12 Cống Lỡ', 650000, 'hien', 1, 1, 1),			-- Đơn hàng 1
+(GETDATE(), N'76 Lê Quý Đôn', 410000, 'phuc', 1, 2, 2),		-- Đơn hàng 2
+(GETDATE(), N'22 Nguyễn Văn Cừ', 410000, 'vietanh', 1, 1, 1);		-- Đơn hàng 3
 
 INSERT INTO OrderProductDetails (OrderID, ProductID, Quantity, Price)
 VALUES
@@ -188,41 +179,34 @@ VALUES
 (2, 7, 1, 80000),		-- Đơn hàng 2, 1 Snack thưởng cho chó
 (3, 9, 1, 50000),				-- Đơn hàng 3, 1 Đồ chơi gặm cho chó
 (3, 10, 2, 300000),				-- Đơn hàng 3, 2 Ổ đệm cho chó nhỏ
-(3, 4, 1, 60000),				-- Đơn hàng 3, 1 Sữa tắm cho chó
-(4, 8, 1, 250000),				-- Đơn hàng 4, 1 Túi xách cho chó
-(4, 9, 3, 150000),				-- Đơn hàng 4, 3 Đồ chơi gặm cho chó
-(5, 12, 1, 100000),		-- Đơn hàng 5, 1 Áo cho chó
-(5, 13, 2, 300000);		-- Đơn hàng 5, 2 Giày cho chó
+(3, 4, 1, 60000);				-- Đơn hàng 3, 1 Sữa tắm cho chó
 
-INSERT INTO Voucher (Code, Discount, ExpiryDate, UserName, OrderID)
+INSERT INTO Voucher (Code, Discount, ExpiryDate, Enable)
 VALUES
-('VOUCHER10', 10, '2024-12-31', 'hoanghien', 1),
-('VOUCHER20', 20, '2024-11-30', 'nhathoang', 2),
-('VOUCHER15', 15, '2024-10-31', 'trongphuc', 3),
-('VOUCHER25', 25, '2024-09-30', 'vietanh', 4),
-('VOUCHER30', 30, '2024-08-31', 'minhtam', 5);
+('VOUCHER10', 10, '2024-12-31', 1),
+('VOUCHER20', 20, '2024-11-30', 0),
+('VOUCHER15', 15, '2024-10-31', 0);
 
 INSERT INTO SliderBar (SliderImage)
 VALUES
 ('slider1.jpg'),
 ('slider2.jpg'),
 ('slider3.jpg'),
-('slider4.jpg'),
-('slider5.jpg');
+('slider4.jpg');
 
 INSERT INTO Reviews (Comment, UserName, ProductID)
 VALUES
-(N'Sản phẩm rất tốt, thú cưng nhà mình rất thích!', 'hoanghien', 1),
-(N'Chất lượng khá ổn, giá hợp lý', 'nhathoang', 2),
-(N'Dịch vụ rất nhanh chóng và tận tình', 'trongphuc', 3),
+(N'Sản phẩm rất tốt, thú cưng nhà mình rất thích!', 'hien', 1),
+(N'Chất lượng khá ổn, giá hợp lý', 'hoang', 2),
+(N'Dịch vụ rất nhanh chóng và tận tình', 'phuc', 3),
 (N'Mèo nhà mình thích món này lắm', 'vietanh', 4),
-(N'Đánh giá cao sản phẩm này, đáng tiền!', 'minhtam', 5);
+(N'Đánh giá cao sản phẩm này, đáng tiền!', 'tam', 5);
 
 INSERT INTO Rating (Number, ProductID) 
 VALUES 
-(5, 1), -- Đánh giá 5 cho sản phẩm có ProductID là 1
-(4, 1), -- Đánh giá 4 cho sản phẩm có ProductID là 1
-(3, 2), -- Đánh giá 3 cho sản phẩm có ProductID là 2
-(5, 2), -- Đánh giá 5 cho sản phẩm có ProductID là 2
-(2, 3), -- Đánh giá 2 cho sản phẩm có ProductID là 3
-(1, 3); -- Đánh giá 1 cho sản phẩm có ProductID là 3
+(5, 1),		-- Đánh giá 5 cho sản phẩm có ProductID là 1
+(4, 1),		-- Đánh giá 4 cho sản phẩm có ProductID là 1
+(3, 2),		-- Đánh giá 3 cho sản phẩm có ProductID là 2
+(5, 2),		-- Đánh giá 5 cho sản phẩm có ProductID là 2
+(2, 3),		-- Đánh giá 2 cho sản phẩm có ProductID là 3
+(1, 3);		-- Đánh giá 1 cho sản phẩm có ProductID là 3

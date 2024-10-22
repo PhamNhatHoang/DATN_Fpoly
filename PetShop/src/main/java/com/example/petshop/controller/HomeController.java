@@ -105,6 +105,20 @@ public class HomeController {
 	public String confirmation(@RequestParam("confirmation_token") String confirmation_token) {
 	return "security/confirmation";
 	}
+	
+	@RequestMapping("/sendMail")
+	public String sendMail() {
+	return "security/sendMail";
+	}
+	
+	@RequestMapping("/forgot-password")
+	public String forgotPassword() {
+	return "security/forgot-password";
+	}
+	@RequestMapping("/information")
+	public String information() {
+	return "security/information";
+	}
 
 
 	@RequestMapping("/access-denied")

@@ -48,8 +48,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean existedByUsername(String username) {
-		// TODO Auto-generated method stub
-		return false;
+		return userRepo.existsById(username);
 	}
 
 	@Override
@@ -59,5 +58,10 @@ public class UserServiceImpl implements UserService {
             throw new UsernameNotFoundException("User not found with token: " + token);
         }
         return user;
+	}
+
+	@Override
+	public boolean existedByEmail(String emai) {
+		return userRepo.existsByEmail(emai);
 	}
 }
