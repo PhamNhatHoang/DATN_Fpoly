@@ -48,19 +48,43 @@
             color: white !important;
         }
 
+
+        /*NG TABLE*/
         .ng-table-pager {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        /*HIỂN THỊ SỐ LƯỢNG*/
+        /*.ng-table-filters {*/
+        /*    display: flex;*/
+        /*    justify-content: space-evenly;*/
+        /*    position: absolute;*/
+        /*    top: 10px;*/
+        /*    left: 0;*/
+        /*}*/
+
+        .ng-table-filters input {
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='50px' width=''><text x='10' y='50%' fill='gray' font-size='15'>Tìm kiếm</text></svg>");
+            background-repeat: no-repeat;
+            background-position-x: center;
+        }
+
+        .ng-table-filters input:focus {
+            background-image: none;
+        }
+
+        /*HIỂN THỊ SỐ LƯỢNG PET*/
         .ng-table-counts {
             box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.28);
             border: 1px solid #6057cd;
         }
 
         .ng-table-counts .btn-default {
+            white-space: nowrap; /* Ngăn văn bản xuống dòng */
+            overflow: hidden; /* Ẩn văn bản vượt quá vùng chứa */
+            text-overflow: ellipsis; /* Thêm dấu ... cho văn bản bị cắt */
+            max-width: 150px; /* Đặt chiều rộng tối đa cho ô */
             padding: 10px 20px;
             background-color: white;
             color: #6057cd;
@@ -198,16 +222,14 @@
         var baseUrl = 'http://localhost:8080/api/';
         $scope.petData = [];
         $scope.petCategoryData = [];
-
         $scope.getPets = function () {
             $http.get(baseUrl + 'pet').then(function (response) {
                 $scope.petData = response.data;
-                $scope.length = $scope.petData.length;
                 $scope.petsTable = new NgTableParams({
                     page: 1,
                     count: 5
                 }, {
-                    counts: ['Số lượng pet hiện có : ' + $scope.length, '5', '10', '20', '30', '50', $scope.length],
+                    counts: ['Hiển thị', '5', '10', '20', '30', '50', $scope.petData.length],
                     dataset: $scope.petData
                 });
             }).catch(function (error) {
@@ -285,7 +307,11 @@
             });
         };
         $scope.getPetCategories();
-
+        /*Xóa lọc*/
+        $scope.clearPetFilter = function () {
+            $scope.petsTable.filter({});
+            $scope.petsTable.sorting({});
+        };
         //MODAL EDIT
         $scope.openEditModal = function (pet) {
             $scope.selectedPet = angular.copy(pet);

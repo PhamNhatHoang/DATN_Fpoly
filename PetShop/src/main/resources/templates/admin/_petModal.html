@@ -5,16 +5,6 @@
         cursor: pointer;
     }
 </style>
-<div id="toastNotification" class="toast" role="alert" aria-live="assertive" aria-atomic="true"
-     style="position: fixed; top: 20px; right: 20px; z-index: 1090;">
-    <div class="toast-header">
-        <strong class="me-auto">Thông báo</strong>
-        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-    <div class="toast-body">
-        Thú cưng đã được cập nhật thành công!
-    </div>
-</div>
 <!-- Modal -->
 <div class="modal fade" id="editPetModal" tabindex="-1" aria-labelledby="editPetModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl">
@@ -130,8 +120,10 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" ng-click="deletePet(selectedPet.petID)"><span>Xóa</span> <i class="fa-solid fa-trash"></i></button>
-                <button type="button" class="btn btn-primary" ng-click="updatePet(selectedPet.petID)"><span>Lưu thay đổi</span> <i class="fa-solid fa-floppy-disk"></i>
+                <button type="button" class="btn btn-danger" ng-click="deletePet(selectedPet.petID)"><span>Xóa</span> <i
+                        class="fa-solid fa-trash"></i></button>
+                <button type="button" class="btn btn-primary" ng-click="updatePet(selectedPet.petID)">
+                    <span>Lưu thay đổi</span> <i class="fa-solid fa-floppy-disk"></i>
                 </button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
             </div>
