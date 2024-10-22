@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @CrossOrigin("*")
 @RequestMapping("/api/pet")
@@ -31,8 +32,7 @@ public class PetController {
 
     @PostMapping
     public void save(@RequestBody Pet pet) {
-        PetCategory category = petCategoryService.findById(pet.getPetCategoryID().getId());
-        pet.setPetCategoryID(category);
+        pet.setPetID(UUID.randomUUID().toString());
         petService.save(pet);
     }
 

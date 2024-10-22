@@ -50,7 +50,7 @@ public class Product {
     private String productDescription;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "ProductCategoryID", nullable = false)
     private ProductCategory productCategoryID;
 
