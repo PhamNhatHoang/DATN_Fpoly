@@ -1,6 +1,7 @@
 package com.example.petshop.controller;
 
 import com.example.petshop.entity.Pet;
+<<<<<<< HEAD
 import com.example.petshop.service.PetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -46,6 +47,31 @@ public class PetController {
 
 <<<<<<< HEAD
 =======
+=======
+import com.example.petshop.entity.PetCategory;
+import com.example.petshop.service.PetCategoryService;
+import com.example.petshop.service.PetService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
+
+@CrossOrigin("*")
+@RequestMapping("/api/pet")
+@RestController
+public class PetController {
+    @Autowired
+    private PetService petService;
+    @Autowired
+    private PetCategoryService petCategoryService;
+
+    @GetMapping
+    public List<Pet> getPet() {
+        return petService.getAll();
+    }
+
+>>>>>>> NhatHoang
     @GetMapping("/{id}")
     public Optional<Pet> getPetId(@PathVariable("id") String id) {
         return petService.findById(id);
@@ -53,7 +79,12 @@ public class PetController {
 
     @PostMapping
     public void save(@RequestBody Pet pet) {
+<<<<<<< HEAD
         pet.setPetID(UUID.randomUUID().toString());
+=======
+        PetCategory category = petCategoryService.findById(pet.getPetCategoryID().getId());
+        pet.setPetCategoryID(category);
+>>>>>>> NhatHoang
         petService.save(pet);
     }
 
@@ -67,5 +98,8 @@ public class PetController {
     public void deletePet(@PathVariable("id") String id) {
         petService.deleteById(id);
     }
+<<<<<<< HEAD
 >>>>>>> AnhNgo
+=======
+>>>>>>> NhatHoang
 }

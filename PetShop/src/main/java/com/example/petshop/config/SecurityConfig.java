@@ -30,8 +30,13 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/").permitAll()
+<<<<<<< HEAD
                         .requestMatchers("/quan-tri-he-thong/**").hasAnyRole("ADMIN", "STAFF")
                         .requestMatchers("/thanh-toan/**").authenticated()
+=======
+                        .requestMatchers("/quan-tri-he-thong").hasRole("ADMIN")
+                        .requestMatchers("/thanh-toan").authenticated()
+>>>>>>> NhatHoang
                         .anyRequest().permitAll()
                 )
                 .formLogin(form -> form

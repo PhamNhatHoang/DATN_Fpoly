@@ -33,9 +33,12 @@ public class PetServiceImpl implements PetService {
     public void deleteById(String id) {
         petRepo.deleteById(id);
     }
+<<<<<<< HEAD
 
     @Override
     public boolean existsById(String id) {
         return petRepo.existsById(id);
     }
+=======
+>>>>>>> NhatHoang
 }

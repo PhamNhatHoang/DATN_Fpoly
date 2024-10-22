@@ -90,8 +90,11 @@ public class User implements UserDetails {
     public String getUsername() {
         return userName;
     }
+<<<<<<< HEAD
 
     public String getFullName() {
         return fullName;
     }
+=======
+>>>>>>> NhatHoang
 }

@@ -17,9 +17,12 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> getAll() {
         return productRepo.findAll();
     }
+<<<<<<< HEAD
 
     @Override
     public Product getById(int id) {
         return productRepo.findById(id).orElse(null);
     }
+=======
+>>>>>>> NhatHoang
 }

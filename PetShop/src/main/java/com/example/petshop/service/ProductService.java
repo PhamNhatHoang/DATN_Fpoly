@@ -8,6 +8,9 @@ import java.util.List;
 @Service
 public interface ProductService {
     List<Product> getAll();
+<<<<<<< HEAD
 
     Product getById(int id);
+=======
+>>>>>>> NhatHoang
 }
