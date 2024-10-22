@@ -9,8 +9,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
+<<<<<<< HEAD
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
+=======
+import java.util.Optional;
+import java.util.UUID;
+>>>>>>> AnhNgo
 
 @Controller
 public class PetController {
@@ -39,4 +44,28 @@ public class PetController {
         return "/layout/_petDetail";
     }
 
+<<<<<<< HEAD
+=======
+    @GetMapping("/{id}")
+    public Optional<Pet> getPetId(@PathVariable("id") String id) {
+        return petService.findById(id);
+    }
+
+    @PostMapping
+    public void save(@RequestBody Pet pet) {
+        pet.setPetID(UUID.randomUUID().toString());
+        petService.save(pet);
+    }
+
+    @PutMapping("/{id}")
+    public void updatePet(@PathVariable("id") String id, @RequestBody Pet pet) {
+        pet.setPetID(id);
+        petService.save(pet);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deletePet(@PathVariable("id") String id) {
+        petService.deleteById(id);
+    }
+>>>>>>> AnhNgo
 }
