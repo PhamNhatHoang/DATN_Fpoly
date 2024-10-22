@@ -48,9 +48,9 @@
                                 th:classappend="${loginStatus == true ? 'alert-success' : 'alert-danger'}"></h5>
                             
                             <div class="d-flex justify-content-end gap-3 mb-4">
-                                <button type="button" id="editButton" class="btn font-resp menu-item"
+                                <button type="button" id="editButton" class="button-image"
                                         onclick="enableEditing()">Chỉnh sửa</button>
-                                <button type="button" class="btn font-resp menu-item">Lưu</button>
+                                <button type="button" class="button-image">Lưu</button>
                             </div>
                             
                             <div class="form-floating mb-3">
@@ -89,11 +89,11 @@
                         </form>
 
                         <div class="text-center my-4">
-                            <button class="btn btn-secondary" onclick="togglePasswordForm()">Đổi mật khẩu</button>
+                            <button class="button-image" onclick="togglePasswordForm()">Đổi mật khẩu</button>
                         </div>
                         
                         <!-- Form đổi mật khẩu -->
-                        <div id="passwordForm" class="password-form">
+                        <div id="passwordForm" class="password-form" style="display: none;">
                             <form action="/updatePassword" method="post">
                                 <div class="form-floating mb-3">
                                     <input class="form-control" id="currentPassword" name="currentPassword"
@@ -111,7 +111,7 @@
                                     <label for="confirmPassword">Xác nhận mật khẩu mới</label>
                                 </div>
                                 <div class="d-flex justify-content-center">
-                                    <button type="button" class="btn font-resp menu-item">Lưu mật khẩu mới</button>
+                                    <button type="button" class="button-image">Lưu mật khẩu mới</button>
                                 </div>
                             </form>
                         </div>

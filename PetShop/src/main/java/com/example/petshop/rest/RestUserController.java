@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -176,5 +177,18 @@ public class RestUserController {
 	public ResponseEntity<Object> forgotPassword(@PathVariable String username){
 		
 		return new ResponseEntity<>(null, HttpStatus.OK);
+	}
+
+	//login-with-facebook
+	@PostMapping("/login-with-facebook")
+	public ResponseEntity<Object> loginWithFacebook(@RequestBody User user){
+		System.out.println(user);
+		return new ResponseEntity<>(null, HttpStatus.ACCEPTED);
+	}
+	
+	@DeleteMapping("/delete/{name}")
+	public ResponseEntity<Object> delete(@PathVariable String name){
+		System.out.println(name);
+		return new ResponseEntity<>(null, HttpStatus.ACCEPTED);
 	}
 }
