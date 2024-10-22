@@ -58,7 +58,6 @@
                                 <label for="petCategory" class="form-label">Chọn loại thú cưng:</label>
                                 <select class="form-select" id="petCategory" ng-model="selectedPet.petCategoryID.id"
                                         placeholder="Chọn loại thú cưng..." required>
-                                    <option value="">Tất cả</option>
                                     <option ng-repeat="pc in petCategoryData" ng-value="pc.id">
                                         {{pc.petCategoryName}}
                                     </option>
@@ -113,7 +112,7 @@
                                 <input ng-model="selectedPet.photo" type="text" class="form-control me-2" id="photo"
                                        placeholder="Hình ảnh">
                                 <input type="file" id="fileInput" accept="image/*"
-                                       onchange="angular.element(this).scope().updatePhotoName(this)">
+                                       onchange="angular.element(this).scope().updatePhotoPetName(this)">
                             </div>
                         </div>
                     </div>
