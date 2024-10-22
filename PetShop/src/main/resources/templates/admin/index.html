@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="https://unpkg.com/ng-table@4.0.0/bundles/ng-table.css">
     <!-- notify -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@1.0.4/dist/simple-notify.css"/>
+    <!-- Calendar -->
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css" rel="stylesheet"/>
+
     <style>
         .sidebar {
             min-height: 100vh;
@@ -205,8 +208,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-route.js"></script>
 <script src="https://unpkg.com/ng-table@4.0.0/bundles/ng-table.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/simple-notify@1.0.4/dist/simple-notify.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
 <script type="text/javascript">
     // Bôi màu cho menu hiện tại thoôi nhìn gì?
     const currentUrl = window.location.pathname;
@@ -216,15 +222,24 @@
             link.classList.add('active');
         }
     });
+    $(document).ready(function () {
+        const calendarEl = document.getElementById('calendar');
+        let currentDate;
+        const calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth'
+        });
+        calendar.render();
+
+    });
     // Đây mới là phần chính của AngularJS nè =))
     var app = angular.module('myApp', ['ngRoute', 'ngTable']);
     app.controller('myCtrl', function ($scope, $http, NgTableParams) {
         var baseUrl = 'http://localhost:8080/api/';
-        $scope.petData = [];
-        $scope.petCategoryData = [];
         $scope.getPets = function () {
             $http.get(baseUrl + 'pet').then(function (response) {
                 $scope.petData = response.data;
+
+                // PET TABLE
                 $scope.petsTable = new NgTableParams({
                     page: 1,
                     count: 5
@@ -232,11 +247,35 @@
                     counts: ['Hiển thị', '5', '10', '20', '30', '50', $scope.petData.length],
                     dataset: $scope.petData
                 });
+                // PET CHART
+                new Chart(document.getElementById('petChart-Bar').getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: [...new Set($scope.petData.map(pet => pet.petCategoryID.petCategoryName))],
+                        datasets: [{
+                            label: 'Số lượng từng loài',
+                            data: $scope.petData.reduce((petTemp, currentPet) => {
+                                const categoryName = currentPet.petCategoryID.petCategoryName;
+                                if (petTemp[categoryName]) {
+                                    petTemp[categoryName]++;
+                                } else {
+                                    petTemp[categoryName] = 1;
+                                }
+                                return petTemp;
+                            }, {}),
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        }]
+                    }
+                });
             }).catch(function (error) {
                 console.error('Lỗi khi lấy dữ liệu thú cưng:', error);
             });
         };
+
         $scope.getPets();
+
         $scope.updatePet = function (petId) {
             if (petId == null) {
                 new Notify({
@@ -307,6 +346,7 @@
             });
         };
         $scope.getPetCategories();
+
         /*Xóa lọc*/
         $scope.clearPetFilter = function () {
             $scope.petsTable.filter({});

@@ -6,45 +6,22 @@
     <title>Document</title>
 </head>
 <body>
-<body>
-<div class="header">
-    <h1>Trang chủ quản trị</h1>
-</div>
-<!-- Dashboard Content -->
-<div class="row mb-4">
-    <div th:text="${request}"></div>
-    <div class="col-sm-6 col-lg-3">
-        <div class="card bg-primary text-white text-center">
-            <div class="card-body">
-                <h5 class="card-title">Tổng số thú cưng</h5>
-                <p class="card-text">{{petData.length}}</p>
-            </div>
+<div class="row mt-4">
+    <div class="col-7">
+        <div class="card shadow bg-white border-0 p-4">
+            <canvas id="petChart-Bar"></canvas>
         </div>
     </div>
-    <div class="col-sm-6 col-lg-3">
-        <div class="card bg-success text-white text-center">
-            <div class="card-body">
-                <h5 class="card-title">Tổng số sản phẩm</h5>
-            </div>
+    <div class="col-5">
+        <div class="card shadow bg-white border-0 p-4">
+            <div id="calendar"></div>
         </div>
     </div>
-    <div class="col-sm-6 col-lg-3">
-        <div class="card bg-warning text-white text-center">
-            <div class="card-body">
-                <h5 class="card-title">Tổng số đơn hàng</h5>
-                <p class="card-text">120</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-6 col-lg-3">
-        <div class="card bg-danger text-white text-center">
-            <div class="card-body">
-                <h5 class="card-title">Tổng số người dùng</h5>
-                <p class="card-text">75</p>
-            </div>
-        </div>
-    </div>
+
 </div>
 </body>
-</body>
+<script>
+
+</script>
+
 </html>
