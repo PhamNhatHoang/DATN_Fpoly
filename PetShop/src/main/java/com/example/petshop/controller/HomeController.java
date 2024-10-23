@@ -8,6 +8,7 @@ import com.example.petshop.service.PetService;
 import com.example.petshop.service.ProductService;
 import com.example.petshop.service.SlideBarService;
 import com.example.petshop.service.UserService;
+import com.example.petshop.service.ServiceService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import com.example.petshop.entity.Service;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -84,7 +85,11 @@ public class HomeController {
     public String pet(Model model) {
         return "/layout/_petDetail";
     }
-
+    @RequestMapping("/service") 
+    public String service(Model model) {
+     
+        return "/layout/_service"; 
+    }
     @RequestMapping("/product")
     public String product(Model model) {
         return "/layout/_productDetaill";
