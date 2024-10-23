@@ -4,26 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1e7acb0d-2094-4d14-acbd-e81f16071b3d" name="Changes" comment="pushALllllllllllll">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/layout/_allPet.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/layout/_allProduct.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/banner/advertise.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/banner/advertise.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/banner/long-banner-placeholder.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/banner/long-banner-placeholder.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/logo/admin-icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/product_category/product-category-placeholder.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/slide/placeholder-slide.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/layout/_main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/layout/_main.html" afterDir="false" />
+    <list default="true" id="1e7acb0d-2094-4d14-acbd-e81f16071b3d" name="Changes" comment="layout fix">
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/layout/_menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/layout/_menu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/layout/_petDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/layout/_petDetail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/images/banner/advertise.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/images/banner/advertise.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/images/banner/long-banner-placeholder.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/images/banner/long-banner-placeholder.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/images/logo/admin-icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/images/product_category/product-category-placeholder.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/images/slide/placeholder-slide.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/layout/_main.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/layout/_main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/layout/_menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/layout/_menu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/layout/_petDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/layout/_petDetail.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +112,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729618666644</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="layout fix">
+      <option name="closed" value="true" />
+      <created>1729716665853</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1729716665853</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -149,6 +139,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="pushALllllllllllll" />
-    <option name="LAST_COMMIT_MESSAGE" value="pushALllllllllllll" />
+    <MESSAGE value="layout fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="layout fix" />
   </component>
 </project>
