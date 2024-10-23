@@ -4,19 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Title</title>
-    <style>
-        /*.card-image {*/
-        /*    transition: 0.5s;*/
-        /*}*/
-
-        /*.card-image:hover img {*/
-        /*    transform: scale(1.1);*/
-        /*}*/
-
-
-    </style>
+    <!-- Add File Css -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
+
 <body>
+
 <!--SLIDE-->
 <div class="row g-0">
     <div class="col-lg-8">
@@ -25,8 +18,8 @@
             <div class="swiper-wrapper">
                 <div th:each="s : ${slides}" class="swiper-slide">
                     <!-- shaders image must be a direct child of the slide and have additional "swiper-gl-image" class  -->
-                    <img loading="lazy" class="swiper-gl-image w-100" th:src="@{/images/slide/{photo}(photo = ${s.sliderImage})}"
-                         th:alt="${s.sliderImage}">
+                    <img loading="lazy" class="swiper-gl-image w-100"
+                         th:src="@{/images/slide/{photo}(photo = ${s.sliderImage})}" th:alt="${s.sliderImage}">
                 </div>
             </div>
 
@@ -35,22 +28,14 @@
             <div class="swiper-pagination swiper-pagination-banner"></div>
         </div>
     </div>
-    <div class="col-lg-4">
-        <div class="background-color text-white text-center p-5" style="height: 100%; position: relative;">
-            <h1 class="fw-bold color"
-                style="background-color: white; display: inline-block; padding: 10px 20px; border-radius: 10px;">
-                Giảm giá
-            </h1>
-            <h2 class="mt-4">Lên tới 50%</h2>
-            <p class="mt-3">Chỉ còn 100.000đ - 200.000đ, số lượng có hạn !</p>
-            <button class="btn btn-light mt-4 py-2 px-4 color button-image"
-                    style="position: absolute; bottom: 10%; left: 50%; transform: translateX(-50%);">
-                <span class="fw-bold">Xem ngay</span>
-            </button>
-        </div>
+
+    <div class="col-lg-4 d-flex flex-column">
+        <img src="/images/slide/cn1.jpg" alt="Image 1" class="img-fluid mb-3" style="height: 50%;">
+        <img src="/images/slide/cn2.jpg" alt="Image 2" class="img-fluid" style="height: 50%;">
     </div>
 </div>
 <!--SLIDE END-->
+
 <!--BANNER-->
 <div class="d-flex justify-content-center">
     <img loading="lazy" class="w-100" src="/images/banner/advertise.png" alt="banner" style="object-fit: cover;">
@@ -113,16 +98,13 @@
         <div class="row g-3">
             <!--ITEMS-->
             <div th:each="pet : ${nextSixPet}" class="col-lg-4 col-md-6 col-sm-6 col-6">
-                <a class=" nav-link" href="/chi-tiet">
-                    <div class="card card-hover  border-0 position-relative">
-                        <div class="overflow-hidden rounded-5 p-3 p-0 button-image"
-                             style="background-color: #f7f7f5">
+                <a class="nav-link" href="/chi-tiet">
+                    <div class="card card-hover border-0 position-relative">
+                        <div class="overflow-hidden rounded-5 p-3 button-image" style="background-color: #f7f7f5; height: 250px; display: flex; align-items: center; justify-content: center;">
                             <img loading="lazy" th:src="@{/images/pet/{photo}(photo=${pet.photo})}"
-                                 class="card-img-top card-image"
-                                 alt="pet">
+                                 class="card-img-top card-image" alt="pet" style="max-width: 100%; max-height: 100%; object-fit: cover;">
                         </div>
-                        <div class="badge bg-warning position-absolute"
-                             style="top: 0; right: 0; z-index: 1000;">
+                        <div class="badge bg-warning position-absolute" style="top: 0; right: 0; z-index: 1000;">
                             <h5 class="m-0">New</h5>
                         </div>
                         <div class="card-body text-center">
@@ -133,6 +115,7 @@
                     </div>
                 </a>
             </div>
+
         </div>
         <div class="d-flex justify-content-center mb-3">
             <button class="btn color py-2 px-4 rounded-5 button-image">
@@ -158,8 +141,7 @@
                 <h1 class="color fw-bold m-0">Giảm giá</h1>
                 <h1 class="text-white background-color fw-bold py-2 m-0 w-50">50%</h1>
             </div>
-            <img loading="lazy" class="w-100 card-image"
-                 src="/images/background/best-selling-coming.png"
+            <img loading="lazy" class="w-100 card-image" src="/images/background/best-selling-coming.png"
                  alt="best-selling">
             <button class="btn rounded-2 px-4 py-2 position-absolute button-image-white"
                     style="background-color: #f04336;bottom: 50%; left: 50%; transform: translateX(-50%)">
@@ -181,12 +163,10 @@
                         <div class="overflow-hidden p-0 position-relative  ">
                             <a href="/chi-tiet" class="nav-link">
                                 <img loading="lazy" th:src="@{/images/product/{photo}(photo=${p.photo})}"
-                                     class="card-img-top card-image"
-                                     alt="product">
+                                     class="card-img-top card-image" alt="product">
                             </a>
                         </div>
-                        <div class="badge position-absolute"
-                             style="top: 0; right: 0; z-index: 1000;">
+                        <div class="badge position-absolute" style="top: 0; right: 0; z-index: 1000;">
                             <img src="/images/logo/hot-badge.png" alt="hot-badge" style="width: 50px;">
                         </div>
                         <a href="/them-gio-hang"
@@ -233,8 +213,7 @@
                         <div class="overflow-hidden p-3 button-image"
                              style="background-color: #f7f7f5; border-radius: 50%; width: 100%; height: 100%;">
                             <img loading="lazy" th:src="@{/images/product_category/{photo}(photo=${pc.photo})}"
-                                 class="card-img-top card-image"
-                                 th:alt="${pc.photo}">
+                                 class="card-img-top card-image" th:alt="${pc.photo}">
                         </div>
                         <div class="card-body text-center">
                             <h5 th:text="${pc.productCategoryName}" class="">Tên loại sản phẩm</h5>
@@ -272,8 +251,7 @@
         <div class="card p-3 mb-3 button-image">
             <div class="d-flex justify-content-between align-items-center gap-2">
                 <div class="d-flex justify-content-start align-items-center gap-2">
-                    <div class="overflow-hidden rounded-circle"
-                         style="width: 50px;height: 50px">
+                    <div class="overflow-hidden rounded-circle" style="width: 50px;height: 50px">
                         <img loading="lazy" src="/images/user/user-placeholder.png" class="w-100" alt=""
                              style="object-fit: cover;">
                     </div>
@@ -298,8 +276,7 @@
         <div class="card p-3 mb-3 button-image">
             <div class="d-flex justify-content-between align-items-center gap-2">
                 <div class="d-flex justify-content-start align-items-center gap-2">
-                    <div class="overflow-hidden rounded-circle"
-                         style="width: 50px;height: 50px">
+                    <div class="overflow-hidden rounded-circle" style="width: 50px;height: 50px">
                         <img loading="lazy" src="/images/user/user-placeholder.png" class="w-100" alt=""
                              style="object-fit: cover;">
                     </div>
@@ -324,8 +301,7 @@
         <div class="card p-3 mb-3 button-image">
             <div class="d-flex justify-content-between align-items-center gap-2">
                 <div class="d-flex justify-content-start align-items-center gap-2">
-                    <div class="overflow-hidden rounded-circle"
-                         style="width: 50px;height: 50px">
+                    <div class="overflow-hidden rounded-circle" style="width: 50px;height: 50px">
                         <img loading="lazy" src="/images/user/user-placeholder.png" class="w-100" alt=""
                              style="object-fit: cover;">
                     </div>
@@ -350,8 +326,7 @@
         <div class="card p-3 mb-3 button-image">
             <div class="d-flex justify-content-between align-items-center gap-2">
                 <div class="d-flex justify-content-start align-items-center gap-2">
-                    <div class="overflow-hidden rounded-circle"
-                         style="width: 50px;height: 50px">
+                    <div class="overflow-hidden rounded-circle" style="width: 50px;height: 50px">
                         <img loading="lazy" src="/images/user/user-placeholder.png" class="w-100" alt=""
                              style="object-fit: cover;">
                     </div>
@@ -376,6 +351,61 @@
     </div>
 </div>
 <!--FEEDBACK END-->
+
+<!-- DỊCH VỤ -->
+<div class="my-3">
+    <h1 class="m-0 color fw-bold">Dịch vụ của chúng tôi</h1>
+    <div class="line background-color" style="height: 5px;"></div>
+</div>
+
+<div class="row justify-content-center g-3">
+    <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="card border-0 shadow p-3">
+            <div class="overflow-hidden rounded-circle mx-auto" style="width: 6rem; height: 6rem;">
+                <img loading="lazy" src="/images/service/service1.png" class="w-100" alt="Dịch vụ 1"
+                     style="object-fit: cover;">
+            </div>
+            <div class="card-body text-center p-2">
+                <h5 class="color fw-bold">Hỗ trợ kỹ thuật</h5>
+                <p class="text-body-tertiary">Chúng tôi cung cấp dịch vụ hỗ trợ kỹ thuật 24/7 cho mọi khách hàng.
+                </p>
+                <a href="/dich-vu/ho-tro-ky-thuat" class="btn btn-primary">Xem chi tiết</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="card border-0 shadow p-3">
+            <div class="overflow-hidden rounded-circle mx-auto" style="width: 6rem; height: 6rem;">
+                <img loading="lazy" src="/images/service/service2.png" class="w-100" alt="Dịch vụ 2"
+                     style="object-fit: cover;">
+            </div>
+            <div class="card-body text-center p-2">
+                <h5 class="color fw-bold">Tư vấn sản phẩm</h5>
+                <p class="text-body-tertiary">Chúng tôi sẵn sàng tư vấn cho bạn lựa chọn sản phẩm phù hợp nhất.</p>
+                <a href="/dich-vu/tu-van-san-pham" class="btn btn-primary">Xem chi tiết</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="card border-0 shadow p-3">
+            <div class="overflow-hidden rounded-circle mx-auto" style="width: 6rem; height: 6rem;">
+                <img loading="lazy" src="/images/service/service3.png" class="w-100" alt="Dịch vụ 3"
+                     style="object-fit: cover;">
+            </div>
+            <div class="card-body text-center p-2">
+                <h5 class="color fw-bold">Chăm sóc khách hàng</h5>
+                <p class="text-body-tertiary">Đội ngũ chăm sóc khách hàng của chúng tôi luôn sẵn sàng lắng nghe và
+                    hỗ trợ bạn.</p>
+                <a href="/dich-vu/cham-soc-khach-hang" class="btn btn-primary">Xem chi tiết</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <DỊCH VỤ END> -->
+
+
 <!--DANG KY NHAN THONG TIN MOI NHAT-->
 <div class="row g-0 py-3">
     <div class="my-3">
@@ -413,8 +443,7 @@
                     <input type="text" class="form-control" id="sdt">
                 </div>
                 <div class="d-flex justify-content-center">
-                    <button type="submit"
-                            class="rounded-5 py-2 px-4 button-image">
+                    <button type="submit" class="rounded-5 py-2 px-4 button-image">
                         <span class="color fw-bold">Đăng ký</span>
                     </button>
                 </div>
@@ -423,16 +452,17 @@
     </div>
 </div>
 <!--DANG KY NHAN THONG TIN MOI NHAT END-->
-<!--NHAN VIEN CHAM SOC KHACH HANG-->
+
+<!-- Nhân viên chăm sóc khách hàng -->
 <div class="my-3">
     <h1 class="m-0 color fw-bold">Nhân viên chăm sóc khách hàng</h1>
     <div class="line background-color" style="height: 5px;"></div>
 </div>
-<div class="row g-2 justify-content-center">
-    <div class="col-lg-3 col-md-6 col-sm-6 col-6">
+
+<div class="row justify-content-center g-3">
+    <div class="col-lg-4 col-md-6 col-sm-6">
         <div class="card border-0 shadow p-3">
-            <div class="overflow-hidden rounded-circle mx-auto"
-                 style="width: 5rem;height: 5rem">
+            <div class="overflow-hidden rounded-circle mx-auto" style="width: 6rem; height: 6rem;">
                 <img loading="lazy" src="/images/user/user-placeholder.png" class="w-100" alt=""
                      style="object-fit: cover;">
             </div>
@@ -444,10 +474,10 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-3 col-md-6 col-sm-6 col-6">
+
+    <div class="col-lg-4 col-md-6 col-sm-6">
         <div class="card border-0 shadow p-3">
-            <div class="overflow-hidden rounded-circle mx-auto"
-                 style="width: 5rem;height: 5rem">
+            <div class="overflow-hidden rounded-circle mx-auto" style="width: 6rem; height: 6rem;">
                 <img loading="lazy" src="/images/user/user-placeholder.png" class="w-100" alt=""
                      style="object-fit: cover;">
             </div>
@@ -459,10 +489,10 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-3 col-md-6 col-sm-6 col-6">
+
+    <div class="col-lg-4 col-md-6 col-sm-6">
         <div class="card border-0 shadow p-3">
-            <div class="overflow-hidden rounded-circle mx-auto"
-                 style="width: 5rem;height: 5rem">
+            <div class="overflow-hidden rounded-circle mx-auto" style="width: 6rem; height: 6rem;">
                 <img loading="lazy" src="/images/user/user-placeholder.png" class="w-100" alt=""
                      style="object-fit: cover;">
             </div>
@@ -474,10 +504,12 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-3 col-md-6 col-sm-6 col-6">
+
+    <div class="w-100 my-4"></div>
+
+    <div class="col-lg-4 col-md-6 col-sm-6">
         <div class="card border-0 shadow p-3">
-            <div class="overflow-hidden rounded-circle mx-auto"
-                 style="width: 5rem;height: 5rem">
+            <div class="overflow-hidden rounded-circle mx-auto" style="width: 6rem; height: 6rem;">
                 <img loading="lazy" src="/images/user/user-placeholder.png" class="w-100" alt=""
                      style="object-fit: cover;">
             </div>
@@ -489,10 +521,9 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-3 col-md-6 col-sm-6 col-6">
+    <div class="col-lg-4 col-md-6 col-sm-6">
         <div class="card border-0 shadow p-3">
-            <div class="overflow-hidden rounded-circle mx-auto"
-                 style="width: 5rem;height: 5rem">
+            <div class="overflow-hidden rounded-circle mx-auto" style="width: 6rem; height: 6rem;">
                 <img loading="lazy" src="/images/user/user-placeholder.png" class="w-100" alt=""
                      style="object-fit: cover;">
             </div>

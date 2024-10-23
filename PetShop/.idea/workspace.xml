@@ -5,15 +5,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1e7acb0d-2094-4d14-acbd-e81f16071b3d" name="Changes" comment="pushALllllllllllll">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/layout/_allPet.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/layout/_allProduct.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/petshop/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/petshop/controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/banner/advertise.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/banner/advertise.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/banner/long-banner-placeholder.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/banner/long-banner-placeholder.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/logo/admin-icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/product_category/product-category-placeholder.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/slide/placeholder-slide.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/layout/_main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/layout/_main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/layout/_menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/layout/_menu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/layout/_petDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/layout/_petDetail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/images/banner/advertise.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/images/banner/advertise.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/images/banner/long-banner-placeholder.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/images/banner/long-banner-placeholder.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/images/logo/admin-icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/images/product_category/product-category-placeholder.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/images/slide/placeholder-slide.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/layout/_main.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/layout/_main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/layout/_menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/layout/_menu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/layout/_petDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/layout/_petDetail.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="NhatHoang" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -32,19 +61,21 @@
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2nnoy3Q08lkcKJOSTv7snUKGaiJ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.PetShopApplication.executor": "Run",
-    "git-widget-placeholder": "#20 on trongphuc",
+    "git-widget-placeholder": "trongphuc",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",

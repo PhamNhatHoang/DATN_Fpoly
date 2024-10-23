@@ -185,19 +185,19 @@
                                 <img loading="lazy" src="/images/user/user-placeholder.png" alt="User Avatar"
                                      class="img-fluid rounded-circle" width="80">
                             </div>
-                            <div class="user-info">
-                                <h5 th:text="${#authorization.expression('hasRole(''ROLE_ADMIN'')') ? 'Quản trị viên' : 'Khách hàng'}"
-                                    class="user-name mb-1">
-                                    Tên người dùng
-                                </h5>
-                            </div>
-                            <div class="user-actions mt-3">
-                                <a href="#" class="btn btn-primary btn-sm user-button-decor">Xem hồ sơ</a>
-                                <a sec:authorize="hasRole('ROLE_ADMIN')" href="/quan-tri-he-thong"
-                                   class="btn btn-outline-secondary btn-sm user-button-decor">Quản trị</a>
-                                <a href="javascript:void(0)" onclick="logout()"
-                                   class="btn btn-danger btn-sm user-button-decor">Đăng xuất</a>
-                            </div>
+                            <!--                            <div class="user-info">-->
+                            <!--                                <h5 th:text="${#authorization.expression('hasRole(''ROLE_ADMIN'')') ? 'Quản trị viên' : 'Khách hàng'}"-->
+                            <!--                                    class="user-name mb-1">-->
+                            <!--                                    Tên người dùng-->
+                            <!--                                </h5>-->
+                            <!--                            </div>-->
+                            <!--                            <div class="user-actions mt-3">-->
+                            <!--                                <a href="#" class="btn btn-primary btn-sm user-button-decor">Xem hồ sơ</a>-->
+                            <!--                                <a sec:authorize="hasRole('ROLE_ADMIN')" href="/quan-tri-he-thong"-->
+                            <!--                                   class="btn btn-outline-secondary btn-sm user-button-decor">Quản trị</a>-->
+                            <!--                                <a href="javascript:void(0)" onclick="logout()"-->
+                            <!--                                   class="btn btn-danger btn-sm user-button-decor">Đăng xuất</a>-->
+                            <!--                            </div>-->
                         </div>
                     </li>
                     <li class="nav-item text-center card-button">
