@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.Console;
 import java.time.Instant;
 import java.util.List;
 import java.util.Set;
@@ -26,6 +27,7 @@ import com.example.petshop.entity.Authority;
 import com.example.petshop.entity.Role;
 import com.example.petshop.entity.User;
 import com.example.petshop.entity.DTO.UserDTO;
+import com.example.petshop.entity.DTO.updateUserDTO;
 import com.example.petshop.service.AuthorityService;
 import com.example.petshop.service.RoleService;
 import com.example.petshop.service.UserService;
@@ -45,23 +47,28 @@ public class RestUserController {
 	
 	//Tìm danh sách người dùng thông qua dto 
 	@GetMapping("/getall")
-	public List<UserDTO> getAll() {
+	public List<updateUserDTO> getAll() {
 	    List<User> users = service.findAll();
-	    List<UserDTO> dtos = users.stream().map(user -> {
-	        UserDTO dto = new UserDTO();
+	    List<updateUserDTO> dtos = users.stream().map(user -> {
+	    	updateUserDTO dto = new updateUserDTO();
 	        dto.setUserName(user.getUsername());
+	        dto.setFullName(user.getFullName());
+	        dto.setPhoneNumber(user.getPhoneNumber());
 	        dto.setActiveToken(user.getActiveToken());
-	        dto.setEnable(user.getEnable());
-	        dto.setDateCreated(user.getDateCreated());
-
-	        // Chuyển Set<Authority> thành một chuỗi các authority
-	        Set<Authority> authorities = user.getAuthorities();
-	        if (authorities != null && !authorities.isEmpty()) {
-	            String authIDs = authorities.stream()
-	                                        .map(authority -> authority.getAuthority())  // Lấy tên quyền từ role
-	                                        .collect(Collectors.joining(", "));  // Nối các quyền bằng dấu phẩy
-	            dto.setAuthID(authIDs);  // Cập nhật danh sách quyền vào DTO
-	        }
+	        dto.setOldPassword(user.getUserPassword());
+	        dto.setEmail(user.getEmail());
+	        dto.setUserAddress(user.getUserAddress());
+//	        dto.setEnable(user.getEnable());
+//	        dto.setDateCreated(user.getDateCreated());
+//
+//	        // Chuyển Set<Authority> thành một chuỗi các authority
+//	        Set<Authority> authorities = user.getAuthorities();
+//	        if (authorities != null && !authorities.isEmpty()) {
+//	            String authIDs = authorities.stream()
+//	                                        .map(authority -> authority.getAuthority())  // Lấy tên quyền từ role
+//	                                        .collect(Collectors.joining(", "));  // Nối các quyền bằng dấu phẩy
+//	            dto.setAuthID(authIDs);  // Cập nhật danh sách quyền vào DTO
+//	        }
 	        
 	        return dto;
 	    }).collect(Collectors.toList());
@@ -171,24 +178,77 @@ public class RestUserController {
 	    // Trả về ResponseEntity với mã trạng thái OK
 	    return ResponseEntity.ok(dto);
 	}
-
-	//Quên mật khấu
-	@PutMapping("/forgot-password")
-	public ResponseEntity<Object> forgotPassword(@PathVariable String username){
-		
-		return new ResponseEntity<>(null, HttpStatus.OK);
+	
+	//Gửi mail đường dẫn đổi mật khẩu
+	@GetMapping("/forgot-password/{username}")
+	public ResponseEntity<Object> sendConfirmPassword(@PathVariable String username) {
+	    if (!service.existedByUsername(username)) {
+	        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+	                .body("{\"success\": false, \"message\": \"Tài khoản không tồn tại\"}");
+	    }
+	    
+	    User user = service.findByUsername(username);
+	    System.out.println(user.getActiveToken());
+	    mailerService = new MailerService();
+	    mailerService.confirmChangePassword(user.getEmail(), "Ninja Pet", "Thư xác nhận đổi mật khẩu", username, user.getActiveToken());
+	    return ResponseEntity.ok("{\"success\": true, \"message\": \"Thư xác nhận đã được gửi đến email của bạn.\"}");
 	}
 
-	//login-with-facebook
-	@PostMapping("/login-with-facebook")
-	public ResponseEntity<Object> loginWithFacebook(@RequestBody User user){
-		System.out.println(user);
-		return new ResponseEntity<>(null, HttpStatus.ACCEPTED);
+	//Đổi mật khẩu mới
+	@PutMapping("/change-password/{username}")
+	public ResponseEntity<Object> changePassword(@RequestBody updateUserDTO dto, @PathVariable String username){
+		if(!service.existedByUsername(username)) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND)
+	                .body("{\"success\": false, \"message\": \"Tài khoản không tồn tại\"}");
+		}
+		User user = service.findByUsername(username);
+		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+		String passwordEncode = bCryptPasswordEncoder.encode(dto.getNewPassword());
+		user.setUserPassword(passwordEncode);
+		service.update(user);
+		return ResponseEntity.ok("{\"success\": true, \"message\": \"Đổi mật khẩu thành công\"}");
+
 	}
 	
-	@DeleteMapping("/delete/{name}")
-	public ResponseEntity<Object> delete(@PathVariable String name){
-		System.out.println(name);
-		return new ResponseEntity<>(null, HttpStatus.ACCEPTED);
+	//new pass dto
+	@GetMapping("/new-password/{userName}")
+	public ResponseEntity<Object> forgotPassword(@PathVariable String userName, @RequestParam("token") String token){
+		if(!service.existedByUsername(userName) || service.findByToken(token) == null) {
+			 return ResponseEntity.status(HttpStatus.NOT_FOUND)
+		                .body("{\"success\": false, \"message\": \"Tài khoản không tồn tại\"}");
+		}
+		User user  = service.findByUsername(userName);
+		updateUserDTO dto = new updateUserDTO();
+		dto.setUserName(userName);
+		dto.setOldPassword(user.getUserPassword());
+		dto.setActiveToken(token);
+	    return ResponseEntity.ok(dto);
+	}
+
+	//Cập nhật thông tin cá nhân
+	@PutMapping("/update/{username}")
+	public ResponseEntity<Object> update(@RequestBody updateUserDTO userDTO, @PathVariable String username) {
+	    if (!service.existedByUsername(username)) {
+	        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+	        		.body("{\"success\": false, \"message\": \"Tài khoản không tồn tại\"}");
+	    }
+
+	    // Lấy thông tin người dùng hiện tại
+	    User existingUser = service.findByUsername(username);
+	    if (existingUser == null) {
+	        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+	        		.body("{\"success\": false, \"message\": \"Tài khoản không tồn tại\"}");
+	    }
+
+	    // Cập nhật thông tin
+	    existingUser.setFullName(userDTO.getFullName());
+	    existingUser.setEmail(userDTO.getEmail());
+	    existingUser.setPhoneNumber(userDTO.getPhoneNumber());
+	    existingUser.setUserAddress(userDTO.getUserAddress());
+	    
+	    // Lưu lại thông tin đã cập nhật
+	    service.update(existingUser);
+
+	    return ResponseEntity.ok("{\"success\": true, \"message\": \"Cập nhật thành công\"}");
 	}
 }
