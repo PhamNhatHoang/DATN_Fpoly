@@ -67,9 +67,6 @@ public class User implements UserDetails {
     private Instant dateCreated;
 
     @OneToMany(mappedBy = "userName")
-    private Set<BookingService> bookingServices = new LinkedHashSet<>();
-
-    @OneToMany(mappedBy = "userName")
     private Set<Order> orders = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "userName")

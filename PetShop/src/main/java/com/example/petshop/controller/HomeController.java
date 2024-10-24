@@ -80,6 +80,11 @@ public class HomeController {
 	public String product(Model model) {
 		return "/layout/_productDetail";
 	}
+	
+	@RequestMapping("/allProduct")
+	public String allProduct(Model model) {
+		return "/layout/_all_product";
+	}
 
 	@RequestMapping("/login")
 	public String login(Model model, @RequestParam(value = "error", required = false) boolean error,

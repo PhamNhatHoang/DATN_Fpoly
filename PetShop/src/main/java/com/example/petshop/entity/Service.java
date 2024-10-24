@@ -35,7 +35,4 @@ public class Service {
     @Column(name = "Description", nullable = false)
     private String description;
 
-    @OneToMany(mappedBy = "serviceID")
-    private Set<BookingService> bookingServices = new LinkedHashSet<>();
-
 }
