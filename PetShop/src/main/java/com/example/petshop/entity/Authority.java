@@ -3,12 +3,7 @@ package com.example.petshop.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.Optional;
-
 import org.springframework.security.core.GrantedAuthority;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Getter
 @Setter
@@ -24,7 +19,7 @@ public class Authority implements GrantedAuthority {
     @JoinColumn(name = "UserName")
     private User userName;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "RoleId")
     private Role role;
 

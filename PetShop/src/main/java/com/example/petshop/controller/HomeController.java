@@ -12,7 +12,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -95,36 +94,6 @@ public class HomeController {
 		}
 		return "security/login";
 	}
-	
-	@RequestMapping("/register")
-		public String register() {
-		return "security/register";
-	}
-	
-	
-	@RequestMapping("/confirmation")
-	public String confirmation(@RequestParam("confirmation_token") String confirmation_token) {
-	return "security/confirmation";
-	}
-	
-	@RequestMapping("/sendMail")
-	public String sendMail() {
-	return "security/sendMail";
-	}
-	
-	@RequestMapping("/forgot-password")
-	public String forgotPassword() {
-	return "security/forgot-password";
-	}
-	@RequestMapping("/information")
-	public String information() {
-	return "security/information";
-	}
-	@RequestMapping("/new-password/{username}")
-	public String newPassword(@PathVariable String username, @RequestParam("token") String token) {
-	return "security/new-password";
-	}
-
 
 	@RequestMapping("/access-denied")
 	public String accessDenied(Model model) {

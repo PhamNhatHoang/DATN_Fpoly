@@ -6,7 +6,5 @@ import org.springframework.data.relational.core.sql.In;
 import org.springframework.stereotype.Repository;
 
 @Repository
-
 public interface AuthorityRepo extends JpaRepository<Authority, Integer> {
-
 }
