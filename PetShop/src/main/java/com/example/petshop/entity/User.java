@@ -23,10 +23,10 @@ public class User implements UserDetails {
     @Column(name = "UserName", nullable = false, length = 50)
     private String userName;
 
-    @Size(max = 50)
+    @Size(max = 100)
     @NotNull
     @Nationalized
-    @Column(name = "UserPassword", nullable = false, length = 50)
+    @Column(name = "UserPassword", nullable = false, length = 100)
     private String userPassword;
 
     @Size(max = 50)

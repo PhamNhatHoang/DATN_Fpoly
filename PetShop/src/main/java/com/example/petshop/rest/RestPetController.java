@@ -1,7 +1,6 @@
-package com.example.petshop.controller;
+package com.example.petshop.rest;
 
 import com.example.petshop.entity.Pet;
-import com.example.petshop.entity.PetCategory;
 import com.example.petshop.service.PetCategoryService;
 import com.example.petshop.service.PetService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,7 @@ import java.util.UUID;
 @CrossOrigin("*")
 @RequestMapping("/api/pet")
 @RestController
-public class PetController {
+public class RestPetController {
     @Autowired
     private PetService petService;
     @Autowired

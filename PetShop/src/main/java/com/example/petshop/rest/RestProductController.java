@@ -1,4 +1,4 @@
-package com.example.petshop.controller;
+package com.example.petshop.rest;
 
 import com.example.petshop.entity.Product;
 import com.example.petshop.service.ProductService;
@@ -10,7 +10,7 @@ import java.util.List;
 @CrossOrigin("*")
 @RequestMapping("/api/product")
 @RestController
-public class ProductController {
+public class RestProductController {
     @Autowired
     private ProductService productService;
 
