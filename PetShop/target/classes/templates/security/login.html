@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{/index.html::home(~{::body})}">
+
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
@@ -42,14 +43,13 @@
                                     <label class="form-check-label font-resp" for="remember-me">Lưu</label>
                                 </div>
                                 <div>
-                                    <a class="font-resp " href="/forgot-password">Quên mật khẩu?</a>
+                                    <a class="font-resp" href="/forgot-password">Quên mật khẩu?</a>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-center gap-3 mt-4">
-                                <button class="btn font-resp button-image" type="submit">Đăng nhập</button>
-                                <a class="btn font-resp button-image" href="/register" style="background: #AACCFF">Đăng kí</a>
+                                <button class="btn font-resp" type="submit">Đăng nhập</button>
+                                <a class="btn font-resp" href="/dang-ki" style="background: #AACCFF">Đăng kí</a>
                             </div>
-
                         </form>
                     </div>
                 </div>
@@ -76,9 +76,9 @@
         </div>
     </div>
     <script>
-        	document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", function () {
             var countdown = 2;
-            var loginStatus = [[${loginStatus}]];
+            var loginStatus = [[${ loginStatus }]];
             var messageElement = document.getElementById("modal-message");
             var progressBar = document.getElementById('progressBar');
             var redirectUrl = '/trang-chu';
@@ -103,6 +103,6 @@
             }
         });
     </script>
-    
 </body>
+
 </html>

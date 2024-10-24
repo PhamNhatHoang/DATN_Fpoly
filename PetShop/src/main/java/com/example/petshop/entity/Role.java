@@ -8,9 +8,6 @@ import lombok.Setter;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-
 @Getter
 @Setter
 @Entity
@@ -24,7 +21,6 @@ public class Role {
     @Column(name = "Name", length = 50)
     private String name;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "role")
     private Set<Authority> authorities = new LinkedHashSet<>();
 

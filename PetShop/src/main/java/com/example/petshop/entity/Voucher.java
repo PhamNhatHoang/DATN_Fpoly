@@ -30,6 +30,10 @@ public class Voucher {
     @Column(name = "ExpiryDate", nullable = false)
     private LocalDate expiryDate;
 
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "UserName", nullable = false)
+    private User userName;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "OrderID")
