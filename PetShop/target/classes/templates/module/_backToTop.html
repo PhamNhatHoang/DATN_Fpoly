@@ -1,12 +1,4 @@
 <style>
-<<<<<<< HEAD
-    /* Style for the "Go to Top" button */
-    a {
-        text-decoration: none;
-    }
-
-=======
->>>>>>> origin/NhatHoang
     #goToTop {
         display: none;
         position: fixed;
@@ -19,13 +11,6 @@
         width: 70px;
         height: 70px;
         font-size: 40px;
-<<<<<<< HEAD
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-=======
->>>>>>> origin/NhatHoang
         transition: 0.3s;
     }
 
@@ -37,117 +22,7 @@
     #goToTop:hover i {
         transform: translateY(5px) rotate(0deg);
     }
-<<<<<<< HEAD
-
-    /* Style for contact buttons */
-    .contact-button {
-        position: fixed;
-        left: 40px;
-        z-index: 9999;
-        background-color: #f04336;
-        color: white;
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
-        font-size: 24px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        transition: 0.3s;
-        margin-bottom: 10px;
-    }
-
-    .contact-button:hover {
-        background-color: #d73c31;
-    }
-
-    /* Positions for each contact button */
-    #contactPhone {
-        bottom: 70px;
-    }
-
-    #contactFacebook {
-        bottom: 140px;
-    }
-
-    #contactTikTok {
-        bottom: 210px;
-    }
-
-    #contactZalo {
-        bottom: 280px;
-    }
-
-    /* Style for phone number display */
-    #phoneNumberDisplay {
-        display: none;
-        position: fixed;
-        left: 100px;
-        bottom: 80px;
-        z-index: 9999;
-        background-color: #f04336;
-        color: white;
-        padding: 10px 15px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        font-size: 18px;
-        white-space: nowrap;
-    }
-</style>
-
-<!-- "Go to Top" button -->
-<button class="btn p-0 button-image-white" id="goToTop" onclick="goTop()">
-    <i class="fa-solid fa-arrow-up m-0"></i>
-</button>
-
-<!-- Contact buttons -->
-<div class="contact-button" id="contactPhone" title="Show Phone Number" onclick="showPhoneNumber()">
-    <i class="fa-solid fa-phone"></i>
-</div>
-<!-- Phone number display -->
-<div id="phoneNumberDisplay">0909 830 856</div>
-
-<a href="https://www.facebook.com/yourprofile" class="contact-button" id="contactFacebook" target="_blank"
-    title="Facebook">
-    <i class="fa-brands fa-facebook-f"></i>
-</a>
-<a href="https://www.tiktok.com/@yourprofile" class="contact-button" id="contactTikTok" target="_blank" title="TikTok">
-    <i class="fa-brands fa-tiktok"></i>
-</a>
-<a href="https://zalo.me/yourprofile" class="contact-button" id="contactZalo" target="_blank" title="Zalo">
-    <i class="fa-solid fa-comments"></i>
-</a>
-
-<script>
-    function showPhoneNumber() {
-        var phoneNumberDisplay = document.getElementById('phoneNumberDisplay');
-        if (phoneNumberDisplay.style.display === 'none') {
-            phoneNumberDisplay.style.display = 'block';
-        } else {
-            phoneNumberDisplay.style.display = 'none';
-        }
-    }
-
-    // Function to handle "Go to Top" button visibility and scroll to top
-    window.onscroll = function () { scrollFunction() };
-    function scrollFunction() {
-        const goToTopButton = document.getElementById('goToTop');
-        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-            goToTopButton.style.display = 'block';
-        } else {
-            goToTopButton.style.display = 'none';
-        }
-    }
-
-    function goTop() {
-        document.body.scrollTop = 0; // For Safari
-        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
-    }
-</script>
-=======
 </style>
 <button class="btn p-0 button-image-white" id="goToTop" onclick="goTop()">
     <i class="fa-solid fa-arrow-up m-0"></i>
 </button>
->>>>>>> origin/NhatHoang

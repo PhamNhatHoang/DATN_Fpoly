@@ -19,6 +19,7 @@
         left: 50%;
         transform: translate(-50%, -50%);
     }
+
     .spinner-border {
         width: 5rem;
         height: 5rem;
@@ -32,7 +33,6 @@
         </div>
     </div>
 </div>
-<div id="cohere-chatbox"></div>
 <script>
     window.addEventListener('beforeunload', function () {
         document.getElementById('loading-spinner').style.display = 'block';
@@ -43,16 +43,3 @@
         }, 500); // 1000 ms = 1 giây
     });
 </script>
-<script>
-window.embeddedChatbotConfig = {
-chatbotId: "ytjWcQ7hV1OZkkgzQLIrB",
-domain: "www.chatbase.co"
-}
-</script>
-<script
-src="https://www.chatbase.co/embed.min.js"
-chatbotId="ytjWcQ7hV1OZkkgzQLIrB"
-domain="www.chatbase.co"
-defer>
-</script>
-

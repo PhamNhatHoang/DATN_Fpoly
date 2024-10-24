@@ -15,7 +15,6 @@ import java.util.Set;
 @Entity
 @Table(name = "Products")
 public class Product {
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ProductID", nullable = false)
@@ -54,4 +53,14 @@ public class Product {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "ProductCategoryID", nullable = false)
     private ProductCategory productCategoryID;
+
+    @OneToMany(mappedBy = "productID")
+    private Set<OrderProductDetail> orderProductDetails = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "productID")
+    private Set<Rating> ratings = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "productID")
+    private Set<Review> reviews = new LinkedHashSet<>();
+
 }
