@@ -4,8 +4,10 @@ GO
 INSERT [dbo].[Users] ([UserName], [UserPassword], [FullName], [Email], [PhoneNumber], [UserAddress], [Enable], [ActiveToken], [DateCreated]) VALUES (N'hien', N'$2a$10$SzQ2QZxe7EuslUYJefVTPevFfmJ1rNg/wWAc5xeFCigpn6KXxQlG6', N'Hoàng Hiền', N'hien', N'353453535', N'hien', 1, N'4545645645', CAST(N'2024-10-05T21:43:01.000' AS DateTime))
 INSERT [dbo].[Users] ([UserName], [UserPassword], [FullName], [Email], [PhoneNumber], [UserAddress], [Enable], [ActiveToken], [DateCreated]) VALUES (N'phuc', N'$2a$10$SzQ2QZxe7EuslUYJefVTPevFfmJ1rNg/wWAc5xeFCigpn6KXxQlG6', N'Phúc', N'phuc', N'4564', N'phuc', 1, N'4554646', CAST(N'2024-10-05T21:28:28.000' AS DateTime))
 INSERT [dbo].[Users] ([UserName], [UserPassword], [FullName], [Email], [PhoneNumber], [UserAddress], [Enable], [ActiveToken], [DateCreated]) VALUES (N'vietanh', N'$2a$10$SzQ2QZxe7EuslUYJefVTPevFfmJ1rNg/wWAc5xeFCigpn6KXxQlG6', N'Việt Anh', N'vietanh', N'4687458967', N'vietanh', 1, N'4674586', CAST(N'2024-10-05T21:28:02.000' AS DateTime))
-INSERT [dbo].[Users] ([UserName], [UserPassword], [FullName], [Email], [PhoneNumber], [UserAddress], [Enable], [ActiveToken], [DateCreated]) VALUES (N'tam', N'$2a$10$eNWEJ08kxzMi5r1OD9nl1O0gMnnvUJHVsHqCQshB7Zl2UhV4IsmPG', N'Minh Tâm', N'tam', N'4687458967', N'tam', 1, N'4674586', CAST(N'2024-10-05T21:28:02.000' AS DateTime))
-INSERT [dbo].[Users] ([UserName], [UserPassword], [FullName], [Email], [PhoneNumber], [UserAddress], [Enable], [ActiveToken], [DateCreated]) VALUES (N'hoang', N'$2a$10$JH4DRgqYWhiQAssV5uOfVu2IzlG91QIPfc9M9T1bClhTig133TtMe', N'Nhật Hoàng', N'hoang', N'4687458967', N'hoang', 1, N'4674586', CAST(N'2024-10-05T21:28:02.000' AS DateTime))
+
+INSERT [dbo].[Users] ([UserName], [UserPassword], [FullName], [Email], [PhoneNumber], [UserAddress], [Enable], [ActiveToken], [DateCreated]) VALUES (N'tam', N'$2a$10$uyxT3DY9hiwFTCGYNQ7dleSbEhiXb57JX5xaUwF4/wWidMn5S7jO6', N'Minh Tâm', N'tam', N'4687458967', N'tam', 1, N'4674586', CAST(N'2024-10-05T21:28:02.000' AS DateTime))
+INSERT [dbo].[Users] ([UserName], [UserPassword], [FullName], [Email], [PhoneNumber], [UserAddress], [Enable], [ActiveToken], [DateCreated]) VALUES (N'hoang', N'$2a$10$p..CViOMumaw0rHxWhgReuBJFbgADxTq8M4RXut/zXvovg8bSMAee', N'Nhật Hoàng', N'hoang', N'4687458967', N'hoang', 1, N'4674586', CAST(N'2024-10-05T21:28:02.000' AS DateTime))
+
 GO
 
 INSERT [dbo].[Roles] ([Id], [Name]) VALUES (N'ADMIN', N'ROLE_ADMIN')
@@ -183,6 +185,7 @@ VALUES
 
 INSERT INTO Voucher (Code, Discount, ExpiryDate, Enable)
 VALUES
+
 ('VOUCHER10', 10, '2024-12-31', 1),
 ('VOUCHER20', 20, '2024-11-30', 0),
 ('VOUCHER15', 15, '2024-10-31', 0);
