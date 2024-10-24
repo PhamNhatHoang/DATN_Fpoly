@@ -19,6 +19,7 @@ public class ProductServiceImpl implements ProductService {
         return productRepo.findAll();
     }
 
+<<<<<<< HEAD
     @Override
     public Optional<Product> findById(Integer id) {
         return productRepo.findById(id);
@@ -33,4 +34,12 @@ public class ProductServiceImpl implements ProductService {
     public void deleteById(Integer id) {
         productRepo.deleteById(id);
     }
+=======
+	@Override
+	public Product getById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+>>>>>>> origin/NhatHoang
 }

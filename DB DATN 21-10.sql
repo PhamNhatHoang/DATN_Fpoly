@@ -111,11 +111,11 @@ CREATE TABLE Roles (
 );
 
 -- Tạo bảng Service
-CREATE TABLE Service (
-    ServiceID     INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
-    ServiceName   NVARCHAR(255) NOT NULL,
-    Price         INT NOT NULL,
-    Description   NVARCHAR(255) NOT NULL
+CREATE TABLE [Service] (
+    ServiceID		INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    ServiceName		NVARCHAR(255) NOT NULL,
+    Price			INT NOT NULL,
+    [Description]   NVARCHAR(255) NOT NULL
 );
 
 -- Tạo bảng SliderBar
@@ -132,17 +132,22 @@ CREATE TABLE Users (
     Email         NVARCHAR(50) NOT NULL,
     PhoneNumber   NVARCHAR(20) NOT NULL,
     UserAddress   NVARCHAR(255) NOT NULL,
-    Enable        BIT NOT NULL,
+    [Enable]      BIT NOT NULL,
     ActiveToken   VARCHAR(200) NOT NULL,
     DateCreated   DATETIME NOT NULL
 );
 
 -- Tạo bảng Voucher
 CREATE TABLE Voucher (
-    VoucherID     INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
-    Code          VARCHAR(50) NOT NULL,
-    Discount      INT NOT NULL,
-    ExpiryDate    DATE NOT NULL,
-    UserName      VARCHAR(50) NOT NULL,
-    OrderID       INT NULL
+    VoucherID		INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    Code			VARCHAR(50)		NOT NULL,
+    Discount		INT				NOT NULL,
+    ExpiryDate		DATE			NOT NULL,
+	[Enable]		BIT				NOT NULL
 );
+
+INSERT INTO Voucher (Code, Discount, ExpiryDate, Enable)
+VALUES
+('VOUCHER10', 10, '2024-12-31', 1),
+('VOUCHER20', 20, '2024-11-30', 0),
+('VOUCHER15', 15, '2024-10-31', 0);

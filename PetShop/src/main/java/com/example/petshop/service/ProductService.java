@@ -6,7 +6,12 @@ import java.util.Optional;
 
 public interface ProductService {
     List<Product> getAll();
+<<<<<<< HEAD
     Optional<Product> findById(Integer id);
     void save(Product product);
     void deleteById(Integer id);
+=======
+
+    Product getById(int id);
+>>>>>>> origin/NhatHoang
 }
